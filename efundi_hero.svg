@@ -1,0 +1,316 @@
+<svg width="900" height="520" viewBox="0 0 900 520" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#EEF3FF"/>
+      <stop offset="100%" stop-color="#E4EAF8"/>
+    </linearGradient>
+    <linearGradient id="pinG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FF9A3C"/>
+      <stop offset="100%" stop-color="#E8501A"/>
+    </linearGradient>
+    <linearGradient id="charBodyG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1B2D5E"/>
+      <stop offset="100%" stop-color="#0F1D3E"/>
+    </linearGradient>
+    <linearGradient id="vestG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FF9A3C"/>
+      <stop offset="100%" stop-color="#E8501A"/>
+    </linearGradient>
+    <linearGradient id="groundG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#D1D9F0" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#B8C4E8" stop-opacity="0.35"/>
+    </linearGradient>
+    <filter id="fShadow" x="-30%" y="-20%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#1B2D5E" flood-opacity="0.13"/>
+    </filter>
+    <filter id="pinShadow" x="-40%" y="-20%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#E8501A" flood-opacity="0.40"/>
+    </filter>
+    <filter id="glowPin">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="mapDots" width="36" height="36" patternUnits="userSpaceOnUse">
+      <circle cx="18" cy="18" r="1.2" fill="#C5CDE8"/>
+    </pattern>
+  </defs>
+
+  <!-- ── BG ── -->
+  <rect width="900" height="520" fill="url(#bgG)"/>
+  <rect width="900" height="520" fill="url(#mapDots)" opacity="0.7"/>
+
+  <!-- ── NAIROBI SKYLINE SILHOUETTE ── -->
+  <g opacity="0.065" fill="#1B2D5E">
+    <!-- left cluster -->
+    <rect x="0"   y="370" width="38" height="150"/>
+    <rect x="32"  y="345" width="28" height="175"/>
+    <rect x="54"  y="385" width="22" height="135"/>
+    <rect x="70"  y="352" width="42" height="168"/>
+    <!-- KICC-style cylinder -->
+    <rect x="106" y="298" width="26" height="222" rx="13 13 0 0"/>
+    <ellipse cx="119" cy="298" rx="13" ry="5"/>
+    <rect x="126" y="368" width="36" height="152"/>
+    <rect x="156" y="385" width="28" height="135"/>
+    <rect x="178" y="350" width="44" height="170"/>
+    <rect x="216" y="370" width="24" height="150"/>
+    <rect x="234" y="390" width="38" height="130"/>
+    <!-- right cluster -->
+    <rect x="560" y="375" width="34" height="145"/>
+    <rect x="588" y="355" width="30" height="165"/>
+    <rect x="612" y="385" width="26" height="135"/>
+    <rect x="730" y="360" width="40" height="160"/>
+    <rect x="764" y="378" width="28" height="142"/>
+    <rect x="786" y="348" width="36" height="172"/>
+    <rect x="820" y="370" width="30" height="150"/>
+    <rect x="845" y="390" width="32" height="130"/>
+    <rect x="870" y="368" width="30" height="152"/>
+  </g>
+
+  <!-- ── MAP AREA (left ~55%) ── -->
+  <!-- Radial rings from customer location -->
+  <circle cx="320" cy="270" r="210" fill="none" stroke="#E8501A" stroke-width="1"   opacity="0.06"/>
+  <circle cx="320" cy="270" r="165" fill="none" stroke="#E8501A" stroke-width="1.2" opacity="0.09"/>
+  <circle cx="320" cy="270" r="120" fill="none" stroke="#E8501A" stroke-width="1.5" opacity="0.13"/>
+  <circle cx="320" cy="270" r="75"  fill="none" stroke="#E8501A" stroke-width="2"   opacity="0.20"/>
+  <circle cx="320" cy="270" r="35"  fill="none" stroke="#E8501A" stroke-width="2"   opacity="0.30"/>
+
+  <!-- Map roads -->
+  <line x1="80"  y1="270" x2="560" y2="270" stroke="#C5CFE8" stroke-width="2.5" stroke-dasharray="8,5"/>
+  <line x1="320" y1="60"  x2="320" y2="480" stroke="#C5CFE8" stroke-width="2.5" stroke-dasharray="8,5"/>
+  <line x1="130" y1="130" x2="510" y2="410" stroke="#C5CFE8" stroke-width="1.5" stroke-dasharray="5,6" opacity="0.6"/>
+  <line x1="510" y1="130" x2="130" y2="410" stroke="#C5CFE8" stroke-width="1.5" stroke-dasharray="5,6" opacity="0.6"/>
+
+  <!-- ── TECHNICIAN DOTS (on the map) ── -->
+  <!-- Fundi A -->
+  <circle cx="218" cy="185" r="20" fill="#E8501A" opacity="0.12"/>
+  <circle cx="218" cy="185" r="11" fill="#E8501A" opacity="0.85"/>
+  <circle cx="218" cy="185" r="5"  fill="white"/>
+  <line x1="224" y1="191" x2="305" y2="243" stroke="#E8501A" stroke-width="1.8" stroke-dasharray="5,4" opacity="0.45"/>
+
+  <!-- Fundi B -->
+  <circle cx="402" cy="168" r="20" fill="#E8501A" opacity="0.12"/>
+  <circle cx="402" cy="168" r="11" fill="#E8501A" opacity="0.85"/>
+  <circle cx="402" cy="168" r="5"  fill="white"/>
+  <line x1="396" y1="174" x2="330" y2="242" stroke="#E8501A" stroke-width="1.8" stroke-dasharray="5,4" opacity="0.45"/>
+
+  <!-- Fundi C -->
+  <circle cx="196" cy="350" r="20" fill="#E8501A" opacity="0.12"/>
+  <circle cx="196" cy="350" r="11" fill="#E8501A" opacity="0.85"/>
+  <circle cx="196" cy="350" r="5"  fill="white"/>
+  <line x1="204" y1="344" x2="306" y2="283" stroke="#E8501A" stroke-width="1.8" stroke-dasharray="5,4" opacity="0.45"/>
+
+  <!-- Fundi D (further out) -->
+  <circle cx="430" cy="350" r="16" fill="#2E4380" opacity="0.12"/>
+  <circle cx="430" cy="350" r="9"  fill="#2E4380" opacity="0.75"/>
+  <circle cx="430" cy="350" r="4"  fill="white"/>
+
+  <!-- ── MAIN CUSTOMER LOCATION PIN ── -->
+  <path d="
+    M320 90
+    C294 90, 270 114, 270 140
+    C270 166, 288 190, 312 208
+    L320 218
+    L328 208
+    C352 190, 370 166, 370 140
+    C370 114, 346 90, 320 90 Z
+  " fill="url(#pinG)" filter="url(#pinShadow)"/>
+  <!-- Inner glow ring -->
+  <circle cx="320" cy="140" r="22" fill="white" opacity="0.22"/>
+  <!-- Wrench icon inside pin -->
+  <g transform="translate(307, 127) scale(1.1)">
+    <path d="M13,1.5C11,1.5,9.5,3,9.5,5c0,.4.1.9.3,1.2L2.6,13.4C2.2,13.7,2,14.1,2,14.5C2,15.3,2.7,16,3.5,16c.4,0,.7-.1,1-.3L11.7,9c.3.2.8.3,1.3.3C15,9.3,16.5,7.8,16.5,6c0-.4-.1-.8-.3-1.1L13.8,7.3l-1.8-.5L11.5,5l2.4-2.4C13.7,2.3,13.4,1.5,13,1.5Z" fill="white"/>
+  </g>
+  <!-- Pin tail shadow on ground -->
+  <ellipse cx="320" cy="224" rx="14" ry="4" fill="#C43D0F" opacity="0.25"/>
+
+  <!-- ── FLOATING UI CARDS ── -->
+  <!-- Card: Plumbing (upper left) -->
+  <g filter="url(#fShadow)">
+    <rect x="48" y="72" width="148" height="70" rx="16" fill="white"/>
+    <rect x="62" y="85" width="42" height="42" rx="12" fill="#EFF6FF"/>
+    <!-- Pipe icon -->
+    <rect x="72" y="97" width="22" height="6" rx="3" fill="#3B82F6"/>
+    <rect x="88" y="97" width="6" height="16" rx="3" fill="#3B82F6"/>
+    <rect x="74" y="107" width="14" height="6" rx="3" fill="#3B82F6"/>
+    <!-- Water drop -->
+    <ellipse cx="104" cy="120" rx="4" ry="5" fill="#93C5FD"/>
+    <path d="M104,110 L108,116 Q108,122 104,122 Q100,122 100,116 Z" fill="#60A5FA"/>
+    <text x="115" y="100" font-family="'Segoe UI',sans-serif" font-size="13" font-weight="700" fill="#1B2D5E">Plumbing</text>
+    <text x="115" y="116" font-family="'Segoe UI',sans-serif" font-size="11" fill="#64748B">24 Fundis nearby</text>
+    <text x="115" y="130" font-family="'Segoe UI',sans-serif" font-size="10" fill="#3B82F6" font-weight="600">● Available now</text>
+  </g>
+
+  <!-- Card: Electrical (lower left) -->
+  <g filter="url(#fShadow)">
+    <rect x="38" y="330" width="148" height="70" rx="16" fill="white"/>
+    <rect x="52" y="343" width="42" height="42" rx="12" fill="#FFFBEB"/>
+    <!-- Lightning bolt -->
+    <polygon points="73,349 67,361 73,361 69,377 81,362 74,362" fill="#F59E0B"/>
+    <text x="105" y="358" font-family="'Segoe UI',sans-serif" font-size="13" font-weight="700" fill="#1B2D5E">Electrical</text>
+    <text x="105" y="374" font-family="'Segoe UI',sans-serif" font-size="11" fill="#64748B">18 Fundis nearby</text>
+    <text x="105" y="388" font-family="'Segoe UI',sans-serif" font-size="10" fill="#D97706" font-weight="600">● Available now</text>
+  </g>
+
+  <!-- Badge: Rating (top center-right) -->
+  <g filter="url(#fShadow)">
+    <rect x="430" y="72" width="158" height="56" rx="28" fill="white"/>
+    <!-- Star -->
+    <polygon points="454,84 457,93 466,93 459,99 462,108 454,102 446,108 449,99 442,93 451,93" fill="#F59E0B"/>
+    <text x="472" y="94" font-family="'Segoe UI',sans-serif" font-size="15" font-weight="800" fill="#1B2D5E">4.9 / 5.0</text>
+    <text x="472" y="112" font-family="'Segoe UI',sans-serif" font-size="11" fill="#64748B">1,400+ verified reviews</text>
+  </g>
+
+  <!-- Badge: ETA pill (center-lower) -->
+  <g filter="url(#fShadow)">
+    <rect x="450" y="340" width="156" height="54" rx="27" fill="#FFF7ED"/>
+    <circle cx="477" cy="367" r="16" fill="#FED7AA"/>
+    <!-- Clock -->
+    <circle cx="477" cy="367" r="10" fill="none" stroke="#E8501A" stroke-width="2"/>
+    <line x1="477" y1="360" x2="477" y2="367" stroke="#E8501A" stroke-width="2" stroke-linecap="round"/>
+    <line x1="477" y1="367" x2="483" y2="370" stroke="#E8501A" stroke-width="2" stroke-linecap="round"/>
+    <text x="500" y="361" font-family="'Segoe UI',sans-serif" font-size="14" font-weight="800" fill="#E8501A">~12 min</text>
+    <text x="500" y="378" font-family="'Segoe UI',sans-serif" font-size="11" fill="#92400E">Fundi on the way</text>
+  </g>
+
+  <!-- Small job count badge -->
+  <g filter="url(#fShadow)">
+    <rect x="430" y="170" width="130" height="48" rx="14" fill="#1B2D5E"/>
+    <text x="450" y="190" font-family="'Segoe UI',sans-serif" font-size="12" fill="rgba(255,255,255,0.7)">Jobs completed</text>
+    <text x="450" y="210" font-family="'Segoe UI',sans-serif" font-size="18" font-weight="900" fill="white">12,400+</text>
+  </g>
+
+  <!-- ── FUNDI CHARACTER (right side) ── -->
+  <!-- Ground shadow -->
+  <ellipse cx="720" cy="452" rx="72" ry="14" fill="#1B2D5E" opacity="0.10"/>
+
+  <!-- LEGS -->
+  <rect x="696" y="330" width="24" height="88" rx="10" fill="#374151"/>
+  <rect x="730" y="330" width="24" height="88" rx="10" fill="#374151"/>
+  <!-- Boot left -->
+  <path d="M690 410 Q690 426 700 426 L724 426 Q728 426 728 416 L728 410 Z" fill="#1E293B"/>
+  <!-- Boot right -->
+  <path d="M724 410 Q724 426 734 426 L758 426 Q762 426 762 416 L762 410 Z" fill="#1E293B"/>
+
+  <!-- BODY (work jacket) -->
+  <path d="M690 228 Q690 222, 720 220 Q750 222, 750 228 L760 332 L680 332 Z" fill="url(#charBodyG)" rx="14"/>
+  <!-- Hi-vis orange vest -->
+  <path d="M707 220 L720 238 L733 220 L738 332 L702 332 Z" fill="url(#vestG)" opacity="0.92"/>
+  <!-- Vest pockets -->
+  <rect x="704" y="290" width="14" height="12" rx="4" fill="#C43D0F" opacity="0.5"/>
+  <rect x="731" y="290" width="14" height="12" rx="4" fill="#C43D0F" opacity="0.5"/>
+  <!-- Collar -->
+  <path d="M708 220 L720 230 L732 220" fill="none" stroke="#0F1D3E" stroke-width="3" stroke-linejoin="round"/>
+
+  <!-- LEFT ARM (relaxed) -->
+  <path d="M690 232 Q668 248 660 278 Q656 294 664 302 Q672 310 680 298 Q686 284 694 264 Z" fill="#1B2D5E"/>
+  <!-- Left hand (holding phone) -->
+  <rect x="645" y="290" width="26" height="44" rx="6" fill="#1E3A5F"/>
+  <rect x="648" y="293" width="20" height="36" rx="4" fill="#60A5FA" opacity="0.9"/>
+  <!-- Phone screen content -->
+  <rect x="650" y="296" width="16" height="3" rx="1.5" fill="white" opacity="0.8"/>
+  <rect x="650" y="302" width="12" height="2" rx="1" fill="white" opacity="0.5"/>
+  <rect x="650" y="307" width="14" height="2" rx="1" fill="white" opacity="0.5"/>
+  <!-- Phone dot (on screen) -->
+  <circle cx="660" cy="317" r="4" fill="#E8501A"/>
+
+  <!-- RIGHT ARM (raised, pointing up) -->
+  <path d="M750 232 Q774 220 786 196 Q794 178 784 168 Q774 160 764 172 Q756 188 748 210 Z" fill="#1B2D5E"/>
+  <!-- Right hand -->
+  <circle cx="780" cy="162" r="16" fill="#D4956A"/>
+  <!-- Wrench in hand -->
+  <g transform="translate(786, 138) rotate(40)">
+    <rect x="-4" y="-2" width="8" height="26" rx="3" fill="#9CA3AF"/>
+    <rect x="-8" y="-8" width="16" height="10" rx="4" fill="#6B7280"/>
+    <rect x="-4" y="-6" width="4" height="6" rx="2" fill="#374151"/>
+    <rect x="0"  y="-6" width="4" height="6" rx="2" fill="#374151"/>
+  </g>
+
+  <!-- NECK -->
+  <rect x="711" y="208" width="18" height="18" rx="6" fill="#D4956A"/>
+
+  <!-- HEAD -->
+  <circle cx="720" cy="188" r="36" fill="#D4956A"/>
+  <!-- Ear left -->
+  <circle cx="685" cy="188" r="10" fill="#C4835A"/>
+  <!-- Ear right -->
+  <circle cx="755" cy="188" r="10" fill="#C4835A"/>
+
+  <!-- FACE -->
+  <!-- Eyes (friendly expression) -->
+  <ellipse cx="708" cy="183" rx="5.5" ry="6" fill="white"/>
+  <ellipse cx="732" cy="183" rx="5.5" ry="6" fill="white"/>
+  <circle cx="710" cy="185" r="3.5" fill="#1B2D5E"/>
+  <circle cx="734" cy="185" r="3.5" fill="#1B2D5E"/>
+  <!-- Eye shine -->
+  <circle cx="711" cy="183" r="1.5" fill="white"/>
+  <circle cx="735" cy="183" r="1.5" fill="white"/>
+  <!-- Eyebrows (slightly raised = friendly) -->
+  <path d="M702 174 Q708 170 714 174" fill="none" stroke="#7C3C0A" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M726 174 Q732 170 738 174" fill="none" stroke="#7C3C0A" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Smile -->
+  <path d="M706 196 Q720 208 734 196" fill="none" stroke="#7C3C0A" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Teeth -->
+  <path d="M710 199 Q720 205 730 199 Q720 207 710 199 Z" fill="white" opacity="0.8"/>
+
+  <!-- HARD HAT -->
+  <!-- Brim (wide ellipse) -->
+  <ellipse cx="720" cy="157" rx="48" ry="11" fill="#C43D0F"/>
+  <!-- Dome -->
+  <path d="M675 157 A45 45 0 0 1 765 157 Z" fill="#E8501A"/>
+  <!-- Hat stripe/band detail -->
+  <path d="M678 153 L762 153" stroke="#C43D0F" stroke-width="5" opacity="0.4"/>
+  <!-- Hat shine -->
+  <path d="M690 147 Q705 140 716 143" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" opacity="0.45"/>
+  <!-- Small eFundi logo badge on hat -->
+  <rect x="710" y="143" width="20" height="12" rx="4" fill="white" opacity="0.9"/>
+  <text x="713" y="153" font-family="'Segoe UI',sans-serif" font-size="7" font-weight="800" fill="#E8501A">eF</text>
+
+  <!-- Verified badge floating near character -->
+  <g filter="url(#fShadow)" transform="translate(758, 228)">
+    <rect width="100" height="32" rx="16" fill="#16A34A"/>
+    <text x="12" y="21" font-family="'Segoe UI',sans-serif" font-size="12" font-weight="700" fill="white">✓ Verified</text>
+  </g>
+
+  <!-- ── CARPENTRY CARD (right side) ── -->
+  <g filter="url(#fShadow)">
+    <rect x="620" y="72" width="148" height="70" rx="16" fill="white"/>
+    <rect x="634" y="85" width="42" height="42" rx="12" fill="#F0FDF4"/>
+    <!-- Hammer -->
+    <rect x="644" y="98" width="22" height="7" rx="3" fill="#65A30D"/>
+    <rect x="653" y="102" width="5" height="18" rx="2" fill="#4D7C0F"/>
+    <!-- Plank -->
+    <rect x="644" y="114" width="20" height="5" rx="2" fill="#92400E" opacity="0.7"/>
+    <rect x="644" y="121" width="20" height="5" rx="2" fill="#78350F" opacity="0.6"/>
+    <text x="686" y="100" font-family="'Segoe UI',sans-serif" font-size="13" font-weight="700" fill="#1B2D5E">Carpentry</text>
+    <text x="686" y="116" font-family="'Segoe UI',sans-serif" font-size="11" fill="#64748B">12 Fundis nearby</text>
+    <text x="686" y="130" font-family="'Segoe UI',sans-serif" font-size="10" fill="#16A34A" font-weight="600">● Available now</text>
+  </g>
+
+  <!-- ── CLEANING CARD (right lower) ── -->
+  <g filter="url(#fShadow)">
+    <rect x="616" y="330" width="148" height="70" rx="16" fill="white"/>
+    <rect x="630" y="343" width="42" height="42" rx="12" fill="#FDF4FF"/>
+    <!-- Spray bottle simplified -->
+    <rect x="643" y="353" width="14" height="20" rx="5" fill="#A855F7" opacity="0.8"/>
+    <rect x="655" y="350" width="8" height="6" rx="3" fill="#7C3AED" opacity="0.7"/>
+    <line x1="663" y1="353" x2="672" y2="348" stroke="#A855F7" stroke-width="2" stroke-linecap="round"/>
+    <!-- Bubbles -->
+    <circle cx="666" cy="358" r="3" fill="none" stroke="#A855F7" stroke-width="1.5" opacity="0.7"/>
+    <circle cx="670" cy="364" r="2" fill="none" stroke="#C084FC" stroke-width="1.5" opacity="0.6"/>
+    <circle cx="663" cy="367" r="2.5" fill="none" stroke="#A855F7" stroke-width="1.5" opacity="0.5"/>
+    <text x="682" y="358" font-family="'Segoe UI',sans-serif" font-size="13" font-weight="700" fill="#1B2D5E">Cleaning</text>
+    <text x="682" y="374" font-family="'Segoe UI',sans-serif" font-size="11" fill="#64748B">31 Fundis nearby</text>
+    <text x="682" y="388" font-family="'Segoe UI',sans-serif" font-size="10" fill="#7C3AED" font-weight="600">● Available now</text>
+  </g>
+
+  <!-- ── CONNECTING DOTS (UI to map) ── -->
+  <line x1="196" y1="142" x2="264" y2="130" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.6"/>
+  <line x1="420" y1="145" x2="370" y2="130" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.6"/>
+
+  <!-- ── TAGLINE OVERLAY (hero text area hint) ── -->
+  <rect x="48" y="170" width="200" height="120" rx="18" fill="url(#bgG)" opacity="0.7"/>
+  <text x="68" y="202" font-family="'Segoe UI',sans-serif" font-size="11" font-weight="700" fill="#64748B" letter-spacing="2">NAIROBI'S #1 SERVICE APP</text>
+  <text x="64" y="228" font-family="'Segoe UI',sans-serif" font-size="22" font-weight="900" fill="#1B2D5E">Find a trusted</text>
+  <text x="64" y="254" font-family="'Segoe UI',sans-serif" font-size="22" font-weight="900" fill="#E8501A">Fundi near you</text>
+  <text x="64" y="272" font-family="'Segoe UI',sans-serif" font-size="11" fill="#64748B">in minutes, not hours.</text>
+</svg>

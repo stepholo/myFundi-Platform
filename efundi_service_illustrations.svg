@@ -1,0 +1,241 @@
+<svg width="920" height="240" viewBox="0 0 920 240" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="cardDrop">
+      <feDropShadow dx="0" dy="6" stdDeviation="12" flood-color="#1B2D5E" flood-opacity="0.12"/>
+    </filter>
+    <!-- Plumbing gradient -->
+    <linearGradient id="plumG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#DBEAFE"/>
+      <stop offset="100%" stop-color="#BFDBFE"/>
+    </linearGradient>
+    <radialGradient id="plumCircle" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#1D4ED8" stop-opacity="0.05"/>
+    </radialGradient>
+    <!-- Electrical gradient -->
+    <linearGradient id="elecG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FEF9C3"/>
+      <stop offset="100%" stop-color="#FDE68A"/>
+    </linearGradient>
+    <!-- Carpentry gradient -->
+    <linearGradient id="carpG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#DCFCE7"/>
+      <stop offset="100%" stop-color="#BBF7D0"/>
+    </linearGradient>
+    <!-- Cleaning gradient -->
+    <linearGradient id="cleanG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FAE8FF"/>
+      <stop offset="100%" stop-color="#F3D0FE"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ══════════════════════
+       CARD 1: PLUMBING
+  ══════════════════════ -->
+  <g filter="url(#cardDrop)">
+    <rect x="20" y="20" width="200" height="200" rx="24" fill="white"/>
+    <!-- Top accent area -->
+    <rect x="20" y="20" width="200" height="110" rx="24" fill="url(#plumG)"/>
+    <rect x="20" y="105" width="200" height="25" fill="url(#plumG)"/>
+
+    <!-- Background circle decoration -->
+    <circle cx="120" cy="75" r="55" fill="url(#plumCircle)"/>
+
+    <!-- PLUMBING ILLUSTRATION: Pipes + Water + Wrench -->
+    <!-- Horizontal pipe -->
+    <rect x="60" y="68" width="70" height="14" rx="7" fill="#3B82F6"/>
+    <!-- Vertical pipe (leak) -->
+    <rect x="122" y="44" width="14" height="42" rx="7" fill="#2563EB"/>
+    <!-- Elbow connector -->
+    <circle cx="122" cy="68" r="10" fill="#1D4ED8"/>
+    <!-- End cap left -->
+    <circle cx="60" cy="75" r="9" fill="#2563EB"/>
+    <!-- Wrench tool -->
+    <g transform="translate(74, 48) rotate(-35)">
+      <rect x="-4" y="-2" width="8" height="28" rx="3" fill="#60A5FA"/>
+      <rect x="-9" y="-9" width="18" height="12" rx="5" fill="#3B82F6"/>
+      <rect x="-5" y="-7" width="5" height="8" rx="3" fill="#1D4ED8"/>
+      <rect x="0"  y="-7" width="5" height="8" rx="3" fill="#1D4ED8"/>
+    </g>
+    <!-- Water drops -->
+    <g fill="#60A5FA">
+      <path d="M98,88 Q100,82 102,88 Q102,94 98,94 Z" opacity="0.9"/>
+      <path d="M88,95 Q90,90 92,95 Q92,100 88,100 Z" opacity="0.7"/>
+      <path d="M106,97 Q108,92 110,97 Q110,102 106,102 Z" opacity="0.6"/>
+    </g>
+    <!-- Ripple circles -->
+    <circle cx="100" cy="100" r="8"  fill="none" stroke="#93C5FD" stroke-width="1.5" opacity="0.5"/>
+    <circle cx="100" cy="100" r="14" fill="none" stroke="#93C5FD" stroke-width="1"   opacity="0.3"/>
+
+    <!-- Bottom text area -->
+    <text x="120" y="148" font-family="'Segoe UI',sans-serif" font-size="16" font-weight="800" fill="#1B2D5E" text-anchor="middle">Plumbing</text>
+    <text x="120" y="168" font-family="'Segoe UI',sans-serif" font-size="11" fill="#64748B" text-anchor="middle">Leaks · Pipes · Installations</text>
+    <!-- Pill badge -->
+    <rect x="68" y="180" width="104" height="24" rx="12" fill="#EFF6FF"/>
+    <text x="120" y="196" font-family="'Segoe UI',sans-serif" font-size="11" font-weight="600" fill="#3B82F6" text-anchor="middle">● 24 Fundis available</text>
+  </g>
+
+  <!-- ══════════════════════
+       CARD 2: ELECTRICAL
+  ══════════════════════ -->
+  <g filter="url(#cardDrop)">
+    <rect x="240" y="20" width="200" height="200" rx="24" fill="white"/>
+    <rect x="240" y="20" width="200" height="110" rx="24" fill="url(#elecG)"/>
+    <rect x="240" y="105" width="200" height="25" fill="url(#elecG)"/>
+
+    <!-- Background glow circle -->
+    <circle cx="340" cy="75" r="50" fill="#F59E0B" opacity="0.10"/>
+
+    <!-- ELECTRICAL ILLUSTRATION: Lightning + Socket + Wires -->
+    <!-- Main lightning bolt -->
+    <polygon points="345,38 328,72 342,72 325,108 358,65 344,65" fill="#F59E0B"/>
+    <!-- Outer glow ring -->
+    <circle cx="340" cy="72" r="38" fill="none" stroke="#FCD34D" stroke-width="2" opacity="0.4"/>
+    <circle cx="340" cy="72" r="28" fill="none" stroke="#FBBF24" stroke-width="2" opacity="0.35"/>
+    <!-- Electric sparks -->
+    <g stroke="#FCD34D" stroke-width="2" stroke-linecap="round" opacity="0.8">
+      <line x1="292" y1="55" x2="300" y2="62"/>
+      <line x1="296" y1="48" x2="300" y2="55"/>
+      <line x1="383" y1="55" x2="378" y2="62"/>
+      <line x1="380" y1="48" x2="377" y2="55"/>
+      <line x1="316" y1="100" x2="312" y2="107"/>
+      <line x1="362" y1="100" x2="366" y2="107"/>
+    </g>
+    <!-- Socket at bottom of bolt -->
+    <rect x="326" y="94" width="28" height="20" rx="5" fill="#D97706" opacity="0.5"/>
+    <circle cx="333" cy="102" r="3" fill="#B45309"/>
+    <circle cx="341" cy="102" r="3" fill="#B45309"/>
+    <circle cx="349" cy="102" r="3" fill="#B45309"/>
+
+    <text x="340" y="148" font-family="'Segoe UI',sans-serif" font-size="16" font-weight="800" fill="#1B2D5E" text-anchor="middle">Electrical</text>
+    <text x="340" y="168" font-family="'Segoe UI',sans-serif" font-size="11" fill="#64748B" text-anchor="middle">Wiring · Sockets · Faults</text>
+    <rect x="288" y="180" width="104" height="24" rx="12" fill="#FFFBEB"/>
+    <text x="340" y="196" font-family="'Segoe UI',sans-serif" font-size="11" font-weight="600" fill="#D97706" text-anchor="middle">● 18 Fundis available</text>
+  </g>
+
+  <!-- ══════════════════════
+       CARD 3: CARPENTRY
+  ══════════════════════ -->
+  <g filter="url(#cardDrop)">
+    <rect x="460" y="20" width="200" height="200" rx="24" fill="white"/>
+    <rect x="460" y="20" width="200" height="110" rx="24" fill="url(#carpG)"/>
+    <rect x="460" y="105" width="200" height="25" fill="url(#carpG)"/>
+
+    <!-- Background circle -->
+    <circle cx="560" cy="75" r="50" fill="#16A34A" opacity="0.08"/>
+
+    <!-- CARPENTRY ILLUSTRATION: Wood planks + Hammer + Saw -->
+    <!-- Wood planks (stacked) -->
+    <rect x="498" y="85" width="76" height="13" rx="5" fill="#92400E"/>
+    <rect x="498" y="71" width="76" height="13" rx="5" fill="#B45309"/>
+    <rect x="498" y="57" width="76" height="13" rx="5" fill="#D97706"/>
+    <!-- Wood grain lines -->
+    <g stroke="rgba(0,0,0,0.12)" stroke-width="1">
+      <line x1="506" y1="57" x2="506" y2="97"/>
+      <line x1="520" y1="57" x2="520" y2="97"/>
+      <line x1="540" y1="57" x2="540" y2="97"/>
+      <line x1="558" y1="57" x2="558" y2="97"/>
+    </g>
+    <!-- Nails -->
+    <circle cx="510" cy="63" r="3" fill="#9CA3AF"/>
+    <circle cx="560" cy="77" r="3" fill="#9CA3AF"/>
+    <circle cx="510" cy="91" r="3" fill="#9CA3AF"/>
+    <!-- Hammer (overlaid) -->
+    <g transform="translate(558, 44) rotate(35)">
+      <rect x="-4" y="-2" width="8" height="32" rx="3" fill="#65A30D"/>
+      <rect x="-12" y="-12" width="22" height="14" rx="5" fill="#4D7C0F"/>
+    </g>
+    <!-- Saw (left side) -->
+    <rect x="480" y="61" width="5" height="36" rx="2" fill="#6B7280"/>
+    <g fill="#9CA3AF">
+      <polygon points="485,61 490,64 485,67"/>
+      <polygon points="485,67 490,70 485,73"/>
+      <polygon points="485,73 490,76 485,79"/>
+      <polygon points="485,79 490,82 485,85"/>
+      <polygon points="485,85 490,88 485,91"/>
+      <polygon points="485,91 490,94 485,97"/>
+    </g>
+    <!-- Ruler/tape measure -->
+    <rect x="500" y="100" width="60" height="8" rx="3" fill="#F59E0B"/>
+    <g stroke="white" stroke-width="0.8" opacity="0.6">
+      <line x1="510" y1="100" x2="510" y2="108"/>
+      <line x1="520" y1="100" x2="520" y2="108"/>
+      <line x1="530" y1="100" x2="530" y2="108"/>
+      <line x1="540" y1="100" x2="540" y2="108"/>
+      <line x1="550" y1="100" x2="550" y2="108"/>
+    </g>
+
+    <text x="560" y="148" font-family="'Segoe UI',sans-serif" font-size="16" font-weight="800" fill="#1B2D5E" text-anchor="middle">Carpentry</text>
+    <text x="560" y="168" font-family="'Segoe UI',sans-serif" font-size="11" fill="#64748B" text-anchor="middle">Furniture · Doors · Repairs</text>
+    <rect x="508" y="180" width="104" height="24" rx="12" fill="#F0FDF4"/>
+    <text x="560" y="196" font-family="'Segoe UI',sans-serif" font-size="11" font-weight="600" fill="#16A34A" text-anchor="middle">● 12 Fundis available</text>
+  </g>
+
+  <!-- ══════════════════════
+       CARD 4: CLEANING
+  ══════════════════════ -->
+  <g filter="url(#cardDrop)">
+    <rect x="700" y="20" width="200" height="200" rx="24" fill="white"/>
+    <rect x="700" y="20" width="200" height="110" rx="24" fill="url(#cleanG)"/>
+    <rect x="700" y="105" width="200" height="25" fill="url(#cleanG)"/>
+
+    <!-- Background circle -->
+    <circle cx="800" cy="75" r="50" fill="#A855F7" opacity="0.08"/>
+
+    <!-- CLEANING ILLUSTRATION: Mop + Spray + Bubbles -->
+    <!-- Mop head -->
+    <g>
+      <rect x="776" y="88" width="48" height="14" rx="6" fill="#C084FC"/>
+      <!-- Mop strands -->
+      <g stroke="#A855F7" stroke-width="3" stroke-linecap="round">
+        <line x1="780" y1="102" x2="778" y2="112"/>
+        <line x1="786" y1="102" x2="785" y2="114"/>
+        <line x1="792" y1="102" x2="792" y2="115"/>
+        <line x1="798" y1="102" x2="799" y2="114"/>
+        <line x1="804" y1="102" x2="806" y2="112"/>
+        <line x1="810" y1="102" x2="813" y2="110"/>
+        <line x1="816" y1="102" x2="819" y2="108"/>
+      </g>
+      <!-- Mop handle -->
+      <rect x="797" y="46" width="6" height="44" rx="3" fill="#7C3AED" transform="rotate(-8, 800, 68)"/>
+    </g>
+    <!-- Spray bottle -->
+    <g transform="translate(746, 48)">
+      <!-- Body -->
+      <rect x="0" y="16" width="20" height="36" rx="8" fill="#A855F7"/>
+      <!-- Neck -->
+      <rect x="4" y="8" width="12" height="12" rx="4" fill="#7C3AED"/>
+      <!-- Nozzle -->
+      <rect x="14" y="4" width="16" height="8" rx="4" fill="#6D28D9"/>
+      <!-- Trigger -->
+      <path d="M14 12 Q22 16 24 22" fill="none" stroke="#7C3AED" stroke-width="3" stroke-linecap="round"/>
+      <!-- Label stripe -->
+      <rect x="2" y="26" width="16" height="18" rx="4" fill="#C084FC" opacity="0.5"/>
+      <line x1="4" y1="32" x2="16" y2="32" stroke="white" stroke-width="1.5" opacity="0.6"/>
+      <line x1="4" y1="37" x2="16" y2="37" stroke="white" stroke-width="1.5" opacity="0.4"/>
+      <!-- Spray mist -->
+      <g fill="none" stroke="#C084FC" stroke-width="1.5" opacity="0.6">
+        <path d="M30,2 Q36,-2 40,4"/>
+        <path d="M30,8 Q38,6 42,12"/>
+        <path d="M30,14 Q38,14 40,20"/>
+      </g>
+    </g>
+    <!-- Soap bubbles scattered -->
+    <g fill="none" stroke-width="2">
+      <circle cx="825" cy="50"  r="8"  stroke="#C084FC" opacity="0.7"/>
+      <circle cx="840" cy="38"  r="5"  stroke="#A855F7" opacity="0.6"/>
+      <circle cx="815" cy="38"  r="6"  stroke="#D8B4FE" opacity="0.5"/>
+      <circle cx="836" cy="62"  r="4"  stroke="#C084FC" opacity="0.5"/>
+      <circle cx="756" cy="94"  r="5"  stroke="#A855F7" opacity="0.5"/>
+      <circle cx="770" cy="84"  r="3"  stroke="#C084FC" opacity="0.4"/>
+    </g>
+    <!-- Bubble shine highlights -->
+    <circle cx="822" cy="47" r="2.5" fill="white" opacity="0.7"/>
+    <circle cx="837" cy="35" r="1.5" fill="white" opacity="0.7"/>
+
+    <text x="800" y="148" font-family="'Segoe UI',sans-serif" font-size="16" font-weight="800" fill="#1B2D5E" text-anchor="middle">Cleaning</text>
+    <text x="800" y="168" font-family="'Segoe UI',sans-serif" font-size="11" fill="#64748B" text-anchor="middle">Home · Office · Deep Clean</text>
+    <rect x="748" y="180" width="104" height="24" rx="12" fill="#FDF4FF"/>
+    <text x="800" y="196" font-family="'Segoe UI',sans-serif" font-size="11" font-weight="600" fill="#7C3AED" text-anchor="middle">● 31 Fundis available</text>
+  </g>
+</svg>

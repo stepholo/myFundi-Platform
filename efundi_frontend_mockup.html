@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>eFundi — Frontend Design Mockup</title>
+<style>
+  /* ── Tokens ── */
+  :root {
+    --orange:   #E8501A;
+    --orange-lt:#FF9A3C;
+    --navy:     #1B2D5E;
+    --navy-lt:  #2E4380;
+    --teal:     #0F766E;
+    --green:    #16A34A;
+    --red:      #DC2626;
+    --amber:    #D97706;
+    --bg:       #F7F8FC;
+    --surface:  #FFFFFF;
+    --border:   #E2E8F0;
+    --text:     #1E293B;
+    --muted:    #64748B;
+    --light:    #94A3B8;
+    --radius:   14px;
+    --shadow:   0 4px 20px rgba(0,0,0,.08);
+    --shadow-lg:0 8px 40px rgba(0,0,0,.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',system-ui,sans-serif;background:#E8EBF2;color:var(--text);line-height:1.5}
+
+  /* ── Layout ── */
+  .screens{display:flex;flex-direction:column;gap:60px;padding:40px 20px;max-width:420px;margin:0 auto}
+  .screen{background:var(--surface);border-radius:32px;overflow:hidden;box-shadow:var(--shadow-lg);position:relative}
+  .screen-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--muted);text-align:center;margin-bottom:12px}
+
+  /* ── Shared ── */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:none;cursor:pointer;font-family:inherit;font-weight:700;border-radius:12px;transition:.2s}
+  .btn-primary{background:var(--orange);color:#fff;padding:14px 24px;font-size:15px;width:100%;border-radius:14px}
+  .btn-primary:hover{background:#C43D0F}
+  .btn-outline{background:transparent;border:2px solid var(--orange);color:var(--orange);padding:12px 22px;font-size:14px}
+  .btn-ghost{background:transparent;color:var(--muted);padding:10px 16px;font-size:13px}
+  .badge{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:99px;font-size:12px;font-weight:600}
+  .badge-green{background:#DCFCE7;color:var(--green)}
+  .badge-orange{background:#FFF7ED;color:var(--orange)}
+  .badge-blue{background:#EFF6FF;color:#2563EB}
+  .badge-amber{background:#FFFBEB;color:var(--amber)}
+  .badge-red{background:#FEF2F2;color:var(--red)}
+  .stars{color:#F59E0B;font-size:13px}
+  .avatar{border-radius:50%;object-fit:cover;background:var(--border)}
+  .avatar-placeholder{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;color:#fff}
+
+  /* ══════════════════════════════════════════
+     SCREEN 1: SPLASH / ONBOARDING
+  ══════════════════════════════════════════ */
+  .splash{background:linear-gradient(150deg,#1B2D5E 0%,#2E4380 60%,#E8501A 130%);min-height:700px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 32px;text-align:center}
+  .splash-circles{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+  .splash-circles span{position:absolute;border-radius:50%;opacity:.08;background:#fff}
+  .splash svg .pin{filter:drop-shadow(0 8px 24px rgba(232,80,26,.5))}
+  .splash h1{font-size:42px;font-weight:900;color:#fff;line-height:1.1;margin:24px 0 12px}
+  .splash h1 span{color:#FF9A3C}
+  .splash p{color:rgba(255,255,255,.75);font-size:16px;max-width:280px;margin:0 auto 40px}
+  .splash-actions{display:flex;flex-direction:column;gap:12px;width:100%}
+  .btn-white{background:#fff;color:var(--navy);font-weight:700;padding:16px;font-size:15px;border-radius:14px;border:none;cursor:pointer;width:100%}
+  .btn-white-outline{background:transparent;color:#fff;font-weight:700;padding:14px;font-size:15px;border-radius:14px;border:2px solid rgba(255,255,255,.4);cursor:pointer;width:100%}
+  .splash-dots{display:flex;gap:6px;margin-top:32px;justify-content:center}
+  .splash-dots span{width:8px;height:8px;border-radius:4px;background:rgba(255,255,255,.3)}
+  .splash-dots span.active{width:24px;background:#FF9A3C}
+
+  /* ══════════════════════════════════════════
+     SCREEN 2: HOME / DISCOVER
+  ══════════════════════════════════════════ */
+  .home-header{background:linear-gradient(135deg,#1B2D5E,#2E4380);padding:28px 20px 56px;color:#fff}
+  .home-topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+  .home-topbar .logo-text{font-size:22px;font-weight:900;color:#fff}
+  .home-topbar .logo-text span{color:#FF9A3C}
+  .notif-btn{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;position:relative}
+  .notif-dot{width:8px;height:8px;background:#FF9A3C;border-radius:50%;position:absolute;top:7px;right:7px;border:1.5px solid #2E4380}
+  .greeting h2{font-size:22px;font-weight:800;line-height:1.2}
+  .greeting p{color:rgba(255,255,255,.7);font-size:14px;margin-top:4px}
+  .location-pill{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.15);padding:6px 14px;border-radius:99px;font-size:13px;color:rgba(255,255,255,.9);margin-top:12px;border:none;cursor:pointer}
+
+  .home-body{background:var(--bg);margin-top:-28px;border-radius:28px 28px 0 0;padding:20px 16px 24px}
+  .search-bar{background:#fff;border-radius:14px;padding:12px 16px;display:flex;align-items:center;gap:10px;box-shadow:var(--shadow);margin-bottom:20px}
+  .search-bar input{border:none;outline:none;font-size:14px;flex:1;color:var(--text);font-family:inherit}
+  .search-bar input::placeholder{color:var(--light)}
+
+  .section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+  .section-header h3{font-size:16px;font-weight:700}
+  .section-header a{font-size:13px;color:var(--orange);text-decoration:none;font-weight:600}
+
+  /* Service category cards */
+  .categories{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:24px}
+  .cat-card{background:#fff;border-radius:14px;padding:14px 8px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.06);cursor:pointer;border:2px solid transparent;transition:.2s}
+  .cat-card.active{border-color:var(--orange);background:#FFF7ED}
+  .cat-icon{width:44px;height:44px;border-radius:12px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;font-size:22px}
+  .cat-card p{font-size:11px;font-weight:600;color:var(--text)}
+  .cat-icon-plumbing{background:#EFF6FF}
+  .cat-icon-elec{background:#FFFBEB}
+  .cat-icon-carp{background:#F0FDF4}
+  .cat-icon-clean{background:#FDF4FF}
+
+  /* Featured technician cards */
+  .technician-scroll{display:flex;gap:12px;overflow-x:auto;padding-bottom:8px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .technician-scroll::-webkit-scrollbar{display:none}
+  .tech-card{background:#fff;border-radius:16px;padding:16px;min-width:168px;box-shadow:var(--shadow);flex-shrink:0}
+  .tech-card-top{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+  .tech-name{font-size:14px;font-weight:700;line-height:1.2}
+  .tech-spec{font-size:12px;color:var(--muted);margin-bottom:2px}
+  .tech-meta{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted)}
+  .online-dot{width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0}
+
+  /* Active booking card */
+  .booking-card{background:linear-gradient(135deg,#E8501A,#FF9A3C);border-radius:16px;padding:16px;margin-bottom:20px;color:#fff}
+  .booking-card-title{font-size:12px;font-weight:600;opacity:.8;text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px}
+  .booking-card-info{display:flex;align-items:center;gap:12px}
+  .booking-card-detail h4{font-size:15px;font-weight:700}
+  .booking-card-detail p{font-size:13px;opacity:.85}
+  .booking-progress{margin-top:12px}
+  .progress-track{height:4px;background:rgba(255,255,255,.3);border-radius:2px;margin-top:6px}
+  .progress-fill{height:4px;background:#fff;border-radius:2px;width:45%}
+  .progress-steps{display:flex;justify-content:space-between;font-size:10px;opacity:.75;margin-top:4px}
+
+
+  /* ══════════════════════════════════════════
+     SCREEN 3: BOOK A SERVICE
+  ══════════════════════════════════════════ */
+  .book-header{padding:20px 20px 16px;border-bottom:1px solid var(--border)}
+  .back-btn{display:flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--navy);background:none;border:none;cursor:pointer;margin-bottom:16px}
+  .book-header h2{font-size:20px;font-weight:800}
+  .book-header p{font-size:13px;color:var(--muted);margin-top:4px}
+  .book-body{padding:20px}
+  .form-group{margin-bottom:18px}
+  .form-label{font-size:13px;font-weight:600;color:var(--muted);margin-bottom:6px;display:block}
+  .form-input{width:100%;border:2px solid var(--border);border-radius:12px;padding:13px 14px;font-size:14px;font-family:inherit;outline:none;background:#fff;transition:.2s}
+  .form-input:focus{border-color:var(--orange)}
+  .form-input.filled{border-color:#E2E8F0;color:var(--text)}
+  .service-chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{padding:8px 14px;border-radius:99px;font-size:13px;font-weight:600;border:2px solid var(--border);background:#fff;cursor:pointer;transition:.2s}
+  .chip.selected{border-color:var(--orange);background:#FFF7ED;color:var(--orange)}
+  .time-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .time-slot{padding:10px 6px;border-radius:10px;border:2px solid var(--border);background:#fff;font-size:12px;font-weight:600;text-align:center;cursor:pointer;transition:.2s}
+  .time-slot.selected{border-color:var(--orange);background:#FFF7ED;color:var(--orange)}
+  .time-slot.unavail{background:#F8F9FA;color:var(--light);cursor:default}
+  .map-placeholder{background:linear-gradient(135deg,#E0E7FF,#DBEAFE);border-radius:14px;height:130px;display:flex;align-items:center;justify-content:center;border:2px dashed #BFDBFE;position:relative;overflow:hidden}
+  .map-grid{position:absolute;inset:0;opacity:.15}
+  .map-pin-icon{font-size:32px;position:relative;z-index:1}
+  .map-address{position:absolute;bottom:10px;left:12px;background:#fff;border-radius:8px;padding:6px 10px;font-size:12px;font-weight:600;box-shadow:var(--shadow)}
+  .price-estimate{background:linear-gradient(135deg,#F0FDF4,#DCFCE7);border-radius:14px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;border:1px solid #BBF7D0}
+  .price-est-label{font-size:13px;color:var(--teal);font-weight:600}
+  .price-est-value{font-size:20px;font-weight:800;color:var(--teal)}
+  .price-note{font-size:11px;color:var(--teal);opacity:.7}
+
+
+  /* ══════════════════════════════════════════
+     SCREEN 4: TECHNICIAN PROFILE
+  ══════════════════════════════════════════ */
+  .profile-hero{background:linear-gradient(180deg,#1B2D5E 0%,#2E4380 100%);padding:48px 20px 70px;text-align:center;color:#fff;position:relative}
+  .profile-hero-avatar{width:84px;height:84px;border-radius:50%;background:linear-gradient(135deg,#FF9A3C,#E8501A);margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:800;color:#fff;border:3px solid rgba(255,255,255,.3)}
+  .profile-hero h2{font-size:20px;font-weight:800;margin-bottom:4px}
+  .profile-hero .spec-tag{font-size:14px;opacity:.75;margin-bottom:10px}
+  .profile-hero .rating-row{display:flex;align-items:center;justify-content:center;gap:6px}
+  .verified-badge{position:absolute;top:12px;right:16px;background:#16A34A;color:#fff;border-radius:99px;padding:5px 10px;font-size:11px;font-weight:700;display:flex;align-items:center;gap:4px}
+
+  .profile-stats{display:grid;grid-template-columns:repeat(3,1fr);background:#fff;margin:-28px 16px 0;border-radius:16px;box-shadow:var(--shadow);overflow:hidden;position:relative;z-index:2}
+  .stat-box{padding:16px 8px;text-align:center;border-right:1px solid var(--border)}
+  .stat-box:last-child{border-right:none}
+  .stat-val{font-size:18px;font-weight:800;color:var(--navy)}
+  .stat-lbl{font-size:11px;color:var(--muted);margin-top:2px}
+
+  .profile-body{padding:20px 16px}
+  .bio-text{font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:20px}
+  .skills-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+  .skill-tag{background:#F1F5F9;padding:6px 12px;border-radius:99px;font-size:12px;font-weight:600;color:var(--navy)}
+
+  /* Review cards */
+  .review-card{background:var(--bg);border-radius:14px;padding:14px;margin-bottom:10px}
+  .review-header{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+  .reviewer-info{flex:1}
+  .reviewer-name{font-size:14px;font-weight:700}
+  .reviewer-date{font-size:12px;color:var(--muted)}
+  .review-text{font-size:13px;color:var(--muted);line-height:1.5}
+  .profile-cta{position:sticky;bottom:0;background:#fff;padding:14px 16px;border-top:1px solid var(--border)}
+
+
+  /* ══════════════════════════════════════════
+     SCREEN 5: BOOKING TRACKING (LIVE)
+  ══════════════════════════════════════════ */
+  .tracking-map{background:linear-gradient(160deg,#DBEAFE 0%,#E0E7FF 100%);height:280px;position:relative;overflow:hidden}
+  .map-overlay-lines{position:absolute;inset:0;opacity:.2}
+  .map-road{position:absolute;background:#fff;border-radius:2px}
+  .map-road.h{height:3px;left:0;right:0}
+  .map-road.v{width:3px;top:0;bottom:0}
+  .map-customer-pin{position:absolute;bottom:60px;left:60px;display:flex;flex-direction:column;align-items:center}
+  .map-tech-pin{position:absolute;top:80px;right:80px;display:flex;flex-direction:column;align-items:center}
+  .pin-bubble{background:#fff;border-radius:99px;padding:6px 10px;font-size:11px;font-weight:700;box-shadow:var(--shadow);margin-bottom:4px;white-space:nowrap}
+  .pin-bubble.orange{background:var(--orange);color:#fff}
+  .route-line{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:120px;height:2px;background:repeating-linear-gradient(90deg,var(--orange) 0,var(--orange) 6px,transparent 6px,transparent 12px);border-radius:1px}
+
+  .tracking-bottom{padding:16px}
+  .tracking-card{background:#fff;border-radius:16px;padding:16px;box-shadow:var(--shadow);margin-bottom:16px}
+  .tracking-tech-row{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+  .tracking-tech-info{flex:1}
+  .tracking-tech-info h4{font-size:15px;font-weight:700}
+  .tracking-tech-info p{font-size:13px;color:var(--muted)}
+  .call-btn{width:40px;height:40px;border-radius:12px;background:#F0FDF4;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px}
+  .chat-btn{width:40px;height:40px;border-radius:12px;background:#EFF6FF;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px}
+
+  .eta-strip{background:linear-gradient(135deg,#FFF7ED,#FFF3E0);border-radius:12px;padding:12px 14px;display:flex;align-items:center;justify-content:space-between}
+  .eta-label{font-size:12px;color:var(--orange);font-weight:600}
+  .eta-value{font-size:20px;font-weight:800;color:var(--navy)}
+  .eta-sub{font-size:11px;color:var(--muted)}
+
+  .status-steps{display:flex;justify-content:space-between;position:relative;padding:4px 0}
+  .status-steps::before{content:'';position:absolute;top:12px;left:12px;right:12px;height:2px;background:var(--border)}
+  .status-steps .step{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:10px;font-weight:600;color:var(--light);z-index:1}
+  .step .dot{width:24px;height:24px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:10px}
+  .step.done .dot{background:var(--green);color:#fff}
+  .step.active .dot{background:var(--orange);color:#fff;box-shadow:0 0 0 4px #FFF7ED}
+  .step.done{color:var(--green)}
+  .step.active{color:var(--orange)}
+
+
+  /* ══════════════════════════════════════════
+     SCREEN 6: PAYMENT
+  ══════════════════════════════════════════ */
+  .pay-header{padding:20px;border-bottom:1px solid var(--border)}
+  .pay-header h2{font-size:20px;font-weight:800;margin-bottom:4px}
+  .pay-header p{font-size:13px;color:var(--muted)}
+  .pay-body{padding:20px}
+  .pay-summary{background:var(--bg);border-radius:14px;padding:16px;margin-bottom:20px}
+  .pay-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;font-size:14px}
+  .pay-row .key{color:var(--muted)}
+  .pay-row .val{font-weight:600}
+  .pay-divider{border:none;border-top:1px dashed var(--border);margin:8px 0}
+  .pay-total{font-size:16px;font-weight:800;color:var(--navy)}
+  .pay-total-val{font-size:20px;font-weight:900;color:var(--orange)}
+
+  .pay-methods{margin-bottom:20px}
+  .pay-method{display:flex;align-items:center;gap:14px;padding:14px;border-radius:14px;border:2px solid var(--border);margin-bottom:10px;cursor:pointer;transition:.2s;background:#fff}
+  .pay-method.selected{border-color:var(--orange);background:#FFF7ED}
+  .pay-method-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700}
+  .mpesa-icon{background:#00A651;color:#fff;font-size:11px;font-weight:800}
+  .pay-method-label{font-size:14px;font-weight:700}
+  .pay-method-sub{font-size:12px;color:var(--muted)}
+  .radio-outer{width:20px;height:20px;border-radius:50%;border:2px solid var(--border);margin-left:auto;display:flex;align-items:center;justify-content:center}
+  .radio-outer.checked{border-color:var(--orange)}
+  .radio-inner{width:10px;height:10px;border-radius:50%;background:var(--orange)}
+
+  .mpesa-input-group{background:#F0FFF4;border:2px solid #86EFAC;border-radius:14px;padding:14px;margin-bottom:20px}
+  .mpesa-input-label{font-size:12px;font-weight:700;color:#166534;margin-bottom:8px;display:block}
+  .mpesa-input{width:100%;border:none;background:transparent;font-size:16px;font-weight:700;color:#166534;outline:none;font-family:inherit}
+  .mpesa-hint{font-size:11px;color:#16A34A;margin-top:6px}
+
+
+  /* ══════════════════════════════════════════
+     SCREEN 7: REVIEW / COMPLETION
+  ══════════════════════════════════════════ */
+  .review-screen{padding:32px 20px;text-align:center}
+  .success-icon{width:80px;height:80px;background:linear-gradient(135deg,#16A34A,#4ADE80);border-radius:50%;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;font-size:36px;box-shadow:0 8px 32px rgba(22,163,74,.3)}
+  .review-screen h2{font-size:22px;font-weight:800;margin-bottom:8px}
+  .review-screen p{font-size:15px;color:var(--muted);margin-bottom:28px}
+  .review-tech-row{display:flex;align-items:center;gap:12px;background:var(--bg);border-radius:14px;padding:14px;margin-bottom:24px;text-align:left}
+  .star-rating{display:flex;gap:6px;justify-content:center;margin-bottom:24px}
+  .star{font-size:36px;cursor:pointer;transition:.15s}
+  .star.filled{transform:scale(1.1)}
+  .review-textarea{width:100%;border:2px solid var(--border);border-radius:14px;padding:14px;font-size:14px;font-family:inherit;min-height:90px;outline:none;resize:none;margin-bottom:16px}
+  .review-textarea:focus{border-color:var(--orange)}
+  .skip-link{font-size:14px;color:var(--muted);text-decoration:underline;cursor:pointer;margin-top:8px;display:block}
+
+
+  /* ══════════════════════════════════════════
+     SCREEN 8: TECHNICIAN DASHBOARD
+  ══════════════════════════════════════════ */
+  .dash-header{background:linear-gradient(135deg,#1B2D5E,#2E4380);padding:24px 20px 20px;color:#fff}
+  .dash-topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+  .dash-topbar .greeting-small{font-size:13px;opacity:.7}
+  .dash-topbar h2{font-size:18px;font-weight:800}
+  .online-toggle{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);padding:8px 14px;border-radius:99px;border:none;cursor:pointer;color:#fff;font-size:13px;font-weight:600}
+  .toggle-dot{width:10px;height:10px;border-radius:50%;background:#4ADE80;box-shadow:0 0 6px #4ADE80}
+  .earnings-strip{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+  .earn-box{background:rgba(255,255,255,.12);border-radius:12px;padding:12px;text-align:center}
+  .earn-val{font-size:17px;font-weight:800}
+  .earn-lbl{font-size:10px;opacity:.7;text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
+
+  .dash-body{background:var(--bg);padding:16px}
+  .job-request-card{background:#fff;border-radius:16px;padding:16px;margin-bottom:12px;box-shadow:var(--shadow);border-left:4px solid var(--orange)}
+  .job-request-card.urgent{border-left-color:#DC2626}
+  .job-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px}
+  .job-cat{font-size:15px;font-weight:800}
+  .job-time{font-size:12px;color:var(--muted)}
+  .job-meta{display:flex;gap:12px;font-size:12px;color:var(--muted);margin-bottom:12px}
+  .job-meta span{display:flex;align-items:center;gap:4px}
+  .job-actions{display:flex;gap:8px}
+  .btn-accept{flex:1;background:var(--green);color:#fff;border:none;padding:10px;border-radius:10px;font-weight:700;font-size:13px;cursor:pointer}
+  .btn-decline{flex:0 0 auto;background:#FEF2F2;color:var(--red);border:none;padding:10px 16px;border-radius:10px;font-weight:700;font-size:13px;cursor:pointer}
+
+  .wallet-card{background:linear-gradient(135deg,#1B2D5E,#E8501A);border-radius:16px;padding:18px;margin-bottom:16px;color:#fff}
+  .wallet-balance{font-size:28px;font-weight:900;margin:6px 0}
+  .wallet-label{font-size:12px;opacity:.7;text-transform:uppercase;letter-spacing:.8px}
+  .wallet-actions{display:flex;gap:10px;margin-top:14px}
+  .wallet-btn{flex:1;background:rgba(255,255,255,.15);border:none;color:#fff;padding:10px;border-radius:10px;font-weight:700;font-size:13px;cursor:pointer}
+  .wallet-btn.withdraw{background:#fff;color:var(--navy)}
+
+
+  /* ══════════════════════════════════════════
+     BOTTOM NAV
+  ══════════════════════════════════════════ */
+  .bottom-nav{display:flex;background:#fff;border-top:1px solid var(--border);padding:8px 0 4px}
+  .nav-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;border:none;background:transparent;cursor:pointer;padding:6px 4px}
+  .nav-icon{font-size:20px;line-height:1}
+  .nav-label{font-size:10px;font-weight:600;color:var(--muted)}
+  .nav-item.active .nav-label{color:var(--orange)}
+  .nav-item.active .nav-icon{filter:none}
+
+
+  /* ══════════════════════════════════════════
+     NOTIFICATIONS PANEL
+  ══════════════════════════════════════════ */
+  .notif-header{padding:20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+  .notif-header h2{font-size:18px;font-weight:800}
+  .notif-header a{font-size:13px;color:var(--orange);font-weight:600}
+  .notif-item{display:flex;gap:12px;padding:14px 16px;border-bottom:1px solid var(--border)}
+  .notif-item.unread{background:#FFF7ED}
+  .notif-dot2{width:8px;height:8px;border-radius:50%;background:var(--orange);flex-shrink:0;margin-top:5px}
+  .notif-dot2.read{background:transparent;border:2px solid var(--border)}
+  .notif-content .title{font-size:14px;font-weight:700;margin-bottom:3px}
+  .notif-content .body{font-size:13px;color:var(--muted);line-height:1.4}
+  .notif-content .time{font-size:11px;color:var(--light);margin-top:4px}
+
+  /* Responsive grid for all screens */
+  @media(min-width:900px){
+    .screens{max-width:none;flex-direction:row;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:40px}
+    .screen{width:390px}
+  }
+</style>
+</head>
+<body>
+
+<div style="background:linear-gradient(135deg,#1B2D5E,#2E4380);padding:32px 20px 24px;text-align:center;color:#fff">
+  <div style="display:inline-flex;align-items:center;gap:12px;margin-bottom:12px">
+    <svg width="44" height="44" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+      <rect x="4" y="4" width="72" height="72" rx="18" fill="#E8501A" opacity="0.9"/>
+      <text x="40" y="53" font-family="'Segoe UI',Arial,sans-serif" font-weight="800" font-size="38" fill="white" text-anchor="middle" letter-spacing="-2">eF</text>
+    </svg>
+    <div style="text-align:left">
+      <div style="font-size:28px;font-weight:900;line-height:1"><span style="color:#FF9A3C">e</span>Fundi</div>
+      <div style="font-size:11px;opacity:.6;letter-spacing:1.5px;text-transform:uppercase">Frontend Design System</div>
+    </div>
+  </div>
+  <p style="font-size:14px;opacity:.7;max-width:480px;margin:0 auto">On-demand home services marketplace — UI mockups for all key screens</p>
+</div>
+
+<div class="screens">
+
+  <!-- ═══════════════ SCREEN 1: ONBOARDING ═══════════════ -->
+  <div>
+    <div class="screen-label">Screen 1 — Onboarding / Splash</div>
+    <div class="screen">
+      <div class="splash" style="position:relative">
+        <div class="splash-circles">
+          <span style="width:200px;height:200px;top:-60px;left:-60px"></span>
+          <span style="width:140px;height:140px;bottom:40px;right:-40px"></span>
+          <span style="width:80px;height:80px;top:40%;left:20px"></span>
+        </div>
+        <!-- Pin icon -->
+        <svg width="72" height="82" viewBox="0 0 72 82" class="pin">
+          <defs>
+            <linearGradient id="og1" x1="20%" y1="0%" x2="80%" y2="100%">
+              <stop offset="0%" style="stop-color:#FF9A3C"/>
+              <stop offset="100%" style="stop-color:#E8501A"/>
+            </linearGradient>
+          </defs>
+          <path d="M36 4 C22 4, 10 16, 10 30 C10 44, 22 58, 33 66 L36 70 L39 66 C50 58, 62 44, 62 30 C62 16, 50 4, 36 4 Z" fill="url(#og1)" filter="drop-shadow(0 6px 16px rgba(232,80,26,.5))"/>
+          <circle cx="36" cy="30" r="13" fill="white" opacity="0.2"/>
+          <g transform="translate(25,19) scale(0.9)">
+            <path d="M15.5,2C13,2,11,4,11,6.5c0,.5.1,1,.3,1.4l-9,9C2.1,17.1,2,17.5,2,18c0,1.1.9,2,2,2c.5,0,.9-.1,1.2-.3l9-9C14.5,10.9,15,11,15.5,11C18,11,20,9,20,6.5C20,6,19.9,5.5,19.7,5.1L17,7.8l-2-.6-.6-2L17.2,2.5C16.7,2.2,16.1,2,15.5,2Z" fill="white"/>
+          </g>
+          <ellipse cx="36" cy="76" rx="9" ry="3" fill="rgba(0,0,0,.15)"/>
+        </svg>
+
+        <h1>Find your <span>Fundi</span><br/>in minutes</h1>
+        <p>Trusted plumbers, electricians, carpenters & cleaners — on demand, near you.</p>
+
+        <div class="splash-actions">
+          <button class="btn-white">Get Started</button>
+          <button class="btn-white-outline">I'm a Fundi — Join</button>
+        </div>
+
+        <div class="splash-dots">
+          <span class="active"></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ SCREEN 2: HOME / DISCOVER ═══════════════ -->
+  <div>
+    <div class="screen-label">Screen 2 — Customer Home</div>
+    <div class="screen">
+      <div class="home-header">
+        <div class="home-topbar">
+          <div class="logo-text"><span>e</span>Fundi</div>
+          <button class="notif-btn">🔔<span class="notif-dot"></span></button>
+        </div>
+        <div class="greeting">
+          <h2>Morning, Stephen 👋</h2>
+          <p>What service do you need today?</p>
+          <button class="location-pill">📍 Nairobi, Westlands</button>
+        </div>
+      </div>
+
+      <div class="home-body">
+        <!-- Search -->
+        <div class="search-bar">
+          <span style="font-size:18px">🔍</span>
+          <input type="text" placeholder="Search for a service or Fundi…" readonly/>
+        </div>
+
+        <!-- Active booking -->
+        <div class="booking-card">
+          <div class="booking-card-title">⚡ Active Booking</div>
+          <div class="booking-card-info">
+            <div class="avatar-placeholder" style="background:rgba(255,255,255,.3);color:#fff;font-size:18px">🔧</div>
+            <div class="booking-card-detail">
+              <h4>John M. — Electrical</h4>
+              <p>Arriving in ~12 mins · Ksh 1,800</p>
+            </div>
+          </div>
+          <div class="booking-progress">
+            <div style="display:flex;justify-content:space-between;font-size:11px;opacity:.85">
+              <span>On the way</span><span>~12 min ETA</span>
+            </div>
+            <div class="progress-track"><div class="progress-fill"></div></div>
+            <div class="progress-steps">
+              <span>Assigned</span><span>En Route</span><span>Arrived</span><span>Done</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Categories -->
+        <div class="section-header">
+          <h3>Services</h3>
+          <a href="#">See all</a>
+        </div>
+        <div class="categories">
+          <div class="cat-card active">
+            <div class="cat-icon cat-icon-plumbing">🔧</div>
+            <p>Plumbing</p>
+          </div>
+          <div class="cat-card">
+            <div class="cat-icon cat-icon-elec">⚡</div>
+            <p>Electrical</p>
+          </div>
+          <div class="cat-card">
+            <div class="cat-icon cat-icon-carp">🪵</div>
+            <p>Carpentry</p>
+          </div>
+          <div class="cat-card">
+            <div class="cat-icon cat-icon-clean">🧹</div>
+            <p>Cleaning</p>
+          </div>
+        </div>
+
+        <!-- Nearby Fundis -->
+        <div class="section-header">
+          <h3>Nearby Fundis</h3>
+          <a href="#">See all</a>
+        </div>
+        <div class="technician-scroll">
+          <div class="tech-card">
+            <div class="tech-card-top">
+              <div class="avatar-placeholder" style="background:linear-gradient(135deg,#E8501A,#FF9A3C)">JM</div>
+              <div>
+                <div class="tech-name">John Mwangi</div>
+                <div class="tech-spec">Electrician</div>
+              </div>
+            </div>
+            <div class="stars">★★★★★</div>
+            <div class="tech-meta" style="margin-top:6px">
+              <span class="online-dot"></span>
+              <span>0.8 km away</span>
+            </div>
+            <div style="font-size:12px;color:var(--muted);margin-top:4px">8 yrs exp · 142 jobs</div>
+          </div>
+          <div class="tech-card">
+            <div class="tech-card-top">
+              <div class="avatar-placeholder" style="background:linear-gradient(135deg,#1B2D5E,#2E4380)">SK</div>
+              <div>
+                <div class="tech-name">Samuel K.</div>
+                <div class="tech-spec">Plumber</div>
+              </div>
+            </div>
+            <div class="stars">★★★★<span style="color:#CBD5E1">★</span></div>
+            <div class="tech-meta" style="margin-top:6px">
+              <span class="online-dot"></span>
+              <span>1.2 km away</span>
+            </div>
+            <div style="font-size:12px;color:var(--muted);margin-top:4px">5 yrs exp · 98 jobs</div>
+          </div>
+          <div class="tech-card">
+            <div class="tech-card-top">
+              <div class="avatar-placeholder" style="background:linear-gradient(135deg,#0F766E,#14B8A6)">AW</div>
+              <div>
+                <div class="tech-name">Alice W.</div>
+                <div class="tech-spec">Cleaning</div>
+              </div>
+            </div>
+            <div class="stars">★★★★★</div>
+            <div class="tech-meta" style="margin-top:6px">
+              <span class="online-dot"></span>
+              <span>1.8 km away</span>
+            </div>
+            <div style="font-size:12px;color:var(--muted);margin-top:4px">3 yrs exp · 67 jobs</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Nav -->
+      <div class="bottom-nav">
+        <button class="nav-item active">
+          <span class="nav-icon">🏠</span>
+          <span class="nav-label" style="color:var(--orange)">Home</span>
+        </button>
+        <button class="nav-item">
+          <span class="nav-icon">📋</span>
+          <span class="nav-label">Bookings</span>
+        </button>
+        <button class="nav-item">
+          <span class="nav-icon">🔍</span>
+          <span class="nav-label">Browse</span>
+        </button>
+        <button class="nav-item">
+          <span class="nav-icon">👤</span>
+          <span class="nav-label">Profile</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ SCREEN 3: BOOK A SERVICE ═══════════════ -->
+  <div>
+    <div class="screen-label">Screen 3 — Book a Service</div>
+    <div class="screen">
+      <div class="book-header">
+        <button class="back-btn">← Back</button>
+        <h2>Book a Service</h2>
+        <p>Fill in the details below to find a Fundi</p>
+      </div>
+      <div class="book-body">
+        <!-- Service type -->
+        <div class="form-group">
+          <label class="form-label">Service Type</label>
+          <div class="service-chips">
+            <span class="chip selected">🔧 Plumbing</span>
+            <span class="chip">⚡ Electrical</span>
+            <span class="chip">🪵 Carpentry</span>
+            <span class="chip">🧹 Cleaning</span>
+            <span class="chip">✦ Other</span>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="form-group">
+          <label class="form-label">Describe the Problem</label>
+          <input type="text" class="form-input filled" value="Leaking pipe under the kitchen sink" readonly/>
+        </div>
+
+        <!-- Location -->
+        <div class="form-group">
+          <label class="form-label">Your Location</label>
+          <div class="map-placeholder">
+            <svg class="map-grid" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M10 0L0 0 0 10" fill="none" stroke="#2563EB" stroke-width="0.5"/></pattern></defs>
+              <rect width="100" height="100" fill="url(#grid)"/>
+            </svg>
+            <span class="map-pin-icon">📍</span>
+            <div class="map-address">📍 Westlands, Nairobi</div>
+          </div>
+        </div>
+
+        <!-- Date & Time -->
+        <div class="form-group">
+          <label class="form-label">Preferred Date</label>
+          <input type="text" class="form-input filled" value="Today, Wed 27 May 2026" readonly/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Available Slots</label>
+          <div class="time-grid">
+            <div class="time-slot">9:00 AM</div>
+            <div class="time-slot selected">11:00 AM</div>
+            <div class="time-slot">1:00 PM</div>
+            <div class="time-slot unavail">3:00 PM</div>
+            <div class="time-slot">5:00 PM</div>
+            <div class="time-slot unavail">7:00 PM</div>
+          </div>
+        </div>
+
+        <!-- Estimate -->
+        <div class="price-estimate" style="margin-bottom:20px">
+          <div>
+            <div class="price-est-label">💡 Estimated Cost</div>
+            <div class="price-note">Final price set by Fundi on arrival</div>
+          </div>
+          <div>
+            <div class="price-est-value">Ksh 800–1,500</div>
+          </div>
+        </div>
+
+        <button class="btn btn-primary">Find Fundis Near Me →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ SCREEN 4: TECHNICIAN PROFILE ═══════════════ -->
+  <div>
+    <div class="screen-label">Screen 4 — Fundi Profile</div>
+    <div class="screen">
+      <div class="profile-hero">
+        <button style="position:absolute;top:16px;left:16px;background:rgba(255,255,255,.15);border:none;color:#fff;padding:8px 14px;border-radius:99px;font-size:13px;cursor:pointer">← Back</button>
+        <div class="verified-badge">✓ Verified</div>
+        <div class="profile-hero-avatar">JM</div>
+        <h2>John Mwangi</h2>
+        <div class="spec-tag">Master Electrician · Nairobi</div>
+        <div class="rating-row">
+          <span class="stars">★★★★★</span>
+          <span style="font-size:14px;font-weight:700">4.9</span>
+          <span style="font-size:13px;opacity:.6">(142 reviews)</span>
+        </div>
+      </div>
+
+      <div class="profile-stats">
+        <div class="stat-box">
+          <div class="stat-val">142</div>
+          <div class="stat-lbl">Jobs Done</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val">8 yrs</div>
+          <div class="stat-lbl">Experience</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val">4.9★</div>
+          <div class="stat-lbl">Rating</div>
+        </div>
+      </div>
+
+      <div class="profile-body">
+        <h3 style="font-size:15px;font-weight:700;margin-bottom:8px">About</h3>
+        <p class="bio-text">Licensed electrician with 8+ years of experience in residential and commercial electrical work. Certified by EPRA. Available for wiring, installations, fault-finding, and emergency repairs.</p>
+
+        <h3 style="font-size:15px;font-weight:700;margin-bottom:10px">Skills</h3>
+        <div class="skills-row">
+          <span class="skill-tag">⚡ Wiring</span>
+          <span class="skill-tag">🔌 Installations</span>
+          <span class="skill-tag">🔦 Fault Finding</span>
+          <span class="skill-tag">🏠 Residential</span>
+          <span class="skill-tag">🏢 Commercial</span>
+        </div>
+
+        <h3 style="font-size:15px;font-weight:700;margin-bottom:12px">Reviews</h3>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="avatar-placeholder" style="width:36px;height:36px;background:linear-gradient(135deg,#E8501A,#FF9A3C);font-size:13px">SO</div>
+            <div class="reviewer-info">
+              <div class="reviewer-name">Stephen O.</div>
+              <div class="reviewer-date">2 days ago</div>
+            </div>
+            <div class="stars" style="font-size:12px">★★★★★</div>
+          </div>
+          <div class="review-text">Super professional, arrived on time and fixed the wiring fault quickly. Highly recommend!</div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="avatar-placeholder" style="width:36px;height:36px;background:linear-gradient(135deg,#1B2D5E,#2E4380);font-size:13px">MN</div>
+            <div class="reviewer-info">
+              <div class="reviewer-name">Mary N.</div>
+              <div class="reviewer-date">1 week ago</div>
+            </div>
+            <div class="stars" style="font-size:12px">★★★★<span style="color:#CBD5E1">★</span></div>
+          </div>
+          <div class="review-text">Good work installing the DB board. Explained everything clearly. Will hire again.</div>
+        </div>
+      </div>
+
+      <div class="profile-cta">
+        <button class="btn btn-primary">Book John — Ksh 800/hr</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ SCREEN 5: LIVE TRACKING ═══════════════ -->
+  <div>
+    <div class="screen-label">Screen 5 — Live Job Tracking</div>
+    <div class="screen">
+      <div class="tracking-map">
+        <!-- Fake map roads -->
+        <div class="map-road h" style="top:30%"></div>
+        <div class="map-road h" style="top:55%"></div>
+        <div class="map-road h" style="top:75%"></div>
+        <div class="map-road v" style="left:25%"></div>
+        <div class="map-road v" style="left:55%"></div>
+        <div class="map-road v" style="left:75%"></div>
+
+        <!-- Dashed route line -->
+        <div class="route-line"></div>
+
+        <!-- Customer pin -->
+        <div class="map-customer-pin">
+          <div class="pin-bubble">🏠 Your location</div>
+          <span style="font-size:24px">📍</span>
+        </div>
+
+        <!-- Technician pin -->
+        <div class="map-tech-pin">
+          <div class="pin-bubble orange">🔧 John M.</div>
+          <span style="font-size:24px">🚗</span>
+        </div>
+      </div>
+
+      <div class="tracking-bottom">
+        <!-- Tech info + ETA -->
+        <div class="tracking-card">
+          <div class="tracking-tech-row">
+            <div class="avatar-placeholder" style="background:linear-gradient(135deg,#E8501A,#FF9A3C)">JM</div>
+            <div class="tracking-tech-info">
+              <h4>John Mwangi</h4>
+              <p>Master Electrician · ⭐ 4.9</p>
+            </div>
+            <button class="call-btn" title="Call">📞</button>
+            <button class="chat-btn" title="Chat">💬</button>
+          </div>
+
+          <div class="eta-strip">
+            <div>
+              <div class="eta-label">⏱ Estimated Arrival</div>
+              <div class="eta-value">~12 min</div>
+              <div class="eta-sub">0.8 km away</div>
+            </div>
+            <div style="text-align:right">
+              <div class="eta-label">Job Total</div>
+              <div style="font-size:18px;font-weight:800;color:var(--navy)">Ksh 1,800</div>
+              <div class="eta-sub">M-Pesa on completion</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Status steps -->
+        <div style="padding:0 4px;margin-bottom:16px">
+          <div style="font-size:13px;font-weight:700;color:var(--muted);margin-bottom:12px">Job Status</div>
+          <div class="status-steps">
+            <div class="step done">
+              <div class="dot">✓</div>
+              <span>Booked</span>
+            </div>
+            <div class="step done">
+              <div class="dot">✓</div>
+              <span>Assigned</span>
+            </div>
+            <div class="step active">
+              <div class="dot">🚗</div>
+              <span>En Route</span>
+            </div>
+            <div class="step">
+              <div class="dot">🔧</div>
+              <span>Working</span>
+            </div>
+            <div class="step">
+              <div class="dot">✓</div>
+              <span>Done</span>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn btn-outline" style="width:100%;padding:12px;font-size:14px">Cancel Booking</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ SCREEN 6: PAYMENT ═══════════════ -->
+  <div>
+    <div class="screen-label">Screen 6 — M-Pesa Payment</div>
+    <div class="screen">
+      <div class="pay-header">
+        <button style="background:none;border:none;font-size:13px;font-weight:600;color:var(--navy);cursor:pointer;margin-bottom:12px">← Back</button>
+        <h2>Payment</h2>
+        <p>Job completed · Wed 27 May 2026</p>
+      </div>
+
+      <div class="pay-body">
+        <!-- Job summary -->
+        <div class="pay-summary">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+            <div class="avatar-placeholder" style="background:linear-gradient(135deg,#E8501A,#FF9A3C)">JM</div>
+            <div>
+              <div style="font-size:14px;font-weight:700">John Mwangi — Electrical</div>
+              <div style="font-size:12px;color:var(--muted)">Duration: 1h 45min · Westlands</div>
+            </div>
+          </div>
+          <div class="pay-row"><span class="key">Labour</span><span class="val">Ksh 1,400</span></div>
+          <div class="pay-row"><span class="key">Parts/Materials</span><span class="val">Ksh 350</span></div>
+          <div class="pay-row"><span class="key">Platform fee</span><span class="val">Ksh 50</span></div>
+          <hr class="pay-divider"/>
+          <div class="pay-row">
+            <span class="pay-total">Total</span>
+            <span class="pay-total-val">Ksh 1,800</span>
+          </div>
+        </div>
+
+        <!-- Payment methods -->
+        <div class="section-header" style="margin-bottom:12px">
+          <h3>Pay With</h3>
+        </div>
+        <div class="pay-methods">
+          <div class="pay-method selected">
+            <div class="pay-method-icon mpesa-icon">M-PESA</div>
+            <div>
+              <div class="pay-method-label">M-Pesa</div>
+              <div class="pay-method-sub">Lipa na M-Pesa · Instant</div>
+            </div>
+            <div class="radio-outer checked"><div class="radio-inner"></div></div>
+          </div>
+          <div class="pay-method">
+            <div class="pay-method-icon" style="background:#F1F5F9;font-size:22px">💵</div>
+            <div>
+              <div class="pay-method-label">Cash</div>
+              <div class="pay-method-sub">Pay Fundi directly</div>
+            </div>
+            <div class="radio-outer"></div>
+          </div>
+        </div>
+
+        <!-- M-Pesa phone input -->
+        <div class="mpesa-input-group">
+          <label class="mpesa-input-label">📱 M-Pesa Phone Number</label>
+          <input type="tel" class="mpesa-input" value="+254 712 345 678" readonly/>
+          <div class="mpesa-hint">You'll receive an M-Pesa STK Push to this number</div>
+        </div>
+
+        <button class="btn btn-primary" style="background:#00A651;font-size:16px;padding:16px">
+          💚 Pay Ksh 1,800 via M-Pesa
+        </button>
+
+        <div style="text-align:center;font-size:12px;color:var(--muted);margin-top:12px">
+          Secured by Safaricom M-Pesa · 20% goes to eFundi platform
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ SCREEN 7: REVIEW ═══════════════ -->
+  <div>
+    <div class="screen-label">Screen 7 — Rate Your Fundi</div>
+    <div class="screen">
+      <div class="review-screen">
+        <div class="success-icon">✓</div>
+        <h2>Job Complete! 🎉</h2>
+        <p>Payment of <strong>Ksh 1,800</strong> confirmed.<br/>How was John Mwangi?</p>
+
+        <div class="review-tech-row">
+          <div class="avatar-placeholder" style="background:linear-gradient(135deg,#E8501A,#FF9A3C)">JM</div>
+          <div>
+            <div style="font-size:15px;font-weight:700">John Mwangi</div>
+            <div style="font-size:13px;color:var(--muted)">Master Electrician</div>
+          </div>
+          <div class="badge badge-green" style="margin-left:auto">Verified ✓</div>
+        </div>
+
+        <div class="star-rating">
+          <span class="star filled">★</span>
+          <span class="star filled">★</span>
+          <span class="star filled">★</span>
+          <span class="star filled">★</span>
+          <span class="star" style="color:#CBD5E1">★</span>
+        </div>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:16px;text-align:center">Tap to rate</p>
+
+        <textarea class="review-textarea" placeholder="Share your experience (optional)…">Super professional and arrived on time. Fixed everything quickly!</textarea>
+
+        <button class="btn btn-primary">Submit Review</button>
+        <a class="skip-link">Skip for now</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ SCREEN 8: TECHNICIAN DASHBOARD ═══════════════ -->
+  <div>
+    <div class="screen-label">Screen 8 — Fundi Dashboard</div>
+    <div class="screen">
+      <div class="dash-header">
+        <div class="dash-topbar">
+          <div>
+            <div class="greeting-small">Good morning 👋</div>
+            <h2>John Mwangi</h2>
+          </div>
+          <button class="online-toggle">
+            <span class="toggle-dot"></span>
+            Online
+          </button>
+        </div>
+        <div class="earnings-strip">
+          <div class="earn-box">
+            <div class="earn-val">Ksh 14,200</div>
+            <div class="earn-lbl">This Month</div>
+          </div>
+          <div class="earn-box">
+            <div class="earn-val">7</div>
+            <div class="earn-lbl">Jobs Done</div>
+          </div>
+          <div class="earn-box">
+            <div class="earn-val">4.9★</div>
+            <div class="earn-lbl">Rating</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dash-body">
+
+        <!-- Wallet -->
+        <div class="wallet-card">
+          <div class="wallet-label">Wallet Balance</div>
+          <div class="wallet-balance">Ksh 8,640</div>
+          <div style="font-size:12px;opacity:.7">80% of all completed payments</div>
+          <div class="wallet-actions">
+            <button class="wallet-btn">📊 History</button>
+            <button class="wallet-btn withdraw">💸 Withdraw</button>
+          </div>
+        </div>
+
+        <!-- Incoming jobs -->
+        <div class="section-header">
+          <h3>New Job Requests</h3>
+          <span class="badge badge-orange">2 new</span>
+        </div>
+
+        <div class="job-request-card urgent">
+          <div class="job-top">
+            <div>
+              <div class="job-cat">⚡ Electrical Fault</div>
+              <div class="job-time">Requested 3 mins ago · Urgent</div>
+            </div>
+            <span class="badge badge-red">Urgent</span>
+          </div>
+          <div class="job-meta">
+            <span>📍 0.6 km away</span>
+            <span>💰 ~Ksh 2,000</span>
+            <span>⏱ ASAP</span>
+          </div>
+          <div style="font-size:13px;color:var(--muted);margin-bottom:12px">Power trip + burning smell at consumer unit — Karen estate</div>
+          <div class="job-actions">
+            <button class="btn-accept">✓ Accept</button>
+            <button class="btn-decline">✗ Decline</button>
+          </div>
+        </div>
+
+        <div class="job-request-card">
+          <div class="job-top">
+            <div>
+              <div class="job-cat">🔌 New Socket Install</div>
+              <div class="job-time">Requested 18 mins ago</div>
+            </div>
+            <span class="badge badge-amber">Scheduled</span>
+          </div>
+          <div class="job-meta">
+            <span>📍 1.4 km away</span>
+            <span>💰 ~Ksh 1,200</span>
+            <span>⏱ 2:00 PM</span>
+          </div>
+          <div style="font-size:13px;color:var(--muted);margin-bottom:12px">Add 2 double sockets in the home office — Westlands</div>
+          <div class="job-actions">
+            <button class="btn-accept">✓ Accept</button>
+            <button class="btn-decline">✗ Decline</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Nav -->
+      <div class="bottom-nav">
+        <button class="nav-item active">
+          <span class="nav-icon">📊</span>
+          <span class="nav-label" style="color:var(--orange)">Dashboard</span>
+        </button>
+        <button class="nav-item">
+          <span class="nav-icon">📋</span>
+          <span class="nav-label">My Jobs</span>
+        </button>
+        <button class="nav-item">
+          <span class="nav-icon">💰</span>
+          <span class="nav-label">Wallet</span>
+        </button>
+        <button class="nav-item">
+          <span class="nav-icon">👤</span>
+          <span class="nav-label">Profile</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ SCREEN 9: NOTIFICATIONS ═══════════════ -->
+  <div>
+    <div class="screen-label">Screen 9 — Notifications</div>
+    <div class="screen">
+      <div class="notif-header">
+        <h2>Notifications</h2>
+        <a href="#">Mark all read</a>
+      </div>
+
+      <div class="notif-item unread">
+        <div class="notif-dot2"></div>
+        <div class="notif-content">
+          <div class="title">🔧 Fundi is on the way!</div>
+          <div class="body">John Mwangi has accepted your booking and is heading to you. ETA: ~12 min.</div>
+          <div class="time">2 minutes ago</div>
+        </div>
+      </div>
+      <div class="notif-item unread">
+        <div class="notif-dot2"></div>
+        <div class="notif-content">
+          <div class="title">💚 Payment Confirmed</div>
+          <div class="body">Ksh 1,800 received via M-Pesa for your Electrical booking. Ref: QD8X2Y</div>
+          <div class="time">Yesterday, 4:22 PM</div>
+        </div>
+      </div>
+      <div class="notif-item">
+        <div class="notif-dot2 read"></div>
+        <div class="notif-content">
+          <div class="title">⭐ Rate your last Fundi</div>
+          <div class="body">How was Samuel Kariuki's plumbing service on 25 May? Leave a review.</div>
+          <div class="time">2 days ago</div>
+        </div>
+      </div>
+      <div class="notif-item">
+        <div class="notif-dot2 read"></div>
+        <div class="notif-content">
+          <div class="title">✅ Booking Confirmed</div>
+          <div class="body">Your Plumbing booking for Sat 25 May at 10:00 AM has been confirmed.</div>
+          <div class="time">3 days ago</div>
+        </div>
+      </div>
+      <div class="notif-item">
+        <div class="notif-dot2 read"></div>
+        <div class="notif-content">
+          <div class="title">🎉 Welcome to eFundi!</div>
+          <div class="body">Your account is set up. Find trusted Fundis near you anytime.</div>
+          <div class="time">1 week ago</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<div style="text-align:center;padding:40px 20px;color:#94A3B8;font-size:13px">
+  <div style="font-size:18px;font-weight:800;margin-bottom:6px"><span style="color:#E8501A">e</span><span style="color:#1B2D5E">Fundi</span></div>
+  Frontend Design Mockup · 9 Screens · May 2026<br/>
+  Brand colors: <span style="color:#E8501A">■</span> #E8501A Orange &nbsp;
+  <span style="color:#1B2D5E">■</span> #1B2D5E Navy &nbsp;
+  <span style="color:#16A34A">■</span> #16A34A Green &nbsp;
+  <span style="color:#00A651">■</span> #00A651 M-Pesa Green
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>VOLTA — Wireframe Design System</title>
+<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Cabinet+Grotesk:wght@300;400;500;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --volt: #C8FF00;
+  --volt-dim: #9BC400;
+  --ink: #080C04;
+  --ink2: #0F150A;
+  --ink3: #171F10;
+  --glass: rgba(200,255,0,0.06);
+  --border: rgba(200,255,0,0.15);
+  --border2: rgba(200,255,0,0.08);
+  --text: #E8F0D8;
+  --muted: #6B7A55;
+  --muted2: #3D4830;
+  --white: #F2F5EC;
+  --orange: #FF6B1A;
+  --blue: #1AADFF;
+  --red: #FF3B3B;
+  --r: 12px;
+  --r2: 20px;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: var(--ink);
+  color: var(--text);
+  font-family: 'Cabinet Grotesk', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ── LAYOUT SHELL ── */
+.shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ── LEFT SIDEBAR NAV ── */
+.sidenav {
+  width: 220px;
+  min-height: 100vh;
+  background: var(--ink2);
+  border-right: 1px solid var(--border2);
+  padding: 28px 0;
+  position: sticky;
+  top: 0;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidenav-logo {
+  display: flex; align-items: center; gap: 8px;
+  padding: 0 20px 28px;
+  border-bottom: 1px solid var(--border2);
+  margin-bottom: 20px;
+}
+.logo-icon {
+  width: 32px; height: 32px; background: var(--volt);
+  border-radius: 8px; display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+}
+.logo-text { font-family: 'Clash Display', sans-serif; font-size: 18px; font-weight: 700; color: var(--volt); }
+
+.nav-section { padding: 0 12px; margin-bottom: 8px; }
+.nav-label { font-size: 9px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; padding: 0 8px; margin-bottom: 6px; }
+
+.nav-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 12px; border-radius: 8px; cursor: pointer;
+  font-size: 13px; color: var(--muted); transition: all 0.2s;
+  margin-bottom: 2px;
+}
+.nav-item:hover { background: var(--glass); color: var(--text); }
+.nav-item.active { background: var(--volt); color: var(--ink); font-weight: 700; }
+.nav-item .icon { font-size: 15px; width: 18px; text-align: center; }
+
+.nav-badge {
+  margin-left: auto; background: var(--volt); color: var(--ink);
+  font-size: 9px; font-weight: 700; padding: 1px 6px; border-radius: 20px;
+}
+
+.sidenav-footer {
+  margin-top: auto; padding: 20px 20px 0;
+  border-top: 1px solid var(--border2);
+}
+.user-chip {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px; border-radius: var(--r); background: var(--glass); cursor: pointer;
+}
+.avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--volt); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: var(--ink); flex-shrink: 0; }
+.user-info { flex: 1; }
+.user-name { font-size: 12px; font-weight: 600; color: var(--white); }
+.user-role { font-size: 10px; color: var(--muted); }
+
+/* ── MAIN CONTENT ── */
+.main {
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ── TOP BAR ── */
+.topbar {
+  height: 60px;
+  background: var(--ink2);
+  border-bottom: 1px solid var(--border2);
+  display: flex; align-items: center;
+  padding: 0 28px;
+  gap: 16px;
+  position: sticky; top: 0; z-index: 100;
+}
+.topbar-title { font-family: 'Clash Display', sans-serif; font-size: 15px; font-weight: 600; color: var(--white); }
+.topbar-sep { flex: 1; }
+.topbar-pill {
+  font-size: 11px; padding: 5px 12px; border-radius: 20px;
+  border: 1px solid var(--border); color: var(--muted); cursor: pointer; transition: all 0.2s;
+}
+.topbar-pill:hover { border-color: var(--volt); color: var(--volt); }
+.topbar-pill.active { background: var(--volt); color: var(--ink); font-weight: 700; border-color: var(--volt); }
+
+/* ── SCREEN SECTIONS ── */
+.screens { padding: 0; }
+.screen { display: none; }
+.screen.visible { display: block; }
+
+/* ── PAGE HEADER ── */
+.page-header {
+  padding: 36px 36px 0;
+}
+.page-eyebrow {
+  font-size: 10px; letter-spacing: 2.5px; color: var(--volt); text-transform: uppercase;
+  font-family: 'DM Mono', monospace; margin-bottom: 8px;
+}
+.page-title {
+  font-family: 'Clash Display', sans-serif;
+  font-size: 28px; font-weight: 700; color: var(--white); line-height: 1.2;
+}
+.page-sub { font-size: 13px; color: var(--muted); margin-top: 6px; }
+
+/* ── GRID ── */
+.grid { display: grid; gap: 16px; padding: 24px 36px; }
+.g-2 { grid-template-columns: 1fr 1fr; }
+.g-3 { grid-template-columns: 1fr 1fr 1fr; }
+.g-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+.g-12 { grid-template-columns: 1fr 2fr; }
+.g-21 { grid-template-columns: 2fr 1fr; }
+
+/* ── CARDS ── */
+.card {
+  background: var(--ink3);
+  border: 1px solid var(--border2);
+  border-radius: var(--r2);
+  padding: 22px;
+  transition: border-color 0.2s;
+}
+.card:hover { border-color: var(--border); }
+
+.card-label {
+  font-size: 10px; letter-spacing: 1.5px; color: var(--muted); text-transform: uppercase;
+  font-family: 'DM Mono', monospace; margin-bottom: 10px;
+}
+.card-value {
+  font-family: 'Clash Display', sans-serif; font-size: 36px; font-weight: 700; color: var(--white);
+}
+.card-change { font-size: 11px; margin-top: 4px; }
+.card-change.up { color: var(--volt); }
+.card-change.down { color: var(--red); }
+.card-change.neu { color: var(--muted); }
+
+.card-icon-wrap {
+  width: 44px; height: 44px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; margin-bottom: 14px;
+}
+.volt-bg { background: rgba(200,255,0,0.12); }
+.orange-bg { background: rgba(255,107,26,0.12); }
+.blue-bg { background: rgba(26,173,255,0.12); }
+.red-bg { background: rgba(255,59,59,0.12); }
+
+/* ── HERO (PUBLIC LANDING) ── */
+.hero {
+  min-height: 100vh;
+  background: var(--ink);
+  display: flex; flex-direction: column;
+  position: relative; overflow: hidden;
+}
+
+.hero-nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 24px 48px;
+  position: relative; z-index: 2;
+}
+.hero-nav-links { display: flex; gap: 32px; }
+.hero-nav-links a {
+  font-size: 13px; color: var(--muted); text-decoration: none; cursor: pointer;
+  transition: color 0.2s;
+}
+.hero-nav-links a:hover { color: var(--volt); }
+.hero-cta-group { display: flex; gap: 12px; }
+
+.btn {
+  padding: 10px 20px; border-radius: 8px; font-size: 13px; font-weight: 600;
+  cursor: pointer; border: none; transition: all 0.2s; font-family: 'Cabinet Grotesk', sans-serif;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.btn-volt { background: var(--volt); color: var(--ink); }
+.btn-volt:hover { background: #d8ff20; transform: translateY(-1px); }
+.btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
+.btn-ghost:hover { border-color: var(--volt); color: var(--volt); }
+.btn-lg { padding: 14px 28px; font-size: 15px; border-radius: 12px; }
+.btn-sm { padding: 7px 14px; font-size: 11px; border-radius: 6px; }
+.btn-orange { background: var(--orange); color: #fff; }
+.btn-blue { background: var(--blue); color: var(--ink); }
+
+.hero-body {
+  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 60px 48px; position: relative; z-index: 2;
+}
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(200,255,0,0.08); border: 1px solid var(--border);
+  padding: 7px 14px; border-radius: 20px; font-size: 11px; color: var(--volt);
+  margin-bottom: 28px; font-family: 'DM Mono', monospace;
+}
+.badge-dot { width: 6px; height: 6px; background: var(--volt); border-radius: 50%; animation: pulse 2s infinite; }
+
+@keyframes pulse {
+  0%,100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.3); }
+}
+
+.hero-h1 {
+  font-family: 'Clash Display', sans-serif;
+  font-size: clamp(42px, 6vw, 80px); font-weight: 700; line-height: 1.05;
+  color: var(--white); margin-bottom: 22px; max-width: 820px;
+}
+.hero-h1 em { color: var(--volt); font-style: normal; }
+
+.hero-p {
+  font-size: 16px; color: var(--muted); max-width: 520px; line-height: 1.7;
+  margin-bottom: 40px;
+}
+
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+
+.hero-trust {
+  display: flex; gap: 28px; margin-top: 60px; align-items: center;
+  flex-wrap: wrap; justify-content: center;
+}
+.trust-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--muted); }
+.trust-item strong { color: var(--white); }
+
+/* GRID BG */
+.hero-grid-bg {
+  position: absolute; inset: 0;
+  background-image: 
+    linear-gradient(rgba(200,255,0,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200,255,0,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  z-index: 1;
+}
+.hero-glow {
+  position: absolute; width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(200,255,0,0.08) 0%, transparent 70%);
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
+  pointer-events: none; z-index: 1;
+}
+
+/* FLOATING CARDS */
+.hero-float-cards {
+  display: flex; gap: 14px; margin-top: 48px; flex-wrap: wrap; justify-content: center;
+}
+.float-card {
+  background: rgba(15,21,10,0.9); border: 1px solid var(--border);
+  border-radius: 14px; padding: 16px 20px; backdrop-filter: blur(20px);
+  display: flex; align-items: center; gap: 12px;
+}
+.float-card-icon { font-size: 22px; }
+.float-card-text { font-size: 12px; color: var(--muted); }
+.float-card-text strong { display: block; color: var(--white); font-size: 14px; margin-bottom: 2px; }
+
+/* ── HOW IT WORKS ── */
+.section { padding: 80px 48px; }
+.section-center { text-align: center; }
+
+.step-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+.step-card {
+  background: var(--ink3); border: 1px solid var(--border2);
+  border-radius: 20px; padding: 28px; position: relative;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.step-card:hover { border-color: var(--border); transform: translateY(-4px); }
+.step-num {
+  font-family: 'Clash Display', sans-serif; font-size: 48px; font-weight: 700;
+  color: rgba(200,255,0,0.1); position: absolute; top: 16px; right: 20px;
+}
+.step-icon { font-size: 28px; margin-bottom: 16px; }
+.step-title { font-family: 'Clash Display', sans-serif; font-size: 18px; color: var(--white); margin-bottom: 8px; }
+.step-desc { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+/* ── ACCOUNT PORTAL SELECTOR ── */
+.portal-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 20px; max-width: 900px; margin: 48px auto 0;
+}
+.portal-card {
+  border-radius: 24px; padding: 36px 28px; cursor: pointer;
+  border: 2px solid transparent; transition: all 0.3s; text-align: center;
+  position: relative; overflow: hidden;
+}
+.portal-card::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+.portal-hh { background: linear-gradient(135deg, #1a2810, #0F150A); border-color: rgba(200,255,0,0.25); }
+.portal-tech { background: linear-gradient(135deg, #1a1410, #0F0D0A); border-color: rgba(255,107,26,0.25); }
+.portal-admin { background: linear-gradient(135deg, #101620, #0A0F15); border-color: rgba(26,173,255,0.25); }
+.portal-card:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(0,0,0,0.4); }
+.portal-hh:hover { border-color: var(--volt); box-shadow: 0 24px 60px rgba(200,255,0,0.1); }
+.portal-tech:hover { border-color: var(--orange); box-shadow: 0 24px 60px rgba(255,107,26,0.1); }
+.portal-admin:hover { border-color: var(--blue); box-shadow: 0 24px 60px rgba(26,173,255,0.1); }
+
+.portal-emoji { font-size: 40px; margin-bottom: 16px; }
+.portal-name { font-family: 'Clash Display', sans-serif; font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+.portal-hh .portal-name { color: var(--volt); }
+.portal-tech .portal-name { color: var(--orange); }
+.portal-admin .portal-name { color: var(--blue); }
+.portal-desc { font-size: 12px; color: var(--muted); line-height: 1.6; margin-bottom: 20px; }
+.portal-features { text-align: left; margin-bottom: 22px; }
+.portal-feature {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 11px; color: var(--muted); padding: 4px 0;
+}
+.portal-feature::before { content: '✓'; font-weight: 700; flex-shrink: 0; }
+.portal-hh .portal-feature::before { color: var(--volt); }
+.portal-tech .portal-feature::before { color: var(--orange); }
+.portal-admin .portal-feature::before { color: var(--blue); }
+
+/* ── LOGIN FORM SCREEN ── */
+.auth-screen {
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  padding: 40px 24px;
+  background: var(--ink);
+  position: relative;
+}
+.auth-card {
+  background: var(--ink2); border-radius: 28px;
+  border: 1px solid var(--border2);
+  padding: 48px 44px; width: 100%; max-width: 440px;
+  position: relative; z-index: 2;
+}
+.auth-back { 
+  position: absolute; top: 28px; left: 28px;
+  font-size: 12px; color: var(--muted); cursor: pointer;
+  display: flex; align-items: center; gap: 6px;
+}
+.auth-back:hover { color: var(--volt); }
+.auth-logo { display: flex; align-items: center; gap: 8px; margin-bottom: 32px; }
+.auth-badge {
+  font-size: 9px; padding: 3px 10px; border-radius: 20px;
+  font-family: 'DM Mono', monospace; letter-spacing: 1px; text-transform: uppercase;
+}
+.badge-hh { background: rgba(200,255,0,0.12); color: var(--volt); border: 1px solid rgba(200,255,0,0.3); }
+.badge-tech { background: rgba(255,107,26,0.12); color: var(--orange); border: 1px solid rgba(255,107,26,0.3); }
+.badge-admin { background: rgba(26,173,255,0.12); color: var(--blue); border: 1px solid rgba(26,173,255,0.3); }
+
+.auth-title { font-family: 'Clash Display', sans-serif; font-size: 26px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+.auth-sub { font-size: 13px; color: var(--muted); margin-bottom: 32px; }
+
+.form-group { margin-bottom: 18px; }
+.form-label { font-size: 11px; color: var(--muted); margin-bottom: 7px; display: block; letter-spacing: 0.5px; }
+.form-input {
+  width: 100%; background: var(--ink3); border: 1px solid var(--border2);
+  border-radius: 10px; padding: 12px 16px; color: var(--white);
+  font-size: 13px; font-family: 'Cabinet Grotesk', sans-serif;
+  transition: border-color 0.2s; outline: none;
+}
+.form-input:focus { border-color: var(--volt); }
+.form-input::placeholder { color: var(--muted2); }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+.form-select {
+  width: 100%; background: var(--ink3); border: 1px solid var(--border2);
+  border-radius: 10px; padding: 12px 16px; color: var(--white);
+  font-size: 13px; font-family: 'Cabinet Grotesk', sans-serif;
+  outline: none; cursor: pointer;
+}
+
+.auth-divider {
+  display: flex; align-items: center; gap: 12px; margin: 24px 0;
+  font-size: 11px; color: var(--muted2);
+}
+.auth-divider::before, .auth-divider::after {
+  content: ''; flex: 1; height: 1px; background: var(--border2);
+}
+
+.btn-full { width: 100%; justify-content: center; }
+.auth-foot { font-size: 11px; color: var(--muted); text-align: center; margin-top: 20px; }
+.auth-foot a { color: var(--volt); cursor: pointer; }
+
+/* ── DASHBOARD SCREENS ── */
+.db-wrap { padding: 0 36px 40px; }
+
+/* BOOKING FLOW */
+.booking-steps {
+  display: flex; align-items: center; gap: 0; margin-bottom: 28px;
+}
+.bstep {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 600;
+}
+.bstep-dot {
+  width: 28px; height: 28px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; flex-shrink: 0;
+}
+.bstep.done .bstep-dot { background: var(--volt); color: var(--ink); }
+.bstep.active .bstep-dot { background: var(--ink3); border: 2px solid var(--volt); color: var(--volt); }
+.bstep.todo .bstep-dot { background: var(--ink3); border: 2px solid var(--muted2); color: var(--muted); }
+.bstep.done span { color: var(--volt); }
+.bstep.active span { color: var(--white); }
+.bstep.todo span { color: var(--muted); }
+.bstep-line { flex: 1; height: 2px; background: var(--border2); margin: 0 12px; }
+.bstep-line.done { background: var(--volt); }
+
+/* SERVICE CARDS */
+.service-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.service-tile {
+  background: var(--ink3); border: 1px solid var(--border2);
+  border-radius: 16px; padding: 18px; text-align: center; cursor: pointer;
+  transition: all 0.2s;
+}
+.service-tile:hover, .service-tile.sel { border-color: var(--volt); background: var(--glass); }
+.service-tile .s-icon { font-size: 28px; margin-bottom: 10px; }
+.service-tile .s-name { font-size: 11px; font-weight: 600; color: var(--white); margin-bottom: 4px; }
+.service-tile .s-price { font-size: 10px; color: var(--muted); }
+
+/* TECHNICIAN CARDS */
+.tech-list { display: flex; flex-direction: column; gap: 12px; }
+.tech-card {
+  background: var(--ink3); border: 1px solid var(--border2);
+  border-radius: 16px; padding: 18px; display: flex;
+  align-items: center; gap: 16px; cursor: pointer; transition: all 0.2s;
+}
+.tech-card:hover { border-color: var(--border); }
+.tech-card.selected { border-color: var(--volt); }
+.tech-avatar {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--volt); display: flex; align-items: center;
+  justify-content: center; font-size: 18px; font-weight: 700;
+  color: var(--ink); flex-shrink: 0;
+}
+.tech-info { flex: 1; }
+.tech-name { font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 3px; }
+.tech-meta { font-size: 11px; color: var(--muted); }
+.tech-rating { display: flex; align-items: center; gap: 4px; font-size: 12px; color: var(--volt); }
+.tech-badge { font-size: 9px; padding: 2px 8px; border-radius: 20px; background: rgba(200,255,0,0.1); color: var(--volt); border: 1px solid rgba(200,255,0,0.2); }
+.tech-price { font-size: 14px; font-weight: 700; color: var(--white); text-align: right; }
+.tech-price span { display: block; font-size: 10px; color: var(--muted); font-weight: 400; }
+
+/* BOOKING CARD */
+.booking-summary {
+  background: var(--ink3); border: 1px solid var(--border2);
+  border-radius: 16px; padding: 22px; margin-top: 20px;
+}
+.booking-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 8px 0; border-bottom: 1px solid var(--border2);
+  font-size: 12px;
+}
+.booking-row:last-child { border-bottom: none; padding-top: 12px; }
+.booking-row .k { color: var(--muted); }
+.booking-row .v { color: var(--white); font-weight: 500; }
+.booking-row .total { font-size: 16px; color: var(--volt); font-family: 'Clash Display', sans-serif; }
+
+/* STATUS BADGE */
+.status-badge {
+  font-size: 10px; padding: 3px 10px; border-radius: 20px;
+  font-family: 'DM Mono', monospace; font-weight: 500;
+}
+.s-pending { background: rgba(255,214,0,0.12); color: #FFD600; border: 1px solid rgba(255,214,0,0.3); }
+.s-active { background: rgba(200,255,0,0.12); color: var(--volt); border: 1px solid rgba(200,255,0,0.3); }
+.s-complete { background: rgba(26,173,255,0.12); color: var(--blue); border: 1px solid rgba(26,173,255,0.3); }
+.s-cancel { background: rgba(255,59,59,0.12); color: var(--red); border: 1px solid rgba(255,59,59,0.3); }
+
+/* JOBS TABLE */
+.data-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.data-table th {
+  text-align: left; padding: 10px 14px;
+  color: var(--muted); font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
+  border-bottom: 1px solid var(--border2); font-family: 'DM Mono', monospace; font-weight: 400;
+}
+.data-table td {
+  padding: 14px 14px; border-bottom: 1px solid rgba(255,255,255,0.03);
+  color: var(--text); vertical-align: middle;
+}
+.data-table tr:hover td { background: rgba(200,255,0,0.02); }
+
+/* MAP PLACEHOLDER */
+.map-placeholder {
+  background: var(--ink3); border: 1px solid var(--border2);
+  border-radius: 16px; height: 240px;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 8px; color: var(--muted);
+  position: relative; overflow: hidden;
+}
+.map-placeholder::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: 
+    linear-gradient(rgba(200,255,0,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200,255,0,0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+.map-pin { font-size: 32px; z-index: 1; }
+.map-label { font-size: 11px; color: var(--muted); z-index: 1; }
+
+/* CHART BARS */
+.chart-wrap { padding: 8px 0; }
+.chart-bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.chart-bar-label { font-size: 10px; color: var(--muted); width: 80px; flex-shrink: 0; }
+.chart-bar-track { flex: 1; background: var(--ink); border-radius: 4px; height: 8px; }
+.chart-bar-fill { height: 100%; border-radius: 4px; }
+.chart-bar-val { font-size: 10px; color: var(--muted); width: 36px; text-align: right; }
+
+/* RATING STARS */
+.stars { color: #FFD600; letter-spacing: 1px; font-size: 13px; }
+
+/* TOGGLE */
+.toggle {
+  width: 40px; height: 22px; background: var(--muted2); border-radius: 11px;
+  position: relative; cursor: pointer; transition: background 0.2s; flex-shrink: 0;
+}
+.toggle.on { background: var(--volt); }
+.toggle::after {
+  content: ''; position: absolute;
+  width: 16px; height: 16px; background: white; border-radius: 50%;
+  top: 3px; left: 3px; transition: left 0.2s;
+}
+.toggle.on::after { left: 21px; }
+
+/* NOTIFICATION ITEM */
+.notif {
+  display: flex; gap: 12px; padding: 14px 0;
+  border-bottom: 1px solid var(--border2);
+}
+.notif-icon { width: 36px; height: 36px; border-radius: 10px; background: var(--glass); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+.notif-text { flex: 1; }
+.notif-title { font-size: 12px; font-weight: 600; color: var(--white); margin-bottom: 2px; }
+.notif-sub { font-size: 11px; color: var(--muted); }
+.notif-time { font-size: 10px; color: var(--muted2); font-family: 'DM Mono', monospace; }
+
+/* FIGMA ANNOTATION OVERLAY */
+.figma-bar {
+  background: #1E1E1E; border-top: 1px solid #333;
+  padding: 10px 20px; display: flex; align-items: center; gap: 16px;
+  flex-wrap: wrap; font-size: 11px; font-family: 'DM Mono', monospace;
+}
+.figma-chip {
+  background: #2A2A2A; border: 1px solid #333;
+  border-radius: 4px; padding: 3px 8px; color: #999;
+}
+.figma-chip span { color: var(--volt); margin-right: 4px; }
+
+/* RESPONSIVE PREVIEW */
+.device-bar {
+  display: flex; gap: 6px; padding: 10px 16px; background: var(--ink2);
+  border-bottom: 1px solid var(--border2); align-items: center;
+}
+.device-btn {
+  font-size: 11px; padding: 4px 12px; border-radius: 6px; cursor: pointer; border: none;
+  background: transparent; color: var(--muted); transition: all 0.15s;
+}
+.device-btn.sel { background: var(--volt); color: var(--ink); font-weight: 700; }
+
+/* SECTION TITLE */
+.s-title {
+  font-family: 'Clash Display', sans-serif;
+  font-size: 36px; font-weight: 700; color: var(--white); margin-bottom: 10px;
+}
+.s-sub { font-size: 14px; color: var(--muted); }
+
+/* QUICK ACTION GRID */
+.qa-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.qa-btn {
+  background: var(--ink3); border: 1px solid var(--border2);
+  border-radius: 14px; padding: 18px 14px; text-align: center; cursor: pointer;
+  transition: all 0.2s;
+}
+.qa-btn:hover { border-color: var(--volt); }
+.qa-icon { font-size: 22px; margin-bottom: 8px; }
+.qa-label { font-size: 11px; color: var(--muted); }
+
+/* EARNINGS MINI CHART */
+.earn-bars { display: flex; align-items: flex-end; gap: 5px; height: 60px; }
+.earn-bar { flex: 1; background: var(--glass); border-radius: 3px 3px 0 0; border: 1px solid var(--border); }
+.earn-bar.hi { background: var(--volt); border-color: var(--volt); }
+
+/* FOOTER */
+.footer {
+  background: var(--ink2); border-top: 1px solid var(--border2);
+  padding: 60px 48px 32px;
+}
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+.footer-logo { font-family: 'Clash Display', sans-serif; font-size: 22px; color: var(--volt); font-weight: 700; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+.footer-desc { font-size: 13px; color: var(--muted); line-height: 1.7; max-width: 280px; }
+.footer-col-title { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); font-family: 'DM Mono', monospace; margin-bottom: 16px; }
+.footer-link { font-size: 13px; color: var(--muted); display: block; margin-bottom: 10px; cursor: pointer; transition: color 0.2s; }
+.footer-link:hover { color: var(--volt); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 24px; border-top: 1px solid var(--border2); font-size: 11px; color: var(--muted2); }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .sidenav { display: none; }
+  .g-2, .g-3, .g-4, .g-12, .g-21 { grid-template-columns: 1fr; }
+  .portal-grid, .step-grid { grid-template-columns: 1fr; }
+  .service-grid { grid-template-columns: repeat(2, 1fr); }
+  .qa-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .hero-nav-links { display: none; }
+  .hero-h1 { font-size: 36px; }
+  .section { padding: 48px 24px; }
+  .hero-nav { padding: 20px 24px; }
+  .hero-body { padding: 40px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════
+     SCREEN 1: PUBLIC LANDING PAGE
+═══════════════════════════════════════════════════════ -->
+<section id="screen-landing">
+
+  <!-- NAV -->
+  <nav class="hero-nav">
+    <div class="sidenav-logo" style="padding:0; border:none; margin:0;">
+      <div class="logo-icon">⚡</div>
+      <div class="logo-text">VOLTA</div>
+    </div>
+    <div class="hero-nav-links">
+      <a>How It Works</a>
+      <a>Services</a>
+      <a>For Technicians</a>
+      <a>Pricing</a>
+      <a>Nairobi Coverage</a>
+    </div>
+    <div class="hero-cta-group">
+      <button class="btn btn-ghost">Log In</button>
+      <button class="btn btn-volt">Get Started →</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-body">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Now live across Nairobi — 11 Sub-Counties
+      </div>
+      <h1 class="hero-h1">
+        Book a Certified<br/>
+        Electrician in<br/>
+        <em>Under 60 Seconds</em>
+      </h1>
+      <p class="hero-p">
+        Volta connects Nairobi households to vetted, insured electricians for appliance repair, wiring, installations and more — at transparent prices.
+      </p>
+      <div class="hero-actions">
+        <button class="btn btn-volt btn-lg">🏠 Book a Technician</button>
+        <button class="btn btn-ghost btn-lg">⚡ Join as Electrician</button>
+      </div>
+
+      <div class="hero-float-cards">
+        <div class="float-card">
+          <div class="float-card-icon">⭐</div>
+          <div class="float-card-text"><strong>4.9 / 5 Rating</strong>From 3,400+ jobs</div>
+        </div>
+        <div class="float-card">
+          <div class="float-card-icon">🛡️</div>
+          <div class="float-card-text"><strong>100% Vetted</strong>Background checked</div>
+        </div>
+        <div class="float-card">
+          <div class="float-card-icon">💰</div>
+          <div class="float-card-text"><strong>Fixed Pricing</strong>No hidden charges</div>
+        </div>
+        <div class="float-card">
+          <div class="float-card-icon">⚡</div>
+          <div class="float-card-text"><strong>Same-Day</strong>Service available</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <section class="section section-center" style="background: var(--ink2);">
+    <div class="page-eyebrow">Simple Process</div>
+    <div class="s-title">How Volta Works</div>
+    <div class="s-sub">Get expert help at home in 3 simple steps</div>
+    <div class="step-grid">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <div class="step-icon">🔍</div>
+        <div class="step-title">Describe Your Problem</div>
+        <div class="step-desc">Select the service type and briefly describe the issue — fridge repair, rewiring, socket installation, and more.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <div class="step-icon">🎯</div>
+        <div class="step-title">Pick Your Technician</div>
+        <div class="step-desc">View nearby certified electricians with ratings, specialisations, availability and transparent pricing.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <div class="step-icon">✅</div>
+        <div class="step-title">Get It Fixed</div>
+        <div class="step-desc">Your technician arrives at the scheduled time. Pay securely via M-Pesa, card, or cash on completion.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACCOUNT PORTALS -->
+  <section class="section section-center">
+    <div class="page-eyebrow">Platform Portals</div>
+    <div class="s-title">Choose Your Account</div>
+    <div class="s-sub">Three tailored dashboards built for every user type</div>
+    <div class="portal-grid">
+
+      <div class="portal-card portal-hh">
+        <div class="portal-emoji">🏠</div>
+        <div class="portal-name">Household</div>
+        <div class="portal-desc">For homeowners and tenants needing reliable electrical repair and installation services.</div>
+        <div class="portal-features">
+          <div class="portal-feature">Book services in under 60s</div>
+          <div class="portal-feature">Real-time technician tracking</div>
+          <div class="portal-feature">M-Pesa & card payments</div>
+          <div class="portal-feature">Job history & warranties</div>
+        </div>
+        <button class="btn btn-volt btn-full">Sign Up / Log In</button>
+      </div>
+
+      <div class="portal-card portal-tech">
+        <div class="portal-emoji">🔧</div>
+        <div class="portal-name">Technician</div>
+        <div class="portal-desc">For certified electricians looking to grow their customer base and earn more.</div>
+        <div class="portal-features">
+          <div class="portal-feature">Receive job requests nearby</div>
+          <div class="portal-feature">Manage your schedule</div>
+          <div class="portal-feature">Weekly M-Pesa payouts</div>
+          <div class="portal-feature">Build your reputation</div>
+        </div>
+        <button class="btn btn-orange btn-full" style="color:#fff;">Apply / Log In</button>
+      </div>
+
+      <div class="portal-card portal-admin">
+        <div class="portal-emoji">🛡️</div>
+        <div class="portal-name">Admin</div>
+        <div class="portal-desc">Platform operators and customer support team managing operations and data.</div>
+        <div class="portal-features">
+          <div class="portal-feature">Full platform oversight</div>
+          <div class="portal-feature">User management & KYC</div>
+          <div class="portal-feature">Revenue & analytics</div>
+          <div class="portal-feature">Dispute resolution</div>
+        </div>
+        <button class="btn btn-blue btn-full">Admin Login</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">⚡ VOLTA</div>
+        <div class="footer-desc">Nairobi's most trusted platform for household electrical services. Connecting skilled technicians to homes across all 11 sub-counties.</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <a class="footer-link">Appliance Repair</a>
+        <a class="footer-link">Electrical Wiring</a>
+        <a class="footer-link">Socket Installation</a>
+        <a class="footer-link">Circuit Breakers</a>
+        <a class="footer-link">Lighting & Fittings</a>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <a class="footer-link">About Volta</a>
+        <a class="footer-link">How It Works</a>
+        <a class="footer-link">Coverage Areas</a>
+        <a class="footer-link">Become a Tech</a>
+        <a class="footer-link">Blog</a>
+      </div>
+      <div>
+        <div class="footer-col-title">Support</div>
+        <a class="footer-link">Help Centre</a>
+        <a class="footer-link">Safety Policy</a>
+        <a class="footer-link">Privacy Policy</a>
+        <a class="footer-link">Terms of Use</a>
+        <a class="footer-link">Contact Us</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Volta Kenya Ltd. All rights reserved.</span>
+      <span>🇰🇪 Nairobi, Kenya · support@volta.ke</span>
+    </div>
+  </footer>
+</section>
+
+<div style="height: 2px; background: linear-gradient(90deg, var(--volt), var(--orange), var(--blue)); margin: 0;"></div>
+
+<!-- ═══════════════════════════════════════════════════════
+     SCREEN 2: HOUSEHOLD LOGIN
+═══════════════════════════════════════════════════════ -->
+<section id="screen-hh-login" style="padding: 2px 0;">
+  <div style="background: var(--ink3); padding: 10px 20px; font-family:'DM Mono',monospace; font-size:10px; color: var(--muted); border-bottom: 1px solid var(--border2);">
+    SCREEN 02 — HOUSEHOLD LOGIN &amp; REGISTRATION
+  </div>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; min-height: 80vh; background: var(--ink);">
+
+    <!-- LEFT: LOGIN -->
+    <div style="padding: 60px 48px; border-right: 1px solid var(--border2); display:flex; align-items:center; justify-content:center;">
+      <div style="width: 100%; max-width: 380px;">
+        <div class="auth-logo">
+          <div class="logo-icon">⚡</div>
+          <div class="logo-text">VOLTA</div>
+          <span class="auth-badge badge-hh">Household</span>
+        </div>
+        <div class="auth-title">Welcome back</div>
+        <div class="auth-sub">Log in to book electrical services</div>
+        <div class="form-group">
+          <label class="form-label">Phone Number or Email</label>
+          <input class="form-input" placeholder="+254 7XX XXX XXX" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <input class="form-input" type="password" placeholder="••••••••" />
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:22px;">
+          <label style="display:flex; align-items:center; gap:8px; font-size:12px; color:var(--muted); cursor:pointer;">
+            <input type="checkbox" style="accent-color: var(--volt);"> Remember me
+          </label>
+          <a style="font-size:12px; color:var(--volt); cursor:pointer;">Forgot password?</a>
+        </div>
+        <button class="btn btn-volt btn-full btn-lg">Log In →</button>
+        <div class="auth-divider">or continue with</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+          <button class="btn btn-ghost btn-full">📱 M-Pesa OTP</button>
+          <button class="btn btn-ghost btn-full">🔗 Google</button>
+        </div>
+        <div class="auth-foot">Don't have an account? <a>Sign up free →</a></div>
+      </div>
+    </div>
+
+    <!-- RIGHT: REGISTER -->
+    <div style="padding: 60px 48px; display:flex; align-items:center; justify-content:center; background: rgba(200,255,0,0.02);">
+      <div style="width: 100%; max-width: 380px;">
+        <div class="auth-title" style="margin-bottom:6px;">Create Account</div>
+        <div class="auth-sub">Join Volta — it's free for households</div>
+        <div class="form-row" style="margin-top:24px;">
+          <div class="form-group"><label class="form-label">First Name</label><input class="form-input" placeholder="Jane"/></div>
+          <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" placeholder="Wanjiku"/></div>
+        </div>
+        <div class="form-group"><label class="form-label">Phone Number</label><input class="form-input" placeholder="+254 7XX XXX XXX"/></div>
+        <div class="form-group"><label class="form-label">Email Address</label><input class="form-input" placeholder="jane@email.com"/></div>
+        <div class="form-group">
+          <label class="form-label">Sub-County</label>
+          <select class="form-select">
+            <option>Select your sub-county...</option>
+            <option>Embakasi</option><option>Kasarani</option><option>Westlands</option>
+            <option>Dagoretti</option><option>Njiru</option><option>Lang'ata</option>
+            <option>Starehe</option><option>Makadara</option><option>Kamukunji</option>
+            <option>Mathare</option><option>Kibra</option>
+          </select>
+        </div>
+        <div class="form-group"><label class="form-label">Password</label><input class="form-input" type="password" placeholder="Min. 8 characters"/></div>
+        <div style="margin-bottom:22px;">
+          <label style="display:flex; align-items:flex-start; gap:8px; font-size:11px; color:var(--muted); cursor:pointer; line-height:1.6;">
+            <input type="checkbox" style="accent-color: var(--volt); margin-top:2px;"> I agree to Volta's <a style="color:var(--volt)">Terms of Service</a> and <a style="color:var(--volt)">Privacy Policy</a>
+          </label>
+        </div>
+        <button class="btn btn-volt btn-full btn-lg">Create Account →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="height: 2px; background: linear-gradient(90deg, var(--volt), var(--orange), var(--blue));"></div>
+
+<!-- ═══════════════════════════════════════════════════════
+     SCREEN 3: HOUSEHOLD DASHBOARD — BOOK A SERVICE
+═══════════════════════════════════════════════════════ -->
+<section id="screen-hh-dash">
+  <div style="background: var(--ink3); padding: 10px 20px; font-family:'DM Mono',monospace; font-size:10px; color: var(--muted); border-bottom: 1px solid var(--border2);">
+    SCREEN 03 — HOUSEHOLD DASHBOARD (LOGGED IN)
+  </div>
+  <div class="shell">
+    <!-- SIDEBAR -->
+    <div class="sidenav">
+      <div class="sidenav-logo"><div class="logo-icon">⚡</div><div class="logo-text">VOLTA</div></div>
+      <div class="nav-section">
+        <div class="nav-label">Main</div>
+        <div class="nav-item active"><span class="icon">🏠</span> Dashboard</div>
+        <div class="nav-item"><span class="icon">🔧</span> Book Service</div>
+        <div class="nav-item"><span class="icon">📋</span> My Jobs <span class="nav-badge">2</span></div>
+        <div class="nav-item"><span class="icon">📍</span> Track Technician</div>
+      </div>
+      <div class="nav-section">
+        <div class="nav-label">Account</div>
+        <div class="nav-item"><span class="icon">💬</span> Messages</div>
+        <div class="nav-item"><span class="icon">💳</span> Payments</div>
+        <div class="nav-item"><span class="icon">⭐</span> Reviews</div>
+        <div class="nav-item"><span class="icon">⚙️</span> Settings</div>
+      </div>
+      <div class="sidenav-footer">
+        <div class="user-chip">
+          <div class="avatar">JW</div>
+          <div class="user-info"><div class="user-name">Jane Wanjiku</div><div class="user-role">Household · Kasarani</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="topbar">
+        <div class="topbar-title">Dashboard</div>
+        <div class="topbar-sep"></div>
+        <button class="topbar-pill">🔔 Notifications</button>
+        <button class="btn btn-volt btn-sm">+ Book Service</button>
+      </div>
+
+      <div class="db-wrap" style="padding-top:28px;">
+        <div class="page-eyebrow">Good morning, Jane 👋</div>
+        <div style="font-family:'Clash Display',sans-serif; font-size:22px; color:var(--white); margin-bottom:24px;">What do you need fixed today?</div>
+
+        <!-- QUICK ACTIONS -->
+        <div class="qa-grid" style="margin-bottom:24px;">
+          <div class="qa-btn"><div class="qa-icon">🧊</div><div class="qa-label">Fridge Repair</div></div>
+          <div class="qa-btn"><div class="qa-icon">🫧</div><div class="qa-label">Washing Machine</div></div>
+          <div class="qa-btn"><div class="qa-icon">⚡</div><div class="qa-label">Wiring / Rewire</div></div>
+          <div class="qa-btn"><div class="qa-icon">🔌</div><div class="qa-label">Sockets & Switches</div></div>
+        </div>
+
+        <div class="grid g-21" style="padding:0; margin-bottom:0;">
+          <!-- ACTIVE JOB -->
+          <div>
+            <div style="font-size:12px; font-weight:600; color:var(--muted); margin-bottom:12px; text-transform:uppercase; letter-spacing:1px; font-family:'DM Mono',monospace;">Active Job</div>
+            <div class="card" style="border-color: rgba(200,255,0,0.25);">
+              <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:16px;">
+                <div>
+                  <div style="font-size:15px; font-weight:700; color:var(--white); margin-bottom:4px;">Fridge Repair</div>
+                  <div style="font-size:11px; color:var(--muted);">Job #VLT-2847 · Kasarani</div>
+                </div>
+                <span class="status-badge s-active">EN ROUTE</span>
+              </div>
+              <div class="map-placeholder" style="height:160px; margin-bottom:16px;">
+                <div class="map-pin">📍</div>
+                <div class="map-label">Live tracking map</div>
+                <div style="position:absolute; top:12px; right:12px; background: var(--volt); color:var(--ink); font-size:10px; font-weight:700; padding:4px 10px; border-radius:20px; z-index:2;">12 min away</div>
+              </div>
+              <div class="tech-card" style="padding:12px; margin-bottom:0;">
+                <div class="tech-avatar">JO</div>
+                <div class="tech-info">
+                  <div class="tech-name">James Otieno</div>
+                  <div class="tech-meta">⚡ Appliance Specialist · 7 yrs exp</div>
+                </div>
+                <div style="text-align:right;">
+                  <div class="tech-rating">★ 4.9</div>
+                  <button class="btn btn-ghost btn-sm" style="margin-top:6px;">📞 Call</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT PANEL -->
+          <div style="display:flex; flex-direction:column; gap:16px;">
+            <div>
+              <div style="font-size:12px; font-weight:600; color:var(--muted); margin-bottom:12px; text-transform:uppercase; letter-spacing:1px; font-family:'DM Mono',monospace;">Past Jobs</div>
+              <div class="card">
+                <div style="display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px solid var(--border2);">
+                  <div><div style="font-size:12px; font-weight:600; color:var(--white);">Socket Installation</div><div style="font-size:10px; color:var(--muted);">May 8, 2026</div></div>
+                  <div style="text-align:right;"><span class="status-badge s-complete">Done</span><div style="font-size:11px; color:var(--volt); margin-top:4px;">KES 1,200</div></div>
+                </div>
+                <div style="display:flex; justify-content:space-between; align-items:center; padding:8px 0;">
+                  <div><div style="font-size:12px; font-weight:600; color:var(--white);">Microwave Repair</div><div style="font-size:10px; color:var(--muted);">Apr 22, 2026</div></div>
+                  <div style="text-align:right;"><span class="status-badge s-complete">Done</span><div style="font-size:11px; color:var(--volt); margin-top:4px;">KES 1,800</div></div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:12px; font-weight:600; color:var(--muted); margin-bottom:12px; text-transform:uppercase; letter-spacing:1px; font-family:'DM Mono',monospace;">Notifications</div>
+              <div class="card" style="padding:16px;">
+                <div class="notif">
+                  <div class="notif-icon">🔧</div>
+                  <div class="notif-text"><div class="notif-title">James is on his way</div><div class="notif-sub">ETA 12 minutes to Kasarani</div></div>
+                  <div class="notif-time">2m</div>
+                </div>
+                <div class="notif" style="border:none;">
+                  <div class="notif-icon">✅</div>
+                  <div class="notif-text"><div class="notif-title">Job Confirmed</div><div class="notif-sub">Your booking #VLT-2847 is confirmed</div></div>
+                  <div class="notif-time">1h</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BOOK NEW SERVICE FLOW -->
+        <div style="margin-top:32px;">
+          <div style="font-size:12px; font-weight:600; color:var(--muted); margin-bottom:16px; text-transform:uppercase; letter-spacing:1px; font-family:'DM Mono',monospace;">Book New Service</div>
+          <div class="booking-steps">
+            <div class="bstep done"><div class="bstep-dot">✓</div><span>Select Service</span></div>
+            <div class="bstep-line done"></div>
+            <div class="bstep active"><div class="bstep-dot">2</div><span>Choose Technician</span></div>
+            <div class="bstep-line"></div>
+            <div class="bstep todo"><div class="bstep-dot">3</div><span>Schedule</span></div>
+            <div class="bstep-line"></div>
+            <div class="bstep todo"><div class="bstep-dot">4</div><span>Confirm & Pay</span></div>
+          </div>
+
+          <div class="grid g-21" style="padding:0;">
+            <div>
+              <div style="font-size:12px; color:var(--muted); margin-bottom:14px;">Available Technicians near Kasarani</div>
+              <div class="tech-list">
+                <div class="tech-card selected">
+                  <div class="tech-avatar">MK</div>
+                  <div class="tech-info">
+                    <div class="tech-name">Moses Kamau <span class="tech-badge">TOP RATED</span></div>
+                    <div class="tech-meta">Wiring Specialist · 5 yrs exp · 2.1 km away</div>
+                    <div class="tech-rating" style="margin-top:4px;">★★★★★ <span style="color:var(--muted); font-size:10px;">(142 jobs)</span></div>
+                  </div>
+                  <div class="tech-price">KES 2,500<span>from / job</span></div>
+                </div>
+                <div class="tech-card">
+                  <div class="tech-avatar" style="background:var(--orange);">AN</div>
+                  <div class="tech-info">
+                    <div class="tech-name">Agnes Njoroge</div>
+                    <div class="tech-meta">Appliance Expert · 4 yrs · 3.4 km away</div>
+                    <div class="tech-rating" style="margin-top:4px;">★★★★☆ <span style="color:var(--muted); font-size:10px;">(88 jobs)</span></div>
+                  </div>
+                  <div class="tech-price">KES 2,000<span>from / job</span></div>
+                </div>
+                <div class="tech-card">
+                  <div class="tech-avatar" style="background:var(--blue); color:#fff;">PM</div>
+                  <div class="tech-info">
+                    <div class="tech-name">Peter Mwangi</div>
+                    <div class="tech-meta">General Electrician · 3 yrs · 4.2 km away</div>
+                    <div class="tech-rating" style="margin-top:4px;">★★★★☆ <span style="color:var(--muted); font-size:10px;">(56 jobs)</span></div>
+                  </div>
+                  <div class="tech-price">KES 1,800<span>from / job</span></div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="booking-summary">
+                <div style="font-size:13px; font-weight:700; color:var(--white); margin-bottom:14px;">Booking Summary</div>
+                <div class="booking-row"><span class="k">Service</span><span class="v">Electrical Wiring</span></div>
+                <div class="booking-row"><span class="k">Technician</span><span class="v">Moses Kamau</span></div>
+                <div class="booking-row"><span class="k">Location</span><span class="v">Kasarani, Nairobi</span></div>
+                <div class="booking-row"><span class="k">Date</span><span class="v">Wed 14 May, 10:00 AM</span></div>
+                <div class="booking-row"><span class="k">Base fee</span><span class="v">KES 2,500</span></div>
+                <div class="booking-row"><span class="k">Platform fee</span><span class="v">KES 250</span></div>
+                <div class="booking-row" style="margin-top:4px;"><span class="k" style="font-weight:700; color:var(--white);">Total</span><span class="total">KES 2,750</span></div>
+              </div>
+              <div style="margin-top:14px; display:flex; flex-direction:column; gap:10px;">
+                <div style="font-size:11px; color:var(--muted); margin-bottom:4px;">Payment Method</div>
+                <button class="btn btn-ghost btn-full">📱 Pay via M-Pesa</button>
+                <button class="btn btn-ghost btn-full">💳 Debit / Credit Card</button>
+                <button class="btn btn-volt btn-full" style="margin-top:6px;">Confirm Booking →</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="height: 2px; background: linear-gradient(90deg, var(--orange), var(--volt));"></div>
+
+<!-- ═══════════════════════════════════════════════════════
+     SCREEN 4: TECHNICIAN DASHBOARD
+═══════════════════════════════════════════════════════ -->
+<section id="screen-tech-dash">
+  <div style="background: var(--ink3); padding: 10px 20px; font-family:'DM Mono',monospace; font-size:10px; color: var(--muted); border-bottom: 1px solid var(--border2);">
+    SCREEN 04 — TECHNICIAN DASHBOARD (ELECTRICIAN PORTAL)
+  </div>
+  <div class="shell">
+    <div class="sidenav">
+      <div class="sidenav-logo"><div class="logo-icon" style="background:var(--orange);">⚡</div><div class="logo-text" style="color:var(--orange);">VOLTA</div></div>
+      <div class="nav-section">
+        <div class="nav-label">Work</div>
+        <div class="nav-item active" style="background:var(--orange); color:var(--ink);"><span class="icon">📊</span> Dashboard</div>
+        <div class="nav-item"><span class="icon">📥</span> Job Requests <span class="nav-badge" style="background:var(--orange);">3</span></div>
+        <div class="nav-item"><span class="icon">📋</span> My Jobs</div>
+        <div class="nav-item"><span class="icon">🗓️</span> Schedule</div>
+        <div class="nav-item"><span class="icon">🗺️</span> Coverage Map</div>
+      </div>
+      <div class="nav-section">
+        <div class="nav-label">Finance</div>
+        <div class="nav-item"><span class="icon">💰</span> Earnings</div>
+        <div class="nav-item"><span class="icon">📤</span> Withdraw</div>
+        <div class="nav-item"><span class="icon">⭐</span> My Reviews</div>
+        <div class="nav-item"><span class="icon">⚙️</span> Profile & Skills</div>
+      </div>
+      <div class="sidenav-footer">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+          <div class="toggle on"></div>
+          <span style="font-size:12px; color:var(--volt);">Online — Accepting Jobs</span>
+        </div>
+        <div class="user-chip">
+          <div class="avatar" style="background:var(--orange);">JO</div>
+          <div class="user-info"><div class="user-name">James Otieno</div><div class="user-role">Technician · Kasarani</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="topbar">
+        <div class="topbar-title">Technician Dashboard</div>
+        <div class="topbar-sep"></div>
+        <button class="topbar-pill">📥 3 New Requests</button>
+        <button class="btn btn-sm" style="background:var(--orange); color:#fff;">Go Offline</button>
+      </div>
+
+      <div class="db-wrap" style="padding-top:28px;">
+        <!-- STAT CARDS -->
+        <div class="grid g-4" style="padding:0; margin-bottom:24px;">
+          <div class="card">
+            <div class="card-icon-wrap orange-bg">💰</div>
+            <div class="card-label">This Month</div>
+            <div class="card-value" style="font-size:26px; color:var(--orange);">KES 38.4K</div>
+            <div class="card-change up">↑ 18% vs last month</div>
+          </div>
+          <div class="card">
+            <div class="card-icon-wrap volt-bg">✅</div>
+            <div class="card-label">Jobs Completed</div>
+            <div class="card-value" style="font-size:26px;">24</div>
+            <div class="card-change up">↑ 4 more than April</div>
+          </div>
+          <div class="card">
+            <div class="card-icon-wrap blue-bg">⭐</div>
+            <div class="card-label">Avg Rating</div>
+            <div class="card-value" style="font-size:26px; color:#FFD600;">4.9</div>
+            <div class="card-change neu">Based on 142 reviews</div>
+          </div>
+          <div class="card">
+            <div class="card-icon-wrap red-bg">⏱️</div>
+            <div class="card-label">Response Rate</div>
+            <div class="card-value" style="font-size:26px; color:var(--volt);">96%</div>
+            <div class="card-change up">Excellent standing</div>
+          </div>
+        </div>
+
+        <div class="grid g-21" style="padding:0;">
+          <div>
+            <!-- INCOMING REQUESTS -->
+            <div style="font-size:12px; font-weight:600; color:var(--muted); margin-bottom:12px; text-transform:uppercase; letter-spacing:1px; font-family:'DM Mono',monospace;">Incoming Job Requests</div>
+            <div style="display:flex; flex-direction:column; gap:12px;">
+              <div class="card" style="border-color: rgba(200,255,0,0.3);">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                  <div>
+                    <div style="font-size:14px; font-weight:700; color:var(--white);">🧊 Fridge Not Cooling</div>
+                    <div style="font-size:11px; color:var(--muted); margin-top:3px;">Kasarani · 1.4 km away · Urgent</div>
+                    <div style="font-size:11px; color:var(--volt); margin-top:6px;">KES 2,200 estimated</div>
+                  </div>
+                  <div style="display:flex; flex-direction:column; gap:6px; align-items:flex-end;">
+                    <span class="status-badge s-pending">NEW</span>
+                    <div style="font-size:10px; color:var(--muted);">Jane W. ⭐ 4.8 customer</div>
+                  </div>
+                </div>
+                <div style="display:flex; gap:10px; margin-top:16px;">
+                  <button class="btn btn-volt btn-sm" style="flex:1; justify-content:center;">Accept Job</button>
+                  <button class="btn btn-ghost btn-sm" style="flex:1; justify-content:center;">Decline</button>
+                </div>
+              </div>
+              <div class="card">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                  <div>
+                    <div style="font-size:14px; font-weight:700; color:var(--white);">🔌 Socket Replacement ×3</div>
+                    <div style="font-size:11px; color:var(--muted); margin-top:3px;">Roysambu · 2.8 km · Tomorrow 9am</div>
+                    <div style="font-size:11px; color:var(--volt); margin-top:6px;">KES 1,800 estimated</div>
+                  </div>
+                  <div style="text-align:right;"><span class="status-badge s-pending">NEW</span></div>
+                </div>
+                <div style="display:flex; gap:10px; margin-top:16px;">
+                  <button class="btn btn-volt btn-sm" style="flex:1; justify-content:center;">Accept Job</button>
+                  <button class="btn btn-ghost btn-sm" style="flex:1; justify-content:center;">Decline</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- EARNINGS CHART -->
+            <div style="margin-top:24px;">
+              <div style="font-size:12px; font-weight:600; color:var(--muted); margin-bottom:12px; text-transform:uppercase; letter-spacing:1px; font-family:'DM Mono',monospace;">Weekly Earnings (KES)</div>
+              <div class="card">
+                <div class="chart-wrap">
+                  <div class="chart-bar-row"><div class="chart-bar-label">Mon</div><div class="chart-bar-track"><div class="chart-bar-fill" style="width:50%;background:var(--orange);"></div></div><div class="chart-bar-val">5.2K</div></div>
+                  <div class="chart-bar-row"><div class="chart-bar-label">Tue</div><div class="chart-bar-track"><div class="chart-bar-fill" style="width:72%;background:var(--orange);"></div></div><div class="chart-bar-val">7.5K</div></div>
+                  <div class="chart-bar-row"><div class="chart-bar-label">Wed</div><div class="chart-bar-track"><div class="chart-bar-fill" style="width:38%;background:var(--orange);"></div></div><div class="chart-bar-val">3.9K</div></div>
+                  <div class="chart-bar-row"><div class="chart-bar-label">Thu</div><div class="chart-bar-track"><div class="chart-bar-fill" style="width:90%;background:var(--volt);"></div></div><div class="chart-bar-val">9.4K</div></div>
+                  <div class="chart-bar-row"><div class="chart-bar-label">Fri</div><div class="chart-bar-track"><div class="chart-bar-fill" style="width:62%;background:var(--orange);"></div></div><div class="chart-bar-val">6.5K</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:16px;">
+            <div>
+              <div style="font-size:12px; font-weight:600; color:var(--muted); margin-bottom:12px; text-transform:uppercase; letter-spacing:1px; font-family:'DM Mono',monospace;">Today's Schedule</div>
+              <div class="card">
+                <div style="display:flex; flex-direction:column; gap:12px;">
+                  <div style="display:flex; gap:10px; align-items:flex-start;">
+                    <div style="font-family:'DM Mono',monospace; font-size:10px; color:var(--volt); width:44px; flex-shrink:0;">10:00</div>
+                    <div style="border-left:2px solid var(--volt); padding-left:12px; flex:1;">
+                      <div style="font-size:12px; font-weight:600; color:var(--white);">Fridge Repair — Jane W.</div>
+                      <div style="font-size:10px; color:var(--muted);">Kasarani · KES 2,200</div>
+                    </div>
+                  </div>
+                  <div style="display:flex; gap:10px; align-items:flex-start;">
+                    <div style="font-family:'DM Mono',monospace; font-size:10px; color:var(--muted); width:44px; flex-shrink:0;">14:30</div>
+                    <div style="border-left:2px solid var(--muted2); padding-left:12px; flex:1;">
+                      <div style="font-size:12px; font-weight:600; color:var(--white);">Wiring Check — Paul M.</div>
+                      <div style="font-size:10px; color:var(--muted);">Ruaraka · KES 3,500</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:12px; font-weight:600; color:var(--muted); margin-bottom:12px; text-transform:uppercase; letter-spacing:1px; font-family:'DM Mono',monospace;">Wallet Balance</div>
+              <div class="card" style="border-color:rgba(255,107,26,0.25);">
+                <div style="font-size:11px; color:var(--muted); margin-bottom:6px;">Available</div>
+                <div style="font-family:'Clash Display',sans-serif; font-size:30px; color:var(--orange); font-weight:700;">KES 12,400</div>
+                <div style="font-size:10px; color:var(--muted); margin-bottom:16px;">Last withdrawal: May 10</div>
+                <button class="btn btn-orange btn-full" style="color:#fff;">Withdraw via M-Pesa</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="height: 2px; background: linear-gradient(90deg, var(--blue), var(--volt));"></div>
+
+<!-- ═══════════════════════════════════════════════════════
+     SCREEN 5: ADMIN DASHBOARD
+═══════════════════════════════════════════════════════ -->
+<section id="screen-admin-dash">
+  <div style="background: var(--ink3); padding: 10px 20px; font-family:'DM Mono',monospace; font-size:10px; color: var(--muted); border-bottom: 1px solid var(--border2);">
+    SCREEN 05 — ADMIN CONTROL CENTRE
+  </div>
+  <div class="shell">
+    <div class="sidenav">
+      <div class="sidenav-logo"><div class="logo-icon" style="background:var(--blue);">⚡</div><div class="logo-text" style="color:var(--blue);">VOLTA</div></div>
+      <div class="nav-section">
+        <div class="nav-label">Operations</div>
+        <div class="nav-item active" style="background:var(--blue); color:var(--ink);"><span class="icon">📊</span> Overview</div>
+        <div class="nav-item"><span class="icon">📋</span> All Jobs <span class="nav-badge" style="background:var(--blue); color:var(--ink);">12</span></div>
+        <div class="nav-item"><span class="icon">⚡</span> Technicians</div>
+        <div class="nav-item"><span class="icon">🏠</span> Customers</div>
+        <div class="nav-item"><span class="icon">🗺️</span> Coverage Map</div>
+      </div>
+      <div class="nav-section">
+        <div class="nav-label">Finance</div>
+        <div class="nav-item"><span class="icon">💰</span> Revenue</div>
+        <div class="nav-item"><span class="icon">📤</span> Payouts</div>
+        <div class="nav-item"><span class="icon">⚠️</span> Disputes <span class="nav-badge" style="background:var(--red);">2</span></div>
+        <div class="nav-item"><span class="icon">⚙️</span> Settings</div>
+      </div>
+      <div class="sidenav-footer">
+        <div class="user-chip">
+          <div class="avatar" style="background:var(--blue); color:var(--ink);">AD</div>
+          <div class="user-info"><div class="user-name">Admin Console</div><div class="user-role">Super Admin</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="topbar">
+        <div class="topbar-title">Platform Overview</div>
+        <div class="topbar-sep"></div>
+        <div class="topbar-pill active">Live</div>
+        <button class="topbar-pill">This Week</button>
+        <button class="topbar-pill">This Month</button>
+        <button class="btn btn-sm" style="background:var(--blue); color:var(--ink);">+ Add Technician</button>
+      </div>
+
+      <div class="db-wrap" style="padding-top:28px;">
+        <div class="grid g-4" style="padding:0; margin-bottom:24px;">
+          <div class="card">
+            <div class="card-icon-wrap blue-bg">💰</div>
+            <div class="card-label">Platform Revenue</div>
+            <div class="card-value" style="color:var(--blue);">KES 128K</div>
+            <div class="card-change up">↑ 22% this month</div>
+          </div>
+          <div class="card">
+            <div class="card-icon-wrap volt-bg">📋</div>
+            <div class="card-label">Active Jobs Today</div>
+            <div class="card-value">47</div>
+            <div class="card-change up">↑ 12 vs yesterday</div>
+          </div>
+          <div class="card">
+            <div class="card-icon-wrap orange-bg">⚡</div>
+            <div class="card-label">Online Technicians</div>
+            <div class="card-value">83</div>
+            <div class="card-change neu">Of 142 registered</div>
+          </div>
+          <div class="card">
+            <div class="card-icon-wrap red-bg">🏠</div>
+            <div class="card-label">Registered Users</div>
+            <div class="card-value">3,841</div>
+            <div class="card-change up">+124 this week</div>
+          </div>
+        </div>
+
+        <div class="grid g-12" style="padding:0;">
+          <!-- JOBS TABLE -->
+          <div>
+            <div style="font-size:12px; font-weight:600; color:var(--muted); margin-bottom:12px; text-transform:uppercase; letter-spacing:1px; font-family:'DM Mono',monospace;">Live Job Feed</div>
+            <div class="card" style="padding:0; overflow:hidden;">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Job ID</th><th>Service</th><th>Customer</th><th>Technician</th><th>Sub-County</th><th>Status</th><th>KES</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td style="color:var(--muted); font-family:'DM Mono',monospace;">#2847</td><td>Fridge Repair</td><td>Jane W.</td><td>James O.</td><td>Kasarani</td><td><span class="status-badge s-active">ACTIVE</span></td><td style="color:var(--volt);">2,200</td></tr>
+                  <tr><td style="color:var(--muted); font-family:'DM Mono',monospace;">#2846</td><td>Wiring</td><td>Paul M.</td><td>Moses K.</td><td>Westlands</td><td><span class="status-badge s-pending">PENDING</span></td><td style="color:var(--volt);">8,500</td></tr>
+                  <tr><td style="color:var(--muted); font-family:'DM Mono',monospace;">#2845</td><td>Socket Install</td><td>Grace A.</td><td>Agnes N.</td><td>Embakasi</td><td><span class="status-badge s-complete">DONE</span></td><td style="color:var(--volt);">1,200</td></tr>
+                  <tr><td style="color:var(--muted); font-family:'DM Mono',monospace;">#2844</td><td>MCB Repair</td><td>Brian K.</td><td>Peter M.</td><td>Dagoretti</td><td><span class="status-badge s-complete">DONE</span></td><td style="color:var(--volt);">3,500</td></tr>
+                  <tr><td style="color:var(--muted); font-family:'DM Mono',monospace;">#2843</td><td>Lighting</td><td>Ruth N.</td><td>—</td><td>Njiru</td><td><span class="status-badge s-pending">UNASSIGNED</span></td><td style="color:var(--volt);">900</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- DEMAND BY SUBCOUNTY -->
+            <div style="margin-top:20px;">
+              <div style="font-size:12px; font-weight:600; color:var(--muted); margin-bottom:12px; text-transform:uppercase; letter-spacing:1px; font-family:'DM Mono',monospace;">Demand by Sub-County (This Month)</div>
+              <div class="card">
+                <div class="chart-wrap">
+                  <div class="chart-bar-row"><div class="chart-bar-label">Embakasi</div><div class="chart-bar-track"><div class="chart-bar-fill" style="width:100%;background:var(--blue);"></div></div><div class="chart-bar-val">347</div></div>
+                  <div class="chart-bar-row"><div class="chart-bar-label">Kasarani</div><div class="chart-bar-track"><div class="chart-bar-fill" style="width:82%;background:var(--blue);"></div></div><div class="chart-bar-val">284</div></div>
+                  <div class="chart-bar-row"><div class="chart-bar-label">Westlands</div><div class="chart-bar-track"><div class="chart-bar-fill" style="width:65%;background:var(--blue);"></div></div><div class="chart-bar-val">225</div></div>
+                  <div class="chart-bar-row"><div class="chart-bar-label">Dagoretti</div><div class="chart-bar-track"><div class="chart-bar-fill" style="width:54%;background:var(--blue)88;"></div></div><div class="chart-bar-val">187</div></div>
+                  <div class="chart-bar-row"><div class="chart-bar-label">Njiru</div><div class="chart-bar-track"><div class="chart-bar-fill" style="width:40%;background:var(--blue)66;"></div></div><div class="chart-bar-val">139</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT PANEL -->
+          <div style="display:flex; flex-direction:column; gap:16px;">
+            <div>
+              <div style="font-size:12px; font-weight:600; color:var(--muted); margin-bottom:12px; text-transform:uppercase; letter-spacing:1px; font-family:'DM Mono',monospace;">Pending Actions</div>
+              <div class="card">
+                <div class="notif">
+                  <div class="notif-icon" style="background:rgba(255,59,59,0.12);">⚠️</div>
+                  <div class="notif-text"><div class="notif-title" style="color:var(--red);">2 Disputes Open</div><div class="notif-sub">Need review within 24h</div></div>
+                  <button class="btn btn-ghost btn-sm">View</button>
+                </div>
+                <div class="notif">
+                  <div class="notif-icon">👤</div>
+                  <div class="notif-text"><div class="notif-title">5 Technician Applications</div><div class="notif-sub">Pending KYC verification</div></div>
+                  <button class="btn btn-ghost btn-sm">Review</button>
+                </div>
+                <div class="notif" style="border:none;">
+                  <div class="notif-icon">💸</div>
+                  <div class="notif-text"><div class="notif-title">Weekly Payout Due</div><div class="notif-sub">KES 284,000 to 83 technicians</div></div>
+                  <button class="btn btn-ghost btn-sm">Process</button>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div style="font-size:12px; font-weight:600; color:var(--muted); margin-bottom:12px; text-transform:uppercase; letter-spacing:1px; font-family:'DM Mono',monospace;">Platform Health</div>
+              <div class="card">
+                <div style="display:flex; flex-direction:column; gap:12px;">
+                  <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-size:12px; color:var(--muted);">Avg Response Time</span>
+                    <span style="font-size:13px; font-weight:700; color:var(--volt);">8 min</span>
+                  </div>
+                  <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-size:12px; color:var(--muted);">Job Completion Rate</span>
+                    <span style="font-size:13px; font-weight:700; color:var(--volt);">94.2%</span>
+                  </div>
+                  <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-size:12px; color:var(--muted);">Avg Platform Rating</span>
+                    <span style="font-size:13px; font-weight:700; color:#FFD600;">4.8 ★</span>
+                  </div>
+                  <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-size:12px; color:var(--muted);">Dispute Rate</span>
+                    <span style="font-size:13px; font-weight:700; color:var(--volt);">1.3%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div style="font-size:12px; font-weight:600; color:var(--muted); margin-bottom:12px; text-transform:uppercase; letter-spacing:1px; font-family:'DM Mono',monospace;">Service Demand Split</div>
+              <div class="card">
+                <div class="chart-wrap">
+                  <div class="chart-bar-row"><div class="chart-bar-label">Appliance</div><div class="chart-bar-track"><div class="chart-bar-fill" style="width:100%;background:#C8FF00;"></div></div><div class="chart-bar-val">38%</div></div>
+                  <div class="chart-bar-row"><div class="chart-bar-label">Wiring</div><div class="chart-bar-track"><div class="chart-bar-fill" style="width:58%;background:#76DD00;"></div></div><div class="chart-bar-val">22%</div></div>
+                  <div class="chart-bar-row"><div class="chart-bar-label">Sockets</div><div class="chart-bar-track"><div class="chart-bar-fill" style="width:42%;background:#4CBB00;"></div></div><div class="chart-bar-val">16%</div></div>
+                  <div class="chart-bar-row"><div class="chart-bar-label">Breakers</div><div class="chart-bar-track"><div class="chart-bar-fill" style="width:26%;background:#329900;"></div></div><div class="chart-bar-val">10%</div></div>
+                  <div class="chart-bar-row"><div class="chart-bar-label">Lighting</div><div class="chart-bar-track"><div class="chart-bar-fill" style="width:21%;background:#1a7700;"></div></div><div class="chart-bar-val">8%</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FIGMA SPECS BAR -->
+<div class="figma-bar">
+  <span style="color:var(--volt); font-weight:700;">FIGMA SPECS</span>
+  <div class="figma-chip"><span>Font:</span>Clash Display + Cabinet Grotesk</div>
+  <div class="figma-chip"><span>Primary:</span>#C8FF00 Volt</div>
+  <div class="figma-chip"><span>Accent 1:</span>#FF6B1A Orange</div>
+  <div class="figma-chip"><span>Accent 2:</span>#1AADFF Blue</div>
+  <div class="figma-chip"><span>BG:</span>#080C04 Ink</div>
+  <div class="figma-chip"><span>Card BG:</span>#171F10</div>
+  <div class="figma-chip"><span>Border-r:</span>12px / 20px</div>
+  <div class="figma-chip"><span>Grid:</span>36px padding</div>
+  <div class="figma-chip"><span>Breakpoint:</span>900px</div>
+  <div class="figma-chip"><span>Screens:</span>5 of 12 shown</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+intasend-python
+djangorestframework==3.15.2
+djangorestframework-simplejwt==5.3.1
+drf-yasg==1.21.6
+django-cors-headers==3.13.0
+redis==5.0.1
+django-unfold
+django-allauth==65.16.1
+django-mpesa==2.0.14
+cryptography==48.0.0
+requests>=2.34.0
+reportlab>=4.0.0
