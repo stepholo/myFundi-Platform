@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=cabinet-grotesk@300,400,500,700,800&display=swap');
+
+@import "tailwindcss";
+
+:root {
+  /* ── Page backgrounds ──────────────── */
+  --ink:    #F7F8FC;   /* page / skeleton bg */
+  --ink2:   #FFFFFF;   /* topbar / elevated panels */
+  --ink3:   #FFFFFF;   /* card backgrounds */
+
+  /* ── Text ─────────────────────────── */
+  --white:  #1E293B;   /* primary text (name kept for compat) */
+  --text:   #1E293B;
+  --muted:  #64748B;   /* secondary text */
+  --muted2: #94A3B8;   /* tertiary / placeholder */
+
+  /* ── Borders ──────────────────────── */
+  --border:  #E2E8F0;
+  --border2: #E2E8F0;
+  --glass:   rgba(232,80,26,0.06);
+
+  /* ── Brand primary (Orange) ──────── */
+  --volt:     #E8501A;
+  --volt-dim: #C43D0F;
+
+  /* ── Brand secondary (Orange light) ─ */
+  --orange: #FF9A3C;
+
+  /* ── Brand navy ──────────────────── */
+  --navy:       #1B2D5E;
+  --navy-light: #2E4380;
+
+  /* ── Semantic ────────────────────── */
+  --green: #16A34A;
+  --amber: #D97706;
+  --red:   #DC2626;
+  --blue:  #3B82F6;
+  --teal:  #0F766E;
+
+  /* ── Sidebar (navy from brand) ──── */
+  --sidebar-bg:     #1B2D5E;
+  --sidebar-border: rgba(255,255,255,0.10);
+  --sidebar-text:   #94A3B8;
+
+  /* ── Elevation ────────────────────── */
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+/* ── Dark theme overrides ─────────────────────────────────────────────────── */
+[data-theme="dark"] {
+  --ink:    #0F172A;
+  --ink2:   #1E293B;
+  --ink3:   #1A2332;
+  --white:  #F1F5F9;
+  --text:   #F1F5F9;
+  --muted:  #94A3B8;
+  --muted2: #64748B;
+  --border:  rgba(255,255,255,0.08);
+  --border2: rgba(255,255,255,0.1);
+  --glass:   rgba(232,80,26,0.1);
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.3);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.4);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb { background: #334155; }
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--ink);
+  color: var(--text);
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 13px;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root { width: 100%; min-height: 100svh; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+
+/* ── Responsive helpers ───────────────────────────────────────────────────── */
+
+/* Section padding: generous on desktop, compact on mobile */
+.section-pad        { padding: 80px 48px; }
+.section-pad-sm     { padding: 60px 48px; }
+
+/* Responsive grids */
+.grid-5col  { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+.grid-2col  { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+.grid-2col-sm { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.grid-footer { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; }
+
+/* Responsive split layouts */
+.responsive-split {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.responsive-split > .split-panel {
+  width: 100%;
+}
+.responsive-split > .split-panel.sidebar {
+  border-right: none;
+  border-bottom: 1px solid var(--border2);
+}
+
+.responsive-grid-3 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.responsive-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .responsive-split {
+    flex-direction: row;
+  }
+  .responsive-split > .split-panel.sidebar {
+    width: 42%;
+    flex-shrink: 0;
+    border-right: 1px solid var(--border2);
+    border-bottom: none;
+  }
+  .responsive-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .responsive-grid-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Mobile topbar (hamburger header for customer/technician on mobile) */
+.mobile-topbar { display: none; flex-shrink: 0; }
+
+/* Dashboard layout shells */
+.dashboard-shell { display: flex; min-height: 100vh; }
+.app-sidebar {
+  width: 220px; flex-shrink: 0;
+  background: var(--sidebar-bg);
+  border-right: 1px solid rgba(255,255,255,0.08);
+  display: flex; flex-direction: column;
+  position: sticky; top: 0; height: 100vh; overflow-y: auto;
+}
+.app-main   { flex: 1; min-width: 0; overflow-y: auto; display: flex; flex-direction: column; }
+
+/* Navbar mobile helpers */
+.nav-links-desktop { display: flex; }
+.nav-phone-desktop { display: flex; }
+.nav-hamburger     { display: none; }
+
+/* Homepage hero text */
+.hero-content { padding: 100px 80px 80px; max-width: 680px; }
+
+/* ── 768 px breakpoint (tablet / large phone) ─────────────────────────────── */
+@media (max-width: 768px) {
+  .section-pad     { padding: 52px 20px; }
+  .section-pad-sm  { padding: 40px 20px; }
+
+  .grid-5col  { grid-template-columns: repeat(2, 1fr); }
+  .grid-2col  { grid-template-columns: 1fr; gap: 40px; }
+  .grid-2col-sm { grid-template-columns: 1fr; }
+  .grid-footer { grid-template-columns: 1fr 1fr; gap: 28px; }
+
+  /* Hide desktop sidebar, show mobile topbar */
+  .app-sidebar    { display: none !important; }
+  .mobile-topbar  {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    height: 56px;
+    background: #1B2D5E;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  /* Navbar: hide middle links and phone on small screens */
+  .nav-links-desktop { display: none; }
+  .nav-phone-desktop { display: none; }
+  .nav-hamburger     { display: flex; }
+
+  /* Hero: compact padding */
+  .hero-content { padding: 60px 24px 48px; }
+
+  /* Verification banner wraps nicely */
+  .verify-banner { flex-direction: column; align-items: flex-start; gap: 8px; }
+}
+
+/* ── 480 px breakpoint (small phone) ─────────────────────────────────────── */
+@media (max-width: 480px) {
+  .grid-5col   { grid-template-columns: repeat(2, 1fr); }
+  .grid-footer { grid-template-columns: 1fr; }
+  .hero-content { padding: 48px 20px 40px; }
+}

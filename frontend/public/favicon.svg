@@ -1,0 +1,11 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="eFundi">
+  <defs>
+    <linearGradient id="fvBg" x1="15%" y1="0%" x2="85%" y2="100%">
+      <stop offset="0%" stop-color="#FF9A3C"/><stop offset="100%" stop-color="#E8501A"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#fvBg)"/>
+  <!-- bold white pin, simplified (no inner wrench so it survives 16px) -->
+  <path d="M32 12 C23 12 16 19 16 28 C16 40 32 51 32 51 C32 51 48 40 48 28 C48 19 41 12 32 12 Z" fill="#FFFFFF"/>
+  <circle cx="32" cy="27" r="7.5" fill="url(#fvBg)"/>
+</svg>
