@@ -259,12 +259,6 @@ requested → broadcasted → assigned → in_progress → completed
 - **First-accept-wins:** the first technician to `PATCH /bookings/{id}/accept/` locks the booking atomically via `SELECT FOR UPDATE`.
 - The technician sets the quoted amount; the worker payout is computed from the service price catalogue (or falls back to **35%** of the quoted amount when no catalogue entry is matched).
 
-### Commission Split
-
-- The platform retains **20%** of each successful payment (`COMMISSION_RATE = 0.20`).
-- If the booking carries a pre-computed `worker_amount` from the price catalogue, that value takes precedence over the flat rate.
-- Every successful payment automatically creates a `Commission` audit record and credits the technician's wallet. A Celery task then triggers auto-payout.
-
 ### Payments (M-Pesa)
 
 - Customers initiate payments via **M-Pesa STK Push** (Intasend).
