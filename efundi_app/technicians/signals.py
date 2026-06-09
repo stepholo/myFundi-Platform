@@ -22,7 +22,6 @@ def ensure_technician_profile(sender, instance, **kwargs):
             'email': instance.email,
             'phone_number': instance.phone_number,
             'role': instance.role,
-            'specialization': 'General',
             'is_active': instance.is_active,
         },
     )

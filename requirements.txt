@@ -10,3 +10,7 @@ django-mpesa==2.0.14
 cryptography==48.0.0
 requests>=2.34.0
 reportlab>=4.0.0
+pytest==9.0.3
+pytest-django==4.12.0
+pytest-cov==7.1.0
+factory-boy==3.3.3
