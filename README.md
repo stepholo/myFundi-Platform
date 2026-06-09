@@ -1,6 +1,6 @@
 # eFundi — Home Services Marketplace
 
-eFundi connects customers with verified, local technicians for electrical, plumbing, carpentry, cleaning, and appliance-repair jobs. Customers book a job, receive a price quote from the first technician who accepts, pay via M-Pesa, and leave a review — all in one flow.
+eFundi connects customers with verified, local technicians for electrical, plumbing, carpentry, cleaning, and appliance-repair jobs. Customers creates bookings, receive a price quote from the first technician who accepts, pay via M-Pesa, and leave a review — all in one flow.
 
 ---
 
@@ -240,7 +240,7 @@ Full interactive documentation is available at `/api/v1/schema/swagger-ui/` once
 
 | Role | Capabilities |
 |---|---|
-| **Customer** | Book jobs, make payments, submit reviews |
+| **Customer** | Create Bookings, make payments, submit reviews |
 | **Technician** | Accept/decline/work bookings, manage wallet, request withdrawals |
 | **Admin** | Verify technicians, manage all bookings, approve/reject withdrawals |
 | **Super Admin** | Full platform access |
