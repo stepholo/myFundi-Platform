@@ -1,0 +1,104 @@
+# Render Blueprint for a quick demo deploy of eFundi.
+# Deploy: https://render.com -> New -> Blueprint -> select this repo.
+#
+# After the first deploy:
+#  1. Open the "efundi-backend" service, copy its public URL (Render assigns
+#     it automatically, e.g. https://efundi-backend-xxxx.onrender.com).
+#  2. Open the "efundi-frontend" static site -> Settings -> Redirects/Rewrites
+#     and update the "/api/*" destination below to match that backend URL
+#     (only needed if Render appended a random suffix to the name).
+#  3. Fill in any env vars marked "sync: false" below (Dashboard -> service ->
+#     Environment) — these are secrets that should not live in this file.
+#
+# Notes on what was simplified for a "free demo" deploy:
+#  - CELERY_TASK_ALWAYS_EAGER=True runs background tasks (emails, etc.)
+#    inline, so no separate Celery worker / Redis broker is required.
+#  - USE_REDIS_CACHE=False switches Django's cache to in-memory, so no
+#    Redis instance is required either.
+#  - The Postgres free instance expires after ~30 days — fine for a temporary
+#    marketing demo, recreate it (and re-run the deploy) if you need it longer.
+
+databases:
+  - name: efundi-db
+    databaseName: efundi_db
+    user: efundi_user
+    plan: free
+
+services:
+  - type: web
+    name: efundi-backend
+    env: docker
+    plan: free
+    dockerfilePath: ./efundi_app/Dockerfile
+    dockerContext: .
+    dockerCommand: >
+      sh -c "python manage.py migrate &&
+             python manage.py collectstatic --noinput &&
+             gunicorn efundi_app.wsgi:application --bind 0.0.0.0:8000"
+    healthCheckPath: /api/v1/schema/
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "False"
+      - key: CELERY_TASK_ALWAYS_EAGER
+        value: "True"
+      - key: USE_REDIS_CACHE
+        value: "False"
+      - key: DB_NAME
+        fromDatabase:
+          name: efundi-db
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: efundi-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: efundi-db
+          property: password
+      - key: DB_HOST
+        fromDatabase:
+          name: efundi-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: efundi-db
+          property: port
+      - key: FRONTEND_URL
+        sync: false # set to the efundi-frontend static site URL after first deploy
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: INTASEND_PUBLISHABLE_KEY
+        sync: false
+      - key: INTASEND_API_KEY
+        sync: false
+      - key: INTASEND_TEST_MODE
+        value: "True"
+      - key: EMAIL_HOST_USER
+        sync: false
+      - key: EMAIL_HOST_PASSWORD
+        sync: false
+      - key: DEFAULT_FROM_EMAIL
+        sync: false
+
+  - type: web
+    name: efundi-frontend
+    env: static
+    plan: free
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    envVars:
+      - key: VITE_GOOGLE_CLIENT_ID
+        sync: false
+    routes:
+      # Forwards API calls to the backend so the frontend's relative
+      # `/api/v1` axios baseURL keeps working unchanged.
+      - type: rewrite
+        source: /api/*
+        destination: https://efundi-backend.onrender.com/api/*
+      # SPA fallback so React Router handles client-side routes.
+      - type: rewrite
+        source: /*
+        destination: /index.html
