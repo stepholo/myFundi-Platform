@@ -16,6 +16,7 @@ export const authApi = {
   getUser: (userId) => api.get(`/accounts/users/${userId}/`),
   updateUser: (userId, data) => api.patch(`/accounts/users/${userId}/`, data),
   forgotPassword: (email) => api.post('/accounts/reset-password/', { email }),
+  resetPassword: (uid, token, new_password) => api.post('/accounts/confirm-reset-password/', { uid, token, new_password }),
   verifyEmail: (uid, token) => api.get(`/accounts/verify-email/?uid=${uid}&token=${token}`),
   resendVerification: (email) => api.post('/accounts/resend-verification/', { email }),
   technicianStats: () => api.get('/accounts/technician-stats/'),

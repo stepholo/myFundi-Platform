@@ -9,6 +9,7 @@ import CustomerLoginPage from './pages/auth/CustomerLoginPage'
 import TechnicianLoginPage from './pages/auth/TechnicianLoginPage'
 import RegisterPage from './pages/auth/RegisterPage'
 import VerifyEmailPage from './pages/auth/VerifyEmailPage'
+import ResetPasswordPage from './pages/auth/ResetPasswordPage'
 import CustomerLayout from './components/layout/CustomerLayout'
 import CustomerDashboard from './pages/customer/CustomerDashboard'
 import TechnicianLayout from './components/layout/TechnicianLayout'
@@ -68,7 +69,8 @@ function AppShell() {
   const isAuthPage =
     pathname.startsWith('/login') ||
     pathname === '/register' ||
-    pathname === '/verify-email'
+    pathname === '/verify-email' ||
+    pathname === '/reset-password'
   const isDashboard =
     pathname.startsWith('/customer') ||
     pathname.startsWith('/technician') ||
@@ -89,6 +91,7 @@ function AppShell() {
           <Route path="/login/technician" element={<TechnicianLoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/verify-email" element={<VerifyEmailPage />} />
+          <Route path="/reset-password" element={<ResetPasswordPage />} />
           <Route path="/payment/:id" element={<PaymentPage />} />
 
           {/* Customer */}
