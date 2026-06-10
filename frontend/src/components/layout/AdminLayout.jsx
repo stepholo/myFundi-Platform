@@ -53,10 +53,10 @@ export default function AdminLayout() {
         {/* Logo */}
         <div style={{ padding: '20px 20px 18px', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <img src="/efundi_icon.svg" width="36" height="36" alt="eFundi" style={{ borderRadius: '8px', flexShrink: 0 }} />
+            <img src="/efundi_icon.svg" width="36" height="36" alt="myFundi Hub" style={{ borderRadius: '8px', flexShrink: 0 }} />
             <div>
               <div style={{ fontFamily: 'Clash Display', fontSize: '17px', fontWeight: '700', color: '#FFFFFF', lineHeight: 1 }}>
-                <span style={{ color: '#FF9A3C' }}>e</span>Fundi
+                <span style={{ color: '#FF9A3C' }}>my</span>Fundi Hub
               </div>
               <div style={{ fontSize: '11px', color: '#A78BFA', fontFamily: 'DM Mono', letterSpacing: '1px', marginTop: '2px' }}>
                 ADMIN

@@ -46,7 +46,7 @@ class SwaggerLoginView(generics.GenericAPIView):
         tags=['Authentication'],
         summary='Swagger UI login (OAuth2 password flow)',
         description=(
-            'Enter your eFundi **username** and **password**. '
+            'Enter your myFundi Hub **username** and **password**. '
             'Swagger UI will call this endpoint automatically when you use the '
             '`credentialsAuth` option in the Authorize dialog and will set '
             '`Authorization: Bearer <token>` on every subsequent request.\n\n'
@@ -250,7 +250,7 @@ class GoogleLoginView(generics.GenericAPIView):
         user = User.objects.filter(email__iexact=email, is_active=True).first()
         if not user:
             return Response(
-                {'error': 'No eFundi account found for this Google email. Please register first.'},
+                {'error': 'No myFundi Hub account found for this Google email. Please register first.'},
                 status=status.HTTP_404_NOT_FOUND,
             )
 
@@ -311,7 +311,7 @@ class EmailVerificationView(generics.GenericAPIView):
             from utils.emails import send_notification_email
             send_notification_email(
                 to_email=user.email,
-                subject='Your eFundi technician account is pending verification',
+                subject='Your myFundi Hub technician account is pending verification',
                 template_name='emails/account_pending.html',
                 context={
                     'first_name': user.first_name,

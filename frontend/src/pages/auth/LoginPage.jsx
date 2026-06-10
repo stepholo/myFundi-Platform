@@ -64,9 +64,9 @@ export default function LoginPage() {
         }}>
           {/* Logo */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '32px' }}>
-            <img src="/efundi_icon.svg" width="40" height="40" alt="eFundi" loading="lazy" style={{ borderRadius: '8px', minWidth: '40px', minHeight: '40px' }} />
+            <img src="/efundi_icon.svg" width="40" height="40" alt="myFundi Hub" loading="lazy" style={{ borderRadius: '8px', minWidth: '40px', minHeight: '40px' }} />
             <span style={{ fontFamily: 'Clash Display', fontSize: '22px', fontWeight: '700', color: '#1B2D5E' }}>
-              <span style={{ color: '#E8501A' }}>e</span>Fundi
+              <span style={{ color: '#E8501A' }}>my</span>Fundi Hub
             </span>
           </div>
 

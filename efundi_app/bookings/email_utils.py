@@ -38,20 +38,20 @@ def send_quotation_email(booking) -> bool:
         fault_name = fault.fault_name if fault else booking.get_service_category_display()
         short_id = str(booking.booking_id).upper()[:8]
 
-        subject = f"eFundi Service Quotation – {fault_name} [{short_id}]"
+        subject = f"myFundi Hub Service Quotation – {fault_name} [{short_id}]"
         body = (
             f"Dear {customer.first_name},\n\n"
-            "Thank you for booking with eFundi. Please find attached your service "
+            "Thank you for booking with myFundi Hub. Please find attached your service "
             "quotation for the requested work.\n\n"
             "A qualified technician will be assigned shortly. The final price will "
             "be confirmed after on-site diagnosis.\n\n"
             "If you have any questions, reply to this email or contact us at "
             "support@efundi.co.ke.\n\n"
-            "Best regards,\nThe eFundi Team"
+            "Best regards,\nThe myFundi Hub Team"
         )
 
         pdf_bytes = generate_quotation_pdf(booking)
-        filename = f"eFundi_Quotation_{short_id}.pdf"
+        filename = f"myFundiHub_Quotation_{short_id}.pdf"
 
         email = EmailMessage(
             subject=subject,
@@ -94,7 +94,7 @@ def send_invoice_email(booking) -> bool:
         short_id = str(booking.booking_id).upper()[:8]
         payment_url = _payment_url(booking)
 
-        subject = f"eFundi Invoice – {fault_name} [{short_id}]"
+        subject = f"myFundi Hub Invoice – {fault_name} [{short_id}]"
         body = (
             f"Dear {customer.first_name},\n\n"
             f"Your {fault_name} service has been completed. "
@@ -102,12 +102,12 @@ def send_invoice_email(booking) -> bool:
             f"Amount Due: KSh {booking.amount:,.2f}\n\n"
             "Pay now via the link below:\n"
             f"{payment_url}\n\n"
-            "Thank you for choosing eFundi!\n\n"
-            "Best regards,\nThe eFundi Team"
+            "Thank you for choosing myFundi Hub!\n\n"
+            "Best regards,\nThe myFundi Hub Team"
         )
 
         pdf_bytes = generate_invoice_pdf(booking, payment_url)
-        filename = f"eFundi_Invoice_{short_id}.pdf"
+        filename = f"myFundiHub_Invoice_{short_id}.pdf"
 
         email = EmailMessage(
             subject=subject,

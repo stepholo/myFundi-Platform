@@ -188,7 +188,7 @@ class Booking(models.Model):
     company_keeps = models.DecimalField(
         max_digits=10, decimal_places=2,
         null=True, blank=True, default=None,
-        help_text='eFundi platform share (company bill minus worker amount).',
+        help_text='myFundi Hub platform share (company bill minus worker amount).',
     )
     description = models.TextField(blank=True, null=True)
     location = models.CharField(max_length=255)

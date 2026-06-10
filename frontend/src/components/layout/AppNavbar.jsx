@@ -47,9 +47,9 @@ export default function AppNavbar() {
           onClick={() => go(isAuthenticated ? (ROLE_HOME[user?.role] || '/') : '/')}
           style={{ display: 'flex', alignItems: 'center', gap: '9px', cursor: 'pointer', flex: '0 0 auto', marginRight: '20px' }}
         >
-          <img src="/efundi_icon.svg" width="32" height="32" alt="eFundi" style={{ borderRadius: '8px' }} />
+          <img src="/efundi_icon.svg" width="32" height="32" alt="myFundi Hub" style={{ borderRadius: '8px' }} />
           <span style={{ fontFamily: "'Times New Roman', Times, serif", fontWeight: '700', fontSize: '19px', color: '#FFFFFF' }}>
-            <span style={{ color: ORANGE }}>e</span>Fundi
+            <span style={{ color: ORANGE }}>my</span>Fundi Hub
           </span>
         </div>
 

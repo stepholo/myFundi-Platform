@@ -70,9 +70,9 @@ export default function AppFooter() {
         {/* Brand + tagline */}
         <div style={{ padding: '32px 20px 24px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
-            <img src="/efundi_icon.svg" width="30" height="30" alt="eFundi" style={{ borderRadius: '8px' }} />
+            <img src="/efundi_icon.svg" width="30" height="30" alt="myFundi Hub" style={{ borderRadius: '8px' }} />
             <span style={{ fontFamily: "'Times New Roman', Times, serif", fontWeight: '700', fontSize: '18px', color: '#FFFFFF' }}>
-              <span style={{ color: ORANGE }}>e</span>Fundi
+              <span style={{ color: ORANGE }}>my</span>Fundi Hub
             </span>
           </div>
           <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.42)', lineHeight: '1.7', marginBottom: '16px' }}>
@@ -130,7 +130,7 @@ export default function AppFooter() {
             ))}
           </div>
           <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.25)', fontFamily: 'DM Mono' }}>
-            © {new Date().getFullYear()} eFundi Technologies Ltd.
+            © {new Date().getFullYear()} myFundi Hub.
           </div>
         </div>
       </footer>
@@ -146,9 +146,9 @@ export default function AppFooter() {
         {/* Brand column */}
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
-            <img src="/efundi_icon.svg" width="32" height="32" alt="eFundi" style={{ borderRadius: '8px' }} />
+            <img src="/efundi_icon.svg" width="32" height="32" alt="myFundi Hub" style={{ borderRadius: '8px' }} />
             <span style={{ fontFamily: "'Times New Roman', Times, serif", fontWeight: '700', fontSize: '19px', color: '#FFFFFF' }}>
-              <span style={{ color: ORANGE }}>e</span>Fundi
+              <span style={{ color: ORANGE }}>my</span>Fundi Hub
             </span>
           </div>
           <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.45)', lineHeight: '1.75', marginBottom: '20px', maxWidth: '260px' }}>
@@ -196,7 +196,7 @@ export default function AppFooter() {
       {/* Bottom bar */}
       <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', padding: '16px 48px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '10px', maxWidth: '1280px', margin: '0 auto' }}>
         <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.3)', fontFamily: 'DM Mono' }}>
-          © {new Date().getFullYear()} eFundi Technologies Ltd. All rights reserved.
+          © {new Date().getFullYear()} myFundi Hub. All rights reserved.
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '4px 12px', borderRadius: '20px', background: 'rgba(232,80,26,0.08)', border: '1px solid rgba(232,80,26,0.2)', fontSize: '11px', color: ORANGE, fontFamily: 'DM Mono' }}>
           🇰🇪 Made in Kenya

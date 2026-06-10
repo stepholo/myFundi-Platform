@@ -43,7 +43,7 @@ def send_verification_email_sync(user, request=None):
     token = email_verification_token_generator.make_token(user)
     verification_url = _frontend_url(f"/verify-email/?uid={uid}&token={token}")
     _send_template_email_sync(
-        'Verify your eFundi account',
+        'Verify your myFundi Hub account',
         'emails/email_verification.html',
         {'first_name': user.first_name, 'verification_url': verification_url},
         user.email,
@@ -62,7 +62,7 @@ def send_verification_email(user, request=None):
     }
     try:
         _send_template_email(
-            'Verify your eFundi account',
+            'Verify your myFundi Hub account',
             'emails/email_verification.html',
             context,
             user.email,
@@ -86,7 +86,7 @@ def send_password_reset_email(user, request=None):
     }
     try:
         _send_template_email(
-            'Reset your eFundi password',
+            'Reset your myFundi Hub password',
             'emails/password_reset.html',
             context,
             user.email,

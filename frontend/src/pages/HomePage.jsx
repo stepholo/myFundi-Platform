@@ -7,11 +7,63 @@ const ORANGE = '#FF9A3C'
 const BRAND  = '#E8501A'
 
 const SERVICES = [
-  { img: '/images/icons/electrical.png', label: 'Electrical', desc: 'Wiring, socket installations & electrical repairs'  },
-  { img: '/images/icons/plumbing.png',   label: 'Plumbing',   desc: 'Pipe leaks, fittings & drainage solutions'          },
-  { img: '/images/icons/carpentry.png',  label: 'Carpentry',  desc: 'Furniture, doors, shelves & custom woodwork'        },
-  { img: '/images/icons/cleaning.png',   label: 'Cleaning',   desc: 'Deep cleaning for homes, offices & rentals'         },
-  { img: '/images/icons/other.png',      label: 'Other',      desc: 'Handyman, assembly & miscellaneous repairs'         },
+  { icon: '⚡', label: 'Electrical', desc: 'Wiring, sockets, lighting & fans', items: [
+    'Single socket install / replace', 'Multiple socket (3–5 points)', 'Switch replacement',
+    'Lighting fitting / bulb install', 'Fan installation (ceiling / stand)', 'Flickering / dead outlet fault',
+    'Circuit breaker (MCB) replace', 'Distribution board (DB) upgrade', 'Earthing / grounding system',
+    'House rewiring (1-bed flat)', 'Full house wiring (3-bed new build)', 'Generator / inverter installation',
+  ] },
+  { icon: '🚿', label: 'Plumbing', desc: 'Pipes, drains, taps, bathrooms & water heaters', items: [
+    'Tap leak / washer replace', 'Tap full replacement', 'Under-sink pipe / waste repair',
+    'Sink / basin installation', 'Blocked drain (kitchen / bathroom)', 'Sewer / main drain blockage',
+    'Fixture leak (toilet / sink)', 'Burst pipe repair (accessible)', 'Pipe installation (new run)',
+    'Emergency plumbing (24/7)', 'Toilet cistern fix / running toilet', 'Toilet full replacement',
+    'Toilet seat replacement', 'Shower installation (electric)', 'Shower mixer / valve replace',
+    'Shower head replacement', 'Electric / instant shower repair', 'Low water pressure fix',
+    'Water tank install (plastic, rooftop)', 'Booster pump install', 'Water pump repair / service',
+    'Geyser / storage water heater install', 'Water heater repair', 'Water tank cleaning',
+  ] },
+  { icon: '🧊', label: 'Fridge Repair', desc: 'Cooling faults, gas refills & compressors', items: [
+    'Diagnostic / site assessment', 'Coil cleaning', 'Thermostat repair', 'Door gasket / seal replacement',
+    'Gas refilling / refrigerant recharge', 'Refrigerant leak seal + recharge', 'Relay / overload protector replace',
+    'Control / PCB board repair', 'Compressor replacement', 'Ice maker / freezer section fix',
+  ] },
+  { icon: '🫧', label: 'Washing Machine', desc: 'Repairs, installation & servicing', items: [
+    'Diagnostic visit', 'Belt / minor leak', 'Door lock / latch replacement', 'Door seal (drum gasket) replacement',
+    'Water pump / drain pump replace', 'Thermostat / heating element', 'Inlet / solenoid valve replace',
+    'Control board / PCB repair', 'Motor replacement (full)', 'New machine installation',
+  ] },
+  { icon: '🍳', label: 'Cooker & Oven', desc: 'Gas, electric, microwave & oven repairs', items: [
+    'Microwave — general repair', 'Microwave — not heating fix', 'Electric cooker — minor repair',
+    'Electric cooker — heating element', 'Cooker glass top replacement', 'Gas cooker — igniter / spark fix',
+    'Gas cooker — burner replacement', 'Gas cooker — gas leak repair', 'Dual-fuel cooker — electrical fault',
+    'Built-in oven — heating element', 'Oven — thermostat replacement', 'Water dispenser — full repair',
+  ] },
+  { icon: '📺', label: 'Television', desc: 'Screen, board & smart TV repairs', items: [
+    'TV diagnostic assessment', 'Backlight / LED strip repair', 'Power supply board repair',
+    'Motherboard / main board replace', 'T-Con board repair', 'Audio / speaker fix', 'HDMI / USB port repair',
+    'Screen / panel replacement', 'TV wall mounting', 'Smart TV software / signal fix',
+  ] },
+  { icon: '🔒', label: 'Security Systems', desc: 'CCTV, alarms, gates & access control', items: [
+    'CCTV — 4-camera home system', 'CCTV — 8-camera system install', 'CCTV — camera repair / replace',
+    'CCTV — DVR/NVR setup & config', 'Burglar alarm system install', 'Alarm system repair / service',
+    'Electric fence installation', 'Electric fence repair / fault', 'Gate automation — sliding gate',
+    'Gate automation — swing gate', 'Intercom system install (home)', 'Access control / smart lock install',
+  ] },
+  { icon: '☀️', label: 'Solar & Power', desc: 'Solar, inverters & backup power', items: [
+    'Solar panel install — small system', 'Solar panel install — medium (3–5 room)', 'Solar water heater install',
+    'Inverter / UPS install', 'Solar system fault / repair', 'Electric water heater install',
+  ] },
+  { icon: '🔌', label: 'Small Appliances', desc: 'Kettles, irons, blenders & AC units', items: [
+    'Electric kettle repair', 'Iron box / steam iron repair', 'Blender / food processor repair',
+    'Toaster repair', 'Air fryer repair', 'Tumble dryer repair', 'Dishwasher repair',
+    'Air conditioner service / repair',
+  ] },
+  { icon: '🛠️', label: 'Other Technical', desc: 'DSTV, WiFi, doorbells & home tech', items: [
+    'DSTV / TV aerial installation', 'DSTV / decoder repair', 'Smart doorbell / video doorbell install',
+    'Surge protector / voltage stabilizer', 'Home theatre / soundbar setup', 'WiFi / router / network setup',
+    'Outdoor lighting / floodlight install', 'Coffee maker / espresso machine repair',
+  ] },
 ]
 
 const STEPS = [
@@ -47,11 +99,11 @@ const TESTIMONIALS = [
     text: 'I had a plumbing emergency at 7 am and within 20 minutes a technician was at my door. The whole process — booking, tracking, and paying — was completely seamless.',
   },
   {
-    name: 'James Otieno', role: 'Property Manager, Mombasa', rating: 5,
-    text: 'Managing repairs across multiple units used to be a nightmare. eFundi has changed that entirely. The technicians are professional, punctual, and the platform is incredibly easy to use.',
+    name: 'James Otieno', role: 'Property Manager, Nairobi', rating: 5,
+    text: 'Managing repairs across multiple units used to be a nightmare. myFundi Hub has changed that entirely. The technicians are professional, punctual, and the platform is incredibly easy to use.',
   },
   {
-    name: 'Faith Njeri', role: 'Business Owner, Kisumu', rating: 5,
+    name: 'Faith Njeri', role: 'Business Owner, Nairobi', rating: 5,
     text: 'The M-Pesa integration is a game changer. No carrying cash, no awkward negotiations — you see the price, the work gets done, and you pay. Simple.',
   },
   {
@@ -59,7 +111,7 @@ const TESTIMONIALS = [
     text: 'The service was good overall, but there was a slight delay in the technician arriving. Still, the work was done well.'
   },
   {
-    name: 'Grace Achieng', role: 'Customer, Eldoret', rating: 4,
+    name: 'Grace Achieng', role: 'Customer, Nairobi', rating: 4,
     text: 'I was pleased with the service though the technician was a bit late. The platform is user-friendly and the quality of work was satisfactory.'
   }
 ]
@@ -116,6 +168,58 @@ function StepRow({ step, i }) {
   )
 }
 
+function ServiceCard({ service, i, onClick }) {
+  const [hovered, setHovered] = useState(false)
+  return (
+    <motion.div
+      {...fadeUp(i * 0.06)}
+      whileHover={{ translateY: -5, borderColor: 'rgba(255,107,26,0.45)' }}
+      onHoverStart={() => setHovered(true)}
+      onHoverEnd={() => setHovered(false)}
+      onClick={onClick}
+      style={{
+        position: 'relative', zIndex: hovered ? 30 : 1,
+        background: 'var(--ink3)', border: '1px solid var(--border2)', borderRadius: '20px',
+        padding: '30px 18px', textAlign: 'center', cursor: 'pointer', transition: 'border-color 0.2s',
+      }}
+    >
+      <div style={{ fontSize: '40px', lineHeight: 1, marginBottom: '16px' }}>{service.icon}</div>
+      <div style={{ fontSize: '16px', fontWeight: '700', color: 'var(--white)', marginBottom: '8px' }}>{service.label}</div>
+      <div style={{ fontSize: '13px', color: 'var(--muted)', lineHeight: '1.55' }}>{service.desc}</div>
+
+      {/* Desktop-only hover popup listing what's covered in this category */}
+      <AnimatePresence>
+        {hovered && (
+          <motion.div
+            className="service-popup"
+            initial={{ opacity: 0, y: 8, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 8, scale: 0.97 }}
+            transition={{ duration: 0.15 }}
+            style={{
+              position: 'absolute', top: 'calc(100% + 10px)', left: '50%', transform: 'translateX(-50%)',
+              width: '260px', maxHeight: '300px', overflowY: 'auto', textAlign: 'left',
+              background: '#101A33', border: '1px solid rgba(255,107,26,0.3)', borderRadius: '14px',
+              padding: '16px 18px', boxShadow: '0 18px 44px rgba(0,0,0,0.45)',
+            }}
+          >
+            <div style={{ fontSize: '11px', letterSpacing: '1.5px', color: ORANGE, textTransform: 'uppercase', fontFamily: 'DM Mono', marginBottom: '10px' }}>
+              What's covered
+            </div>
+            <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '7px' }}>
+              {service.items.map(item => (
+                <li key={item} style={{ display: 'flex', gap: '8px', fontSize: '12.5px', color: 'var(--muted)', lineHeight: '1.5' }}>
+                  <span style={{ color: ORANGE, flexShrink: 0 }}>•</span>{item}
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  )
+}
+
 export default function HomePage() {
   const navigate = useNavigate()
   const isMobile = useMediaQuery('(max-width: 768px)')
@@ -127,7 +231,7 @@ export default function HomePage() {
 
       {/* ── Hero ─────────────────────────────────────────────────────────────── */}
       <section style={{ minHeight: isMobile ? '100svh' : '92vh', position: 'relative', overflow: 'hidden', display: 'flex', alignItems: isMobile ? 'flex-end' : 'center' }}>
-        <img src="/images/technicians/hero-technician.png" alt="eFundi technician in Nairobi"
+        <img src="/images/technicians/hero-technician.png" alt="myFundi Hub technician in Nairobi"
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} />
         <div style={{ position: 'absolute', inset: 0, background: isMobile
           ? 'linear-gradient(to top, rgba(11,17,32,0.97) 0%, rgba(11,17,32,0.7) 55%, rgba(11,17,32,0.3) 100%)'
@@ -151,7 +255,7 @@ export default function HomePage() {
 
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
             style={{ fontSize: isMobile ? '15px' : '17px', color: 'rgba(255,255,255,0.72)', lineHeight: '1.65', maxWidth: '460px', marginBottom: isMobile ? '24px' : '36px' }}>
-            eFundi connects you with verified, GPS-matched local technicians for electrical, plumbing, carpentry, cleaning, and more — right to your door.
+            myFundi Hub connects you with verified, GPS-matched local technicians for electrical, plumbing, carpentry, cleaning, and more — right to your door.
           </motion.p>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }}
@@ -198,16 +302,21 @@ export default function HomePage() {
         )}
       </section>
 
-      {/* ── What we offer (single row of 5) ──────────────────────────────────── */}
+      {/* ── What we offer (10 specialty categories) ──────────────────────────── */}
       <section id="services" className="section-pad" style={{ maxWidth: '1280px', margin: '0 auto' }}>
         <motion.div {...fadeUp()} style={{ textAlign: 'center', marginBottom: '52px' }}>
           <SectionLabel text="What we offer" />
           <h2 style={{ fontSize: 'clamp(26px, 4vw, 42px)', fontWeight: '800', color: 'var(--white)', letterSpacing: '-0.5px' }}>
             Services built for everyday life
           </h2>
-          <p style={{ fontSize: '16px', color: 'var(--muted)', marginTop: '12px', maxWidth: '460px', margin: '12px auto 0', lineHeight: '1.65' }}>
-            From emergency plumbing to routine cleaning — book any home service in minutes.
+          <p style={{ fontSize: '16px', color: 'var(--muted)', marginTop: '12px', maxWidth: '480px', margin: '12px auto 0', lineHeight: '1.65' }}>
+            From electrical faults to fridge repairs and solar installs — book any home service in minutes.
           </p>
+          {!isMobile && (
+            <p style={{ fontSize: '12px', color: 'var(--muted2)', marginTop: '10px', fontFamily: 'DM Mono' }}>
+              Hover a service to see what's covered
+            </p>
+          )}
         </motion.div>
 
         {isMobile ? (
@@ -216,23 +325,17 @@ export default function HomePage() {
             {SERVICES.map((s) => (
               <div key={s.label} onClick={() => navigate('/register?role=Customer')}
                 style={{ flexShrink: 0, width: '140px', background: 'var(--ink3)', border: '1px solid var(--border2)', borderRadius: '18px', padding: '22px 14px', textAlign: 'center', cursor: 'pointer' }}>
-                <img src={s.img} alt={s.label} style={{ width: '44px', height: '44px', objectFit: 'contain', marginBottom: '12px', borderRadius: '12px' }} />
+                <div style={{ fontSize: '34px', lineHeight: 1, marginBottom: '12px' }}>{s.icon}</div>
                 <div style={{ fontSize: '14px', fontWeight: '700', color: 'var(--white)', marginBottom: '6px' }}>{s.label}</div>
                 <div style={{ fontSize: '11px', color: 'var(--muted)', lineHeight: '1.5' }}>{s.desc}</div>
               </div>
             ))}
           </div>
         ) : (
-          /* Desktop: 5-column grid */
+          /* Desktop: 5-column grid, hover a card to see covered items */
           <div className="grid-5col">
             {SERVICES.map((s, i) => (
-              <motion.div key={s.label} {...fadeUp(i * 0.07)} whileHover={{ translateY: -5, borderColor: 'rgba(255,107,26,0.45)' }}
-                onClick={() => navigate('/register?role=Customer')}
-                style={{ background: 'var(--ink3)', border: '1px solid var(--border2)', borderRadius: '20px', padding: '30px 18px', textAlign: 'center', cursor: 'pointer', transition: 'border-color 0.2s' }}>
-                <img src={s.img} alt={s.label} style={{ width: '52px', height: '52px', objectFit: 'contain', marginBottom: '16px', borderRadius: '14px' }} />
-                <div style={{ fontSize: '16px', fontWeight: '700', color: 'var(--white)', marginBottom: '8px' }}>{s.label}</div>
-                <div style={{ fontSize: '13px', color: 'var(--muted)', lineHeight: '1.55' }}>{s.desc}</div>
-              </motion.div>
+              <ServiceCard key={s.label} service={s} i={i} onClick={() => navigate('/register?role=Customer')} />
             ))}
           </div>
         )}
@@ -250,7 +353,7 @@ export default function HomePage() {
                 Three steps to a fixed home
               </h2>
               <p style={{ fontSize: '15px', color: 'var(--muted)', marginTop: '10px', lineHeight: '1.65' }}>
-                eFundi makes booking a technician as simple as sending a text.
+                myFundi Hub makes booking a technician as simple as sending a text.
               </p>
             </motion.div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
@@ -272,7 +375,7 @@ export default function HomePage() {
 
             {/* Right — WHY EFUNDI */}
             <motion.div {...fadeUp(0.08)} style={{ marginBottom: '36px' }}>
-              <SectionLabel text="Why eFundi" />
+              <SectionLabel text="Why myFundi Hub" />
               <h2 style={{ fontSize: 'clamp(24px, 3.5vw, 38px)', fontWeight: '800', color: 'var(--white)', letterSpacing: '-0.5px', lineHeight: 1.1 }}>
                 Built to earn your trust
               </h2>
@@ -366,7 +469,7 @@ export default function HomePage() {
       <section id="technicians" className="section-pad">
         <motion.div {...fadeUp()} className="responsive-split" style={{ maxWidth: '1060px', margin: '0 auto', background: 'linear-gradient(135deg, rgba(255,107,26,0.07) 0%, rgba(255,107,26,0.03) 100%)', border: '1px solid rgba(255,107,26,0.22)', borderRadius: '28px', overflow: 'hidden', position: 'relative' }}>
           <div className="split-panel sidebar" style={{ position: 'relative', minHeight: '340px' }}>
-            <img src="/images/technicians/technician-male.png" alt="eFundi technician"
+            <img src="/images/technicians/technician-male.png" alt="myFundi Hub technician"
               style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, transparent 60%, rgba(15,23,42,0.6) 100%)' }} />
           </div>
@@ -374,7 +477,7 @@ export default function HomePage() {
             <div style={{ position: 'absolute', top: '-60px', right: '-60px', width: '320px', height: '320px', borderRadius: '50%', background: 'radial-gradient(ellipse, rgba(255,107,26,0.08) 0%, transparent 70%)', pointerEvents: 'none' }} />
             <h2 style={{ fontSize: 'clamp(24px, 4vw, 40px)', fontWeight: '800', color: 'var(--white)', marginBottom: '16px', letterSpacing: '-0.5px' }}>Earn with your skills</h2>
             <p style={{ fontSize: '17px', color: 'var(--muted)', lineHeight: '1.7', maxWidth: '460px', marginBottom: '36px' }}>
-              Join hundreds of technicians already earning on eFundi. Set your own hours, accept jobs near you, and get paid instantly via M-Pesa.
+              Join hundreds of technicians already earning on myFundi Hub. Set your own hours, accept jobs near you, and get paid instantly via M-Pesa.
             </p>
             <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap', marginBottom: '28px' }}>
               <motion.button whileHover={{ translateY: -2 }} whileTap={{ scale: 0.97 }} onClick={() => navigate('/register?role=Technician')}

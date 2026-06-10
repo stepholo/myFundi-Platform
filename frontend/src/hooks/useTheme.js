@@ -1,5 +1,5 @@
 /**
- * Theme hook for eFundi.
+ * Theme hook for myFundi Hub.
  * Persists light/dark/system preference in localStorage and updates the
  * document root attribute so CSS variables can react immediately.
  */

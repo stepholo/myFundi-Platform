@@ -100,7 +100,7 @@ export default function EarningsPage() {
                 Withdraw Earnings
               </div>
               <div style={{ fontSize: '14px', color: 'var(--muted)' }}>
-                Withdraw from your eFundi wallet to M-Pesa
+                Withdraw from your myFundi Hub wallet to M-Pesa
               </div>
             </div>
             <motion.button

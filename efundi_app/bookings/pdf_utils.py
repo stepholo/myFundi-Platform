@@ -64,7 +64,7 @@ def _styles():
 def _header_table(doc_title: str, ref: str, date_str: str, styles):
     """Two-column header: brand name + document type on left, ref/date on right."""
     left = [
-        Paragraph('<font color="#1B5E20"><b>eFundi</b></font>', styles['h1']),
+        Paragraph('<font color="#1B5E20"><b>myFundi Hub</b></font>', styles['h1']),
         Paragraph('Professional Home & Business Services', styles['small']),
     ]
     right = [
@@ -206,7 +206,7 @@ def generate_quotation_pdf(booking) -> bytes:
     story.append(Spacer(1, 4 * mm))
     story.append(HRFlowable(width='100%', thickness=0.5, color=_GREY, spaceAfter=2 * mm))
     story.append(Paragraph(
-        'eFundi — Connecting you to skilled professionals | support@efundi.co.ke',
+        'myFundi Hub — Connecting you to skilled professionals | support@efundi.co.ke',
         s['small'],
     ))
 
@@ -336,7 +336,7 @@ def generate_invoice_pdf(booking, payment_url: str) -> bytes:
     ))
     story.append(Spacer(1, 2 * mm))
     story.append(Paragraph(
-        'This link will open the eFundi payment page where you can complete your '
+        'This link will open the myFundi Hub payment page where you can complete your '
         'payment using M-Pesa (STK Push) or card.',
         s['small'],
     ))
@@ -344,7 +344,7 @@ def generate_invoice_pdf(booking, payment_url: str) -> bytes:
 
     story.append(HRFlowable(width='100%', thickness=0.5, color=_GREY, spaceAfter=2 * mm))
     story.append(Paragraph(
-        'eFundi — Connecting you to skilled professionals | support@efundi.co.ke',
+        'myFundi Hub — Connecting you to skilled professionals | support@efundi.co.ke',
         s['small'],
     ))
 

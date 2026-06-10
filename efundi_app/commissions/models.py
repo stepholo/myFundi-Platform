@@ -41,7 +41,7 @@ class Commission(models.Model):
     )
     commission_amount = models.DecimalField(
         max_digits=10, decimal_places=2,
-        help_text='20% platform fee retained by eFundi.',
+        help_text='20% platform fee retained by myFundi Hub.',
     )
     technician_earnings = models.DecimalField(
         max_digits=10, decimal_places=2,

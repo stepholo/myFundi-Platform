@@ -186,9 +186,9 @@ export default function RegisterPage() {
         }}>
           {/* Logo */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '28px' }}>
-            <img src="/efundi_icon.svg" width="40" height="40" alt="eFundi" style={{ borderRadius: '8px' }} />
+            <img src="/efundi_icon.svg" width="40" height="40" alt="myFundi Hub" style={{ borderRadius: '8px' }} />
             <span style={{ fontFamily: 'Clash Display', fontSize: '22px', fontWeight: '700', color: '#1B2D5E' }}>
-              <span style={{ color: '#E8501A' }}>e</span>Fundi
+              <span style={{ color: '#E8501A' }}>my</span>Fundi Hub
             </span>
           </div>
 
