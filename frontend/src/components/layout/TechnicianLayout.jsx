@@ -247,7 +247,7 @@ export default function TechnicianLayout() {
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             <span style={{ fontSize: '16px', width: '28px', height: '28px', borderRadius: '8px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(255,255,255,0.1)' }}>⚡</span>
             <span style={{ fontFamily: "'Times New Roman', Times, serif", fontWeight: '700', fontSize: '18px', color: '#FFFFFF' }}>
-              <span style={{ color: ACCENT }}>e</span>Fundi
+              <span style={{ color: ACCENT }}>my</span>Fundi Hub
             </span>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>

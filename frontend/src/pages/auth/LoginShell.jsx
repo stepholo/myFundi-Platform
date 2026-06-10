@@ -172,7 +172,7 @@ export default function LoginShell({ config }) {
             <div style={{ position: 'absolute', bottom: '-30px', left: '-30px', width: '120px', height: '120px', borderRadius: '50%', background: 'rgba(232,80,26,0.08)', zIndex: 0 }} />
             <div style={{ position: 'relative', zIndex: 1 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '24px' }}>
-                <img src="/efundi_icon.svg" width="36" height="36" alt="eFundi" style={{ borderRadius: '10px' }} />
+                <img src="/efundi_icon.svg" width="36" height="36" alt="myFundi Hub" style={{ borderRadius: '10px' }} />
                 <div>
                   <div style={{ fontSize: '13px', fontWeight: '700', color: 'rgba(15,23,42,0.7)' }}>Welcome back</div>
                   <div style={{ fontSize: '20px', fontWeight: '800', color: '#111827' }}>Sign in securely</div>
@@ -300,9 +300,9 @@ function MobileLoginShell({ config, accent, form, handle, submit, error, showPw,
 
       {/* Top bar: logo + name + portal — single centered row */}
       <div style={{ position: 'relative', zIndex: 2, padding: '48px 24px 0', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px' }}>
-        <img src="/efundi_icon.svg" width="36" height="36" alt="eFundi" style={{ borderRadius: '10px' }} />
+        <img src="/efundi_icon.svg" width="36" height="36" alt="myFundi Hub" style={{ borderRadius: '10px' }} />
         <span style={{ fontFamily: "'Times New Roman', Times, serif", fontWeight: '700', fontSize: '20px', color: '#FFFFFF' }}>
-          <span style={{ color: accent }}>e</span>Fundi
+          <span style={{ color: accent }}>my</span>Fundi Hub
         </span>
         <span style={{ width: '1px', height: '20px', background: 'rgba(255,255,255,0.3)', flexShrink: 0 }} />
         <span style={{ fontSize: '13px', fontWeight: '600', color: 'rgba(255,255,255,0.85)', display: 'flex', alignItems: 'center', gap: '5px' }}>

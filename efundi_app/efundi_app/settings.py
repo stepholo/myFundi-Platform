@@ -120,9 +120,9 @@ SOCIALACCOUNT_ADAPTER = 'accounts.adapters.AdminGoogleSocialAccountAdapter'
 GOOGLE_CLIENT_ID = os.getenv('GOOGLE_CLIENT_ID', '')
 
 UNFOLD = {
-    "SITE_TITLE": "eFundi Admin",
-    "SITE_HEADER": "eFundi",
-    "SITE_BRAND": "eFundi",
+    "SITE_TITLE": "myFundi Hub Admin",
+    "SITE_HEADER": "myFundi Hub",
+    "SITE_BRAND": "myFundi Hub",
     "SHOW_HISTORY": True,
     "SHOW_VIEW_ON_SITE": True,
     "SIDEBAR": {
@@ -471,7 +471,7 @@ EMAIL_PORT = env.int('EMAIL_PORT', default=587)
 EMAIL_USE_TLS = env.bool('EMAIL_USE_TLS', default=True)
 EMAIL_HOST_USER = env('EMAIL_HOST_USER', default='')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD', default='')
-DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL', default='eFundi <noreply@efundi.com>')
+DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL', default='myFundi Hub <noreply@efundi.com>')
 
 if EMAIL_HOST_USER:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -506,9 +506,9 @@ if sys.platform == 'win32':
 
 # drf-spectacular settings
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'eFundi API',
+    'TITLE': 'myFundi Hub API',
     'DESCRIPTION': (
-        '## eFundi Service Marketplace API\n\n'
+        '## myFundi Hub Service Marketplace API\n\n'
         '### How to authenticate\n'
         '1. **Credentials (easiest)** — click **Authorize**, choose `credentialsAuth`, '
         'enter your username & password. Swagger will fetch and apply your token automatically.\n'
@@ -534,7 +534,7 @@ SPECTACULAR_SETTINGS = {
             'credentialsAuth': {
                 'type': 'oauth2',
                 'description': (
-                    'Log in with your eFundi username and password. '
+                    'Log in with your myFundi Hub username and password. '
                     'Swagger will call the token endpoint and set Bearer auth automatically.'
                 ),
                 'flows': {

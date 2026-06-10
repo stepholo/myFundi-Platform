@@ -33,7 +33,7 @@ import BookingManagementPage from './pages/admin/BookingManagementPage'
 import WithdrawalManagementPage from './pages/admin/WithdrawalManagementPage'
 
 /**
- * React app routing and layout wrapper for eFundi.
+ * React app routing and layout wrapper for myFundi Hub.
  *
  * This module defines protected routes, role-based redirects, and the shell
  * that renders the correct layout for each user group.

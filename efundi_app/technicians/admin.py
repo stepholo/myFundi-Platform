@@ -129,11 +129,11 @@ class TechnicianAdmin(ModelAdmin):
 		templates = {
 			'Verified': (
 				'emails/account_verified.html',
-				'Your eFundi technician account has been verified',
+				'Your myFundi Hub technician account has been verified',
 			),
 			'Rejected': (
 				'emails/account_rejected.html',
-				'Update on your eFundi technician application',
+				'Update on your myFundi Hub technician application',
 			),
 		}
 		if status not in templates:

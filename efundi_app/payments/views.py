@@ -138,7 +138,7 @@ class PaymentViewSet(viewsets.ModelViewSet):
             (
                 f'KSh {earnings} has been added to your wallet for '
                 f'{booking.service_category} '
-                f'(KSh {payment.amount} − KSh {commission} eFundi commission).'
+                f'(KSh {payment.amount} − KSh {commission} myFundi Hub commission).'
             ),
             Notification.EVENT_PAYMENT_SUCCESSFUL,
         )

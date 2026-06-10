@@ -25,9 +25,9 @@ const inputStyle = {
 function Logo() {
   return (
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', marginBottom: '32px' }}>
-      <img src="/efundi_icon.svg" width="40" height="40" alt="eFundi" style={{ borderRadius: '8px' }} />
+      <img src="/efundi_icon.svg" width="40" height="40" alt="myFundi Hub" style={{ borderRadius: '8px' }} />
       <span style={{ fontFamily: 'Clash Display', fontSize: '22px', fontWeight: '700', color: '#1B2D5E' }}>
-        <span style={{ color: ACCENT }}>e</span>Fundi
+        <span style={{ color: ACCENT }}>my</span>Fundi Hub
       </span>
     </div>
   )

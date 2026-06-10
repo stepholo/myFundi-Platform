@@ -98,7 +98,7 @@ class TechnicianViewSet(viewsets.ModelViewSet):
         self._send_status_email(
             technician,
             'emails/account_verified.html',
-            'Your eFundi technician account has been verified',
+            'Your myFundi Hub technician account has been verified',
         )
         return Response(
             {
@@ -125,7 +125,7 @@ class TechnicianViewSet(viewsets.ModelViewSet):
         self._send_status_email(
             technician,
             'emails/account_rejected.html',
-            'Update on your eFundi technician application',
+            'Update on your myFundi Hub technician application',
         )
         return Response(
             {
@@ -340,11 +340,11 @@ class TechnicianSpecializationViewSet(viewsets.ModelViewSet):
         templates = {
             'Verified': (
                 'emails/account_verified.html',
-                'Your eFundi specialization has been verified',
+                'Your myFundi Hub specialization has been verified',
             ),
             'Rejected': (
                 'emails/account_rejected.html',
-                'Update on your eFundi technician specialization',
+                'Update on your myFundi Hub technician specialization',
             ),
         }
         if specialization.verification_status not in templates:
