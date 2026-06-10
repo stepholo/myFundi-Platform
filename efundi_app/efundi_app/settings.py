@@ -44,22 +44,27 @@ env.read_env(str(BASE_DIR / '.env'))
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-7r)xg3@v4^6ih2ka@4p1sm-i_f=#6bl1ssfok27tkm6xsofef1'
+SECRET_KEY = env('SECRET_KEY', default='django-insecure-7r)xg3@v4^6ih2ka@4p1sm-i_f=#6bl1ssfok27tkm6xsofef1')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool('DEBUG', default=True)
 
 _NGROK_URL = env('NGROK_URL', default='').rstrip('/')
-_NGROK_HOST = _NGROK_URL.replace('https://', '').replace('http://', '')
+# Render sets this automatically to the service's public URL — lets the
+# backend self-detect its own host for ALLOWED_HOSTS/CORS/CSRF without any
+# manual env var configuration after deploy.
+_RENDER_URL = env('RENDER_EXTERNAL_URL', default='').rstrip('/')
+_PUBLIC_URL = _NGROK_URL or _RENDER_URL
+_PUBLIC_HOST = _PUBLIC_URL.replace('https://', '').replace('http://', '')
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
-if _NGROK_HOST:
-    ALLOWED_HOSTS.append(_NGROK_HOST)
+if _PUBLIC_HOST:
+    ALLOWED_HOSTS.append(_PUBLIC_HOST)
 
 # Base URL used to build absolute links in emails when there is no HTTP request
 # context (e.g. signals, Celery tasks, admin-triggered emails).
 # Override in .env for staging/production.
-SITE_URL = _NGROK_URL or env('SITE_URL', default='http://localhost:8000')
+SITE_URL = _PUBLIC_URL or env('SITE_URL', default='http://localhost:8000')
 
 # Frontend origin — used for links in emails that must open the React app
 # (e.g. /verify-email, /reset-password). Override in .env for production.
@@ -269,6 +274,7 @@ UNFOLD = {
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -345,6 +351,20 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
+
+# Media files (user uploads — technician certificates, profile pics, etc.)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 
 # Default Primary Key Fields
@@ -355,9 +375,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:8000',
     'http://127.0.0.1:8000',
+    FRONTEND_URL,
 ]
-if _NGROK_URL:
-    CORS_ALLOWED_ORIGINS.append(_NGROK_URL.rstrip('/'))
+if _PUBLIC_URL:
+    CORS_ALLOWED_ORIGINS.append(_PUBLIC_URL)
 
 CORS_ALLOW_CREDENTIALS = True
 
@@ -366,9 +387,10 @@ CORS_ALLOW_CREDENTIALS = True
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:8000',
     'http://127.0.0.1:8000',
+    FRONTEND_URL,
 ]
-if _NGROK_URL:
-    CSRF_TRUSTED_ORIGINS.append(_NGROK_URL.rstrip('/'))
+if _PUBLIC_URL:
+    CSRF_TRUSTED_ORIGINS.append(_PUBLIC_URL)
 
 # BUSINESS RULES
 COMMISSION_RATE = Decimal('0.20')           # 20% platform fee retained from each payment
@@ -423,12 +445,22 @@ SIMPLE_JWT = {
 
 # Redis cache settings for Celery and general caching
 REDIS_URL = env('REDIS_URL', default='redis://127.0.0.1:6379/1')
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
-        'LOCATION': REDIS_URL,
+
+# Allows running without a Redis instance (e.g. quick demo deploys) by
+# falling back to Django's in-process cache. Defaults to Redis as before.
+if env.bool('USE_REDIS_CACHE', default=True):
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+            'LOCATION': REDIS_URL,
+        }
     }
-}
+else:
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        }
+    }
 
 # Email settings
 # Use SMTP when EMAIL_HOST_USER is provided in .env, otherwise fall back to
@@ -454,6 +486,10 @@ CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = TIME_ZONE
+# When True, .delay()/.apply_async() run tasks synchronously in-process —
+# no broker or separate worker needed. Useful for quick demo deploys.
+CELERY_TASK_ALWAYS_EAGER = env.bool('CELERY_TASK_ALWAYS_EAGER', default=False)
+CELERY_TASK_EAGER_PROPAGATES = CELERY_TASK_ALWAYS_EAGER
 # Use 'solo' pool on Windows (prefork uses Unix semaphores which Windows denies).
 # On Linux/Mac in production, remove this line to use the default prefork pool.
 if sys.platform == 'win32':

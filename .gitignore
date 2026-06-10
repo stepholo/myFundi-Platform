@@ -15,6 +15,7 @@ local_settings.py
 db.sqlite3
 db.sqlite3-journal
 media/
+staticfiles/
 
 # Environment variables
 .env
@@ -22,10 +23,7 @@ media/
 !.env.example
 
 # Django migrations
-*/migrations/*.py
 */migrations/__pycache__/
-!*/migrations/__init__.py
-migrations/
 
 # IDE / tools
 .idea/
