@@ -2,6 +2,7 @@ import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { notificationsApi } from '../../api/notifications'
+import usePageTitle from '../../hooks/usePageTitle'
 
 const ACCENT = '#E8501A'
 
@@ -28,6 +29,7 @@ function timeAgo(dateStr) {
 }
 
 export default function CustomerNotificationsPage() {
+  usePageTitle('Notifications')
   const navigate = useNavigate()
   const qc       = useQueryClient()
 

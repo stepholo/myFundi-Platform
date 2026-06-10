@@ -2,6 +2,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { motion } from 'framer-motion'
 import { adminApi } from '../../api/admin'
+import usePageTitle from '../../hooks/usePageTitle'
 
 const STATUS_CFG = {
   requested:   { label: 'Submitted',    bg: 'rgba(107,122,85,0.18)',  color: '#6B7A55'  },
@@ -19,6 +20,7 @@ function catIcon(cat) {
 }
 
 export default function BookingManagementPage() {
+  usePageTitle('Admin Bookings')
   const [tab, setTab]     = useState('All')
   const [search, setSearch] = useState('')
 

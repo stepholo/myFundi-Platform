@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { authApi } from '../../api/auth'
 import useAuthStore from '../../store/authStore'
+import usePageTitle from '../../hooks/usePageTitle'
 
 const baseInput = {
   width: '100%', borderRadius: '12px', padding: '13px 16px',
@@ -57,6 +58,7 @@ function SectionTitle({ children }) {
 }
 
 export default function SettingsPage() {
+  usePageTitle('Settings')
   const { user, setUser } = useAuthStore()
 
   const [profileForm, setProfileForm] = useState({

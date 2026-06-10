@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { useQuery, useMutation } from '@tanstack/react-query'
 import { motion } from 'framer-motion'
 import publicApi from '../api/publicClient'
+import usePageTitle from '../hooks/usePageTitle'
 
 // Public API calls — no login required
 const getPaymentInfo  = (id) => publicApi.get(`/bookings/${id}/payment-info/`).then(r => r.data)
@@ -10,6 +11,7 @@ const submitPayment   = (id, phone) =>
   publicApi.post(`/bookings/${id}/pay/`, { payer_phone_number: phone })
 
 export default function PaymentPage() {
+  usePageTitle('Payment')
   const { id }     = useParams()
   const navigate   = useNavigate()
   const [phone, setPhone]       = useState('')

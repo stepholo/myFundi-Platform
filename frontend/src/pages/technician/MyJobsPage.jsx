@@ -3,6 +3,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { motion } from 'framer-motion'
 import { bookingsApi } from '../../api/bookings'
 import StatusBadge from '../../components/ui/StatusBadge'
+import usePageTitle from '../../hooks/usePageTitle'
 
 // ── Constants ─────────────────────────────────────────────────────────────────
 
@@ -30,6 +31,7 @@ function catIcon(cat) {
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function MyJobsPage() {
+  usePageTitle('My Jobs')
   const qc = useQueryClient()
   const [tab, setTab]           = useState('Active')
   const [selectedId, setSelectedId] = useState(null)

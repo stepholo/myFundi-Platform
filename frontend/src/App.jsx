@@ -65,16 +65,21 @@ function RoleRedirect() {
 // Main app shell that renders the layout chrome and route structure.
 function AppShell() {
   const { pathname } = useLocation()
-  const hidePublicChrome =
-    pathname.startsWith('/customer') ||
-    pathname.startsWith('/technician') ||
+  const isAuthPage =
     pathname.startsWith('/login') ||
     pathname === '/register' ||
     pathname === '/verify-email'
+  const isDashboard =
+    pathname.startsWith('/customer') ||
+    pathname.startsWith('/technician') ||
+    pathname.startsWith('/admin')
+
+  const showNavbar = !isAuthPage
+  const showFooter = !isAuthPage && !isDashboard
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-      {!hidePublicChrome && <AppNavbar />}
+      {showNavbar && <AppNavbar />}
       <div style={{ flex: 1 }}>
         <Routes>
           {/* Public */}
@@ -134,7 +139,7 @@ function AppShell() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </div>
-      {!hidePublicChrome && <AppFooter />}
+      {showFooter && <AppFooter />}
     </div>
   )
 }

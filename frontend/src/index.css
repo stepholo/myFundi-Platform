@@ -48,6 +48,9 @@
   --shadow-xs: 0 1px 2px rgba(0,0,0,0.05);
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.05);
   --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+
+  /* ── Layout ───────────────────────── */
+  --navbar-h: 64px;
 }
 
 /* ── Dark theme overrides ─────────────────────────────────────────────────── */
@@ -149,13 +152,13 @@ body {
 .mobile-topbar { display: none; flex-shrink: 0; }
 
 /* Dashboard layout shells */
-.dashboard-shell { display: flex; min-height: 100vh; }
+.dashboard-shell { display: flex; min-height: calc(100vh - var(--navbar-h)); }
 .app-sidebar {
   width: 220px; flex-shrink: 0;
   background: var(--sidebar-bg);
   border-right: 1px solid rgba(255,255,255,0.08);
   display: flex; flex-direction: column;
-  position: sticky; top: 0; height: 100vh; overflow-y: auto;
+  position: sticky; top: var(--navbar-h); height: calc(100vh - var(--navbar-h)); overflow-y: auto;
 }
 .app-main   { flex: 1; min-width: 0; overflow-y: auto; display: flex; flex-direction: column; }
 
@@ -188,7 +191,7 @@ body {
     background: #1B2D5E;
     border-bottom: 1px solid rgba(255,255,255,0.08);
     position: sticky;
-    top: 0;
+    top: var(--navbar-h);
     z-index: 100;
   }
 

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { adminApi } from '../../api/admin'
 import useAuthStore from '../../store/authStore'
+import usePageTitle from '../../hooks/usePageTitle'
 
 const ADMIN = '#7C3AED'
 
@@ -47,6 +48,7 @@ const STATUS_COLOR = {
 }
 
 export default function AdminDashboard() {
+  usePageTitle('Admin Dashboard')
   const { user } = useAuthStore()
   const navigate = useNavigate()
 

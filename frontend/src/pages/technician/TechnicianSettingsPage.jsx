@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { technicianApi } from '../../api/technicians'
 import { authApi } from '../../api/auth'
 import useAuthStore from '../../store/authStore'
+import usePageTitle from '../../hooks/usePageTitle'
 
 const SPECS     = ['Electrical', 'Plumbing', 'Carpentry', 'Cleaning', 'Other']
 const ORANGE    = '#FF9A3C'
@@ -233,6 +234,7 @@ function SpecCard({ spec, totalCount, userId, onRefresh }) {
 
 /* ── Main page ──────────────────────────────────────────────────────────── */
 export default function TechnicianSettingsPage() {
+  usePageTitle('Settings')
   const { user } = useAuthStore()
   const qc = useQueryClient()
   const fileInputRef = useRef(null)

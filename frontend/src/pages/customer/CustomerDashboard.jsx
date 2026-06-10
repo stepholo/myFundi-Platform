@@ -10,6 +10,7 @@ import { reviewsApi } from '../../api/reviews'
 import useAuthStore from '../../store/authStore'
 import StatusBadge from '../../components/ui/StatusBadge'
 import { useMediaQuery } from '../../hooks/useMediaQuery'
+import usePageTitle from '../../hooks/usePageTitle'
 
 // ── Constants ─────────────────────────────────────────────────────────────────
 
@@ -56,6 +57,7 @@ function useCountUp(target, duration = 1200) {
 // ── Main component ────────────────────────────────────────────────────────────
 
 export default function CustomerDashboard() {
+  usePageTitle('Dashboard')
   const { user }  = useAuthStore()
   const navigate  = useNavigate()
   const qc        = useQueryClient()

@@ -3,6 +3,7 @@ import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useMutation } from '@tanstack/react-query'
 import { authApi } from '../../api/auth'
+import usePageTitle from '../../hooks/usePageTitle'
 
 const ROLES = [
   { value: 'Customer',   label: 'Customer',   icon: '🏠', desc: 'Book home services',  accent: '#E8501A' },
@@ -29,6 +30,7 @@ const PANEL = {
 const SPECS = ['Electrical', 'Plumbing', 'Carpentry', 'Cleaning', 'Other']
 
 export default function RegisterPage() {
+  usePageTitle('Register')
   const navigate = useNavigate()
   const [params] = useSearchParams()
 

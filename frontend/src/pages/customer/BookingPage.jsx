@@ -3,6 +3,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { bookingsApi } from '../../api/bookings'
+import usePageTitle from '../../hooks/usePageTitle'
 
 // ── Category definitions (all 13) ─────────────────────────────────────────────
 const CATEGORIES = [
@@ -35,6 +36,7 @@ function fmt(n) { return Number(n).toLocaleString('en-KE') }
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function BookingPage() {
+  usePageTitle('Book Service')
   const navigate = useNavigate()
   const [params] = useSearchParams()
 

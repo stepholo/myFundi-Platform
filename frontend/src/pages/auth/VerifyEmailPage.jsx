@@ -3,8 +3,10 @@ import { useSearchParams, Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { authApi, decodeToken } from '../../api/auth'
 import useAuthStore from '../../store/authStore'
+import usePageTitle from '../../hooks/usePageTitle'
 
 export default function VerifyEmailPage() {
+  usePageTitle('Verify Email')
   const [params] = useSearchParams()
   const [state, setState] = useState('loading') // 'loading' | 'success' | 'error'
   const [message, setMessage] = useState('')
