@@ -6,6 +6,7 @@ import { bookingsApi } from '../../api/bookings'
 import { technicianApi } from '../../api/technicians'
 import useAuthStore from '../../store/authStore'
 import { useMediaQuery } from '../../hooks/useMediaQuery'
+import usePageTitle from '../../hooks/usePageTitle'
 
 const ACCENT = 'var(--orange)'
 const LOCATION_INTERVAL = 3 * 60 * 1000
@@ -86,6 +87,7 @@ function getWeekEarnings(bookings) {
 }
 
 export default function TechnicianDashboard() {
+  usePageTitle('Dashboard')
   const { user } = useAuthStore()
   const navigate = useNavigate()
   const qc = useQueryClient()

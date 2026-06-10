@@ -3,6 +3,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { motion } from 'framer-motion'
 import { technicianApi } from '../../api/technicians'
 import useAuthStore from '../../store/authStore'
+import usePageTitle from '../../hooks/usePageTitle'
 
 const STATUS_CFG = {
   Pending:    { color: '#FF6B1A', bg: 'rgba(255,107,26,0.12)', label: 'Pending'    },
@@ -13,6 +14,7 @@ const STATUS_CFG = {
 }
 
 export default function EarningsPage() {
+  usePageTitle('Earnings')
   const { user } = useAuthStore()
   const qc = useQueryClient()
 

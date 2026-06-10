@@ -1,6 +1,7 @@
 import { NavLink, Outlet } from 'react-router-dom'
 import useAuthStore from '../../store/authStore'
 import UserMenu from '../ui/UserMenu'
+import { NAVBAR_HEIGHT } from './AppNavbar'
 
 const ACCENT = '#7C3AED'
 const NAVY   = '#1B2D5E'
@@ -39,7 +40,7 @@ export default function AdminLayout() {
     : '?'
 
   return (
-    <div style={{ display: 'flex', minHeight: '100vh', background: 'var(--ink)', fontFamily: 'Cabinet Grotesk' }}>
+    <div style={{ display: 'flex', minHeight: `calc(100vh - ${NAVBAR_HEIGHT}px)`, background: 'var(--ink)', fontFamily: 'Cabinet Grotesk' }}>
 
       {/* ── Sidebar ────────────────────────────────────────────────────────── */}
       <aside style={{
@@ -47,7 +48,7 @@ export default function AdminLayout() {
         background: NAVY,
         borderRight: '1px solid rgba(255,255,255,0.08)',
         display: 'flex', flexDirection: 'column',
-        position: 'sticky', top: 0, height: '100vh',
+        position: 'sticky', top: NAVBAR_HEIGHT, height: `calc(100vh - ${NAVBAR_HEIGHT}px)`,
       }}>
         {/* Logo */}
         <div style={{ padding: '20px 20px 18px', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>

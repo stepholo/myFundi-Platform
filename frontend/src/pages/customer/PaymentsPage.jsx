@@ -7,6 +7,7 @@ import {
   PieChart, Pie, Cell, Legend,
 } from 'recharts'
 import { paymentsApi } from '../../api/payments'
+import usePageTitle from '../../hooks/usePageTitle'
 
 // ── Constants ─────────────────────────────────────────────────────────────────
 
@@ -35,6 +36,7 @@ function fmtDate(raw, opts) {
 // ── Main component ────────────────────────────────────────────────────────────
 
 export default function PaymentsPage() {
+  usePageTitle('Payments')
   const navigate   = useNavigate()
   const [tab, setTab]         = useState('All')
   const [selectedId, setSelected] = useState(null)

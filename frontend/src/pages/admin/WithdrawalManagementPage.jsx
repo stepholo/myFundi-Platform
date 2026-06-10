@@ -2,6 +2,7 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { motion, AnimatePresence } from 'framer-motion'
 import { adminApi } from '../../api/admin'
+import usePageTitle from '../../hooks/usePageTitle'
 
 const ADMIN = '#7C3AED'
 
@@ -14,6 +15,7 @@ const STATUS_CFG = {
 }
 
 export default function WithdrawalManagementPage() {
+  usePageTitle('Admin Withdrawals')
   const qc = useQueryClient()
   const [tab, setTab] = useState('Pending')
   const [confirm, setConfirm] = useState(null) // { id, action: 'approve'|'reject', amount, name }

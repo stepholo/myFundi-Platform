@@ -6,6 +6,7 @@ import { bookingsApi } from '../../api/bookings'
 import { paymentsApi } from '../../api/payments'
 import useAuthStore from '../../store/authStore'
 import StatusBadge from '../../components/ui/StatusBadge'
+import usePageTitle from '../../hooks/usePageTitle'
 
 const STEPS       = ['requested', 'broadcasted', 'assigned', 'in_progress', 'completed']
 const STEP_LABELS = ['Submitted', 'Finding Tech', 'Assigned', 'In Progress', 'Done']
@@ -27,6 +28,7 @@ function filterBookings(bookings, tab) {
 }
 
 export default function MyBookingsPage() {
+  usePageTitle('My Bookings')
   const navigate      = useNavigate()
   const { user }      = useAuthStore()
   const queryClient   = useQueryClient()

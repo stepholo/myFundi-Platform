@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { motion, AnimatePresence } from 'framer-motion'
 import { bookingsApi } from '../../api/bookings'
+import usePageTitle from '../../hooks/usePageTitle'
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -21,6 +22,7 @@ function fmtDate(raw) {
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function AvailableJobsPage() {
+  usePageTitle('Available Jobs')
   const qc = useQueryClient()
   const [selectedId, setSelectedId] = useState(null)
 

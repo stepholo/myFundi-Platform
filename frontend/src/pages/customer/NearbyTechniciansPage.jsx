@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 import { motion, AnimatePresence } from 'framer-motion'
 import { bookingsApi } from '../../api/bookings'
 import { reviewsApi } from '../../api/reviews'
+import usePageTitle from '../../hooks/usePageTitle'
 
 const RADII = [
   { label: '2 km',  value: 2  },
@@ -42,6 +43,7 @@ function avgRating(reviews) {
 }
 
 export default function NearbyTechniciansPage() {
+  usePageTitle('Nearby Technicians')
   const [coords, setCoords]         = useState(null)
   const [radius, setRadius]         = useState(5)
   const [locError, setLocError]     = useState('')

@@ -5,6 +5,7 @@ import { useMutation } from '@tanstack/react-query'
 import { authApi, decodeToken } from '../../api/auth'
 import useAuthStore from '../../store/authStore'
 import { useMediaQuery } from '../../hooks/useMediaQuery'
+import usePageTitle from '../../hooks/usePageTitle'
 
 const ROLE_REDIRECT = {
   Customer:      '/customer/dashboard',
@@ -14,6 +15,7 @@ const ROLE_REDIRECT = {
 }
 
 export default function LoginShell({ config }) {
+  usePageTitle(`${config.roleLabel} Log In`)
   const navigate  = useNavigate()
   const [params]  = useSearchParams()
   const setAuth   = useAuthStore((s) => s.setAuth)
