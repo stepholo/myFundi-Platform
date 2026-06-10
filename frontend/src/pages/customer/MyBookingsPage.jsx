@@ -913,8 +913,6 @@ function DetailSkeleton() {
 const CAT_META = {
   'Electrical':       { icon: '⚡', bg: 'linear-gradient(135deg,#FEF9C3,#FDE68A)', color: '#D97706' },
   'Plumbing':         { icon: '🔧', bg: 'linear-gradient(135deg,#EFF6FF,#BFDBFE)', color: '#2563EB' },
-  'Carpentry':        { icon: '🪚', bg: 'linear-gradient(135deg,#F0FDF4,#BBF7D0)', color: '#16A34A' },
-  'Cleaning':         { icon: '🧹', bg: 'linear-gradient(135deg,#FAF5FF,#E9D5FF)', color: '#9333EA' },
   'Fridge Repair':    { icon: '❄️', bg: 'linear-gradient(135deg,#EFF6FF,#BAE6FD)', color: '#0284C7' },
   'Washing Machine':  { icon: '🫧', bg: 'linear-gradient(135deg,#F0F9FF,#E0F2FE)', color: '#0369A1' },
   'Cooker & Oven':    { icon: '🔥', bg: 'linear-gradient(135deg,#FFF7ED,#FED7AA)', color: '#EA580C' },
@@ -923,6 +921,5 @@ const CAT_META = {
   'Solar & Power':    { icon: '☀️', bg: 'linear-gradient(135deg,#FFFBEB,#FDE68A)', color: '#D97706' },
   'Small Appliances': { icon: '🔌', bg: 'linear-gradient(135deg,#F0FDF4,#D1FAE5)', color: '#059669' },
   'Other Technical':  { icon: '🛠️', bg: 'linear-gradient(135deg,#F8FAFC,#E2E8F0)', color: '#475569' },
-  'Other':            { icon: '📋', bg: 'linear-gradient(135deg,#FFF7ED,#FED7AA)', color: '#E8501A' },
 }
 function catMeta(cat) { return CAT_META[cat] ?? CAT_META['Other'] }

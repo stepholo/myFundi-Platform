@@ -255,7 +255,7 @@ export default function HomePage() {
 
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
             style={{ fontSize: isMobile ? '15px' : '17px', color: 'rgba(255,255,255,0.72)', lineHeight: '1.65', maxWidth: '460px', marginBottom: isMobile ? '24px' : '36px' }}>
-            myFundi Hub connects you with verified, GPS-matched local technicians for electrical, plumbing, carpentry, cleaning, and more — right to your door.
+            Built for households and property owners, myFundi Hub connects you with verified, GPS-matched local technicians for electrical, plumbing, and more — right to your door.
           </motion.p>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }}

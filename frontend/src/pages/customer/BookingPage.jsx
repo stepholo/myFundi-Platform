@@ -16,10 +16,7 @@ const CATEGORIES = [
   { value: 'Security Systems', icon: '🔒', img: '/images/icons/other.png',      bg: 'linear-gradient(135deg,#F0FDF4,#BBF7D0)', desc: 'CCTV, alarms, electric fence, gates' },
   { value: 'Solar & Power',    icon: '☀️', img: '/images/icons/other.png',      bg: 'linear-gradient(135deg,#FEFCE8,#FEF08A)', desc: 'Solar panels, inverters, water heaters' },
   { value: 'Small Appliances', icon: '🔌', img: '/images/icons/other.png',      bg: 'linear-gradient(135deg,#FFF1F2,#FFE4E6)', desc: 'Kettles, irons, blenders, ACs' },
-  { value: 'Carpentry',        icon: '🪚', img: '/images/icons/carpentry.png',  bg: 'linear-gradient(135deg,#F0FDF4,#BBF7D0)', desc: 'Doors, furniture, cabinets, roofing' },
-  { value: 'Cleaning',         icon: '🧹', img: '/images/icons/cleaning.png',   bg: 'linear-gradient(135deg,#FAF5FF,#E9D5FF)', desc: 'Deep clean, move-in/out, upholstery' },
   { value: 'Other Technical',  icon: '🛠️', img: '/images/icons/other.png',      bg: 'linear-gradient(135deg,#FFF7ED,#FED7AA)', desc: 'WiFi setup, home theatre, DSTV' },
-  { value: 'Other',            icon: '❓', img: '/images/icons/other.png',      bg: 'linear-gradient(135deg,#F1F5F9,#E2E8F0)', desc: 'Any other home service' },
 ]
 
 const baseInput = {

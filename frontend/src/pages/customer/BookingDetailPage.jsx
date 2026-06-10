@@ -742,8 +742,6 @@ function PaymentStatusBadge({ status }) {
 const CAT_META = {
   'Electrical':       { img: '/images/icons/electrical.png', bg: 'linear-gradient(135deg,#FEF9C3,#FDE68A)', icon: '⚡' },
   'Plumbing':         { img: '/images/icons/plumbing.png',   bg: 'linear-gradient(135deg,#EFF6FF,#BFDBFE)', icon: '🚿' },
-  'Carpentry':        { img: '/images/icons/carpentry.png',  bg: 'linear-gradient(135deg,#F0FDF4,#BBF7D0)', icon: '🪚' },
-  'Cleaning':         { img: '/images/icons/cleaning.png',   bg: 'linear-gradient(135deg,#FAF5FF,#E9D5FF)', icon: '🧹' },
   'Fridge Repair':    { img: '/images/icons/other.png',      bg: 'linear-gradient(135deg,#E0F2FE,#BAE6FD)', icon: '🧊' },
   'Washing Machine':  { img: '/images/icons/other.png',      bg: 'linear-gradient(135deg,#F0F9FF,#E0F2FE)', icon: '🫧' },
   'Cooker & Oven':    { img: '/images/icons/other.png',      bg: 'linear-gradient(135deg,#FFF7ED,#FDDCAE)', icon: '🍳' },
@@ -752,7 +750,6 @@ const CAT_META = {
   'Solar & Power':    { img: '/images/icons/other.png',      bg: 'linear-gradient(135deg,#FEFCE8,#FEF08A)', icon: '☀️' },
   'Small Appliances': { img: '/images/icons/other.png',      bg: 'linear-gradient(135deg,#FFF1F2,#FFE4E6)', icon: '🔌' },
   'Other Technical':  { img: '/images/icons/other.png',      bg: 'linear-gradient(135deg,#FFF7ED,#FED7AA)', icon: '🛠️' },
-  'Other':            { img: '/images/icons/other.png',      bg: 'linear-gradient(135deg,#F1F5F9,#E2E8F0)', icon: '❓' },
 }
 function catMeta(cat) { return CAT_META[cat] ?? CAT_META['Other'] }
 

@@ -75,7 +75,7 @@ export default function VerifyEmailPage() {
           padding: '48px 40px', textAlign: 'center',
         }}>
           {/* Logo */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', marginBottom: '32px' }}>
+          <div onClick={() => navigate('/')} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', cursor: 'pointer', width: 'fit-content', margin: '0 auto 32px' }}>
             <img src="/efundi_icon.svg" width="40" height="40" alt="myFundi Hub" style={{ borderRadius: '8px' }} />
             <span style={{ fontFamily: 'Clash Display', fontSize: '22px', fontWeight: '700', color: '#1B2D5E' }}>
               <span style={{ color: '#E8501A' }}>my</span>Fundi Hub

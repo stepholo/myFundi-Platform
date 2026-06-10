@@ -69,7 +69,7 @@ export default function AppFooter() {
 
         {/* Brand + tagline */}
         <div style={{ padding: '32px 20px 24px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
+          <div onClick={() => navigate('/')} style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px', cursor: 'pointer', width: 'fit-content' }}>
             <img src="/efundi_icon.svg" width="30" height="30" alt="myFundi Hub" style={{ borderRadius: '8px' }} />
             <span style={{ fontFamily: "'Times New Roman', Times, serif", fontWeight: '700', fontSize: '18px', color: '#FFFFFF' }}>
               <span style={{ color: ORANGE }}>my</span>Fundi Hub
@@ -145,7 +145,7 @@ export default function AppFooter() {
 
         {/* Brand column */}
         <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
+          <div onClick={() => navigate('/')} style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px', cursor: 'pointer', width: 'fit-content' }}>
             <img src="/efundi_icon.svg" width="32" height="32" alt="myFundi Hub" style={{ borderRadius: '8px' }} />
             <span style={{ fontFamily: "'Times New Roman', Times, serif", fontWeight: '700', fontSize: '19px', color: '#FFFFFF' }}>
               <span style={{ color: ORANGE }}>my</span>Fundi Hub

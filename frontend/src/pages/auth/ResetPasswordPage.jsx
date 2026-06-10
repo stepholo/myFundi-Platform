@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useSearchParams, Link } from 'react-router-dom'
+import { useSearchParams, Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useMutation } from '@tanstack/react-query'
 import { authApi } from '../../api/auth'
@@ -23,8 +23,9 @@ const inputStyle = {
 }
 
 function Logo() {
+  const navigate = useNavigate()
   return (
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', marginBottom: '32px' }}>
+    <div onClick={() => navigate('/')} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', cursor: 'pointer', width: 'fit-content', margin: '0 auto 32px' }}>
       <img src="/efundi_icon.svg" width="40" height="40" alt="myFundi Hub" style={{ borderRadius: '8px' }} />
       <span style={{ fontFamily: 'Clash Display', fontSize: '22px', fontWeight: '700', color: '#1B2D5E' }}>
         <span style={{ color: ACCENT }}>my</span>Fundi Hub

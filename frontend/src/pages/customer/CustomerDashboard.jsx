@@ -926,7 +926,7 @@ function NearbyTechStrip() {
 
 // ── ReviewsMarqueeStrip (desktop — R→L marquee) ───────────────────────────────
 
-const REVIEW_CATEGORY_ICONS = { Electrical: '⚡', Plumbing: '🚿', Carpentry: '🪚', Cleaning: '🧹', Other: '🔧' }
+const REVIEW_CATEGORY_ICONS = { Electrical: '⚡', Plumbing: '🚿', Other: '🔧' }
 
 function ReviewMarqueeCard({ review, booking }) {
   return (
@@ -1049,7 +1049,7 @@ function RowSkeleton() {
 
 // ── ReviewsSection ────────────────────────────────────────────────────────────
 
-const CATEGORY_ICONS = { Electrical: '⚡', Plumbing: '🚿', Carpentry: '🪚', Cleaning: '🧹', Other: '🔧' }
+const CATEGORY_ICONS = { Electrical: '⚡', Plumbing: '🚿', Other: '🔧' }
 
 function StarPicker({ value, onChange, shake }) {
   const [hovered, setHovered] = useState(null)

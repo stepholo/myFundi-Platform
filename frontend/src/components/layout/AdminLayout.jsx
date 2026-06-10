@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from 'react-router-dom'
+import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import useAuthStore from '../../store/authStore'
 import UserMenu from '../ui/UserMenu'
 import { NAVBAR_HEIGHT } from './AppNavbar'
@@ -34,6 +34,7 @@ function NavItem({ to, label }) {
 }
 
 export default function AdminLayout() {
+  const navigate = useNavigate()
   const { user, logout } = useAuthStore()
   const initials = user
     ? `${user.first_name?.[0] ?? ''}${user.last_name?.[0] ?? ''}`.toUpperCase() || '?'
@@ -52,7 +53,7 @@ export default function AdminLayout() {
       }}>
         {/* Logo */}
         <div style={{ padding: '20px 20px 18px', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <div onClick={() => navigate('/admin/dashboard')} style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}>
             <img src="/efundi_icon.svg" width="36" height="36" alt="myFundi Hub" style={{ borderRadius: '8px', flexShrink: 0 }} />
             <div>
               <div style={{ fontFamily: 'Clash Display', fontSize: '17px', fontWeight: '700', color: '#FFFFFF', lineHeight: 1 }}>
