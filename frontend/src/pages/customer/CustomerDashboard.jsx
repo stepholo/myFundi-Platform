@@ -18,11 +18,8 @@ const QUICK_SERVICES = [
   { img: '/images/icons/electrical.png', label: 'Fridge Repair', category: 'Electrical', bg: 'linear-gradient(135deg,#FEF9C3,#FDE68A)' },
   { img: '/images/icons/electrical.png', label: 'Wiring',        category: 'Electrical', bg: 'linear-gradient(135deg,#FEF9C3,#FDE68A)' },
   { img: '/images/icons/plumbing.png',   label: 'Plumbing',      category: 'Plumbing',   bg: 'linear-gradient(135deg,#EFF6FF,#BFDBFE)' },
-  { img: '/images/icons/carpentry.png',  label: 'Carpentry',     category: 'Carpentry',  bg: 'linear-gradient(135deg,#F0FDF4,#BBF7D0)' },
-  { img: '/images/icons/cleaning.png',   label: 'Cleaning',      category: 'Cleaning',   bg: 'linear-gradient(135deg,#FAF5FF,#E9D5FF)' },
   { img: '/images/icons/electrical.png', label: 'Lighting',      category: 'Electrical', bg: 'linear-gradient(135deg,#FEF9C3,#FDE68A)' },
   { img: '/images/icons/electrical.png', label: 'Sockets',       category: 'Electrical', bg: 'linear-gradient(135deg,#FEF9C3,#FDE68A)' },
-  { img: '/images/icons/other.png',      label: 'Other',         category: 'Other',      bg: 'linear-gradient(135deg,#FFF7ED,#FED7AA)' },
 ]
 
 const ACTIVE_STATUSES = ['requested', 'broadcasted', 'assigned', 'in_progress']
@@ -169,7 +166,7 @@ export default function CustomerDashboard() {
             What do you need fixed?
           </div>
         </motion.div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(8, 1fr)', gap: '10px', marginBottom: '32px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '10px', marginBottom: '32px' }}>
           {QUICK_SERVICES.map(({ img, label, category, bg }, i) => (
             <motion.div
               key={label}
