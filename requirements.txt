@@ -1,7 +1,7 @@
 django-environ
 psycopg2-binary
 gunicorn
-setuptools
+setuptools<81
 drf-spectacular
 celery==5.6.3
 intasend-python
