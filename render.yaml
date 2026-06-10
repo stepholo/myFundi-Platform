@@ -27,7 +27,7 @@ databases:
 services:
   - type: web
     name: efundi-backend
-    env: docker
+    runtime: docker
     plan: free
     dockerfilePath: ./efundi_app/Dockerfile
     dockerContext: .
@@ -84,7 +84,7 @@ services:
 
   - type: web
     name: efundi-frontend
-    env: static
+    runtime: static
     plan: free
     rootDir: frontend
     buildCommand: npm install && npm run build
