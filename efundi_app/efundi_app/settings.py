@@ -479,6 +479,15 @@ else:
     # No SMTP credentials — print emails to the terminal instead.
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+# Render's free tier blocks outbound SMTP ports (25/465/587), so a real SMTP
+# attempt hangs until the worker times out and gets killed. Default to the
+# console backend there, regardless of EMAIL_HOST_USER.
+if _RENDER_URL and not _NGROK_URL:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Still allow an explicit override via env for any other deployment target.
+EMAIL_BACKEND = env('EMAIL_BACKEND', default=EMAIL_BACKEND)
+
 # Celery settings
 CELERY_BROKER_URL = REDIS_URL
 CELERY_RESULT_BACKEND = REDIS_URL
