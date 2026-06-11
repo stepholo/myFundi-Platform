@@ -491,7 +491,7 @@ export default function HomePage() {
             </div>
             <div style={{ fontSize: '13px', color: 'var(--muted2)', fontFamily: 'DM Mono' }}>
               Questions?{' '}
-              <a href="mailto:efundiz01@gmail.com" style={{ color: ORANGE, textDecoration: 'none' }}>efundiz01@gmail.com</a>
+              <a href="mailto:myfundihub@gmail.com" style={{ color: ORANGE, textDecoration: 'none' }}>myfundihub@gmail.com</a>
               {' '}·{' '}
               <a href="tel:+254799160014" style={{ color: 'var(--muted)', textDecoration: 'none' }}>+254 799 160 014</a>
             </div>

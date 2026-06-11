@@ -19,16 +19,14 @@ const COLS = [
     items: [
       { label: 'Electrical repairs', path: '/register?role=Customer' },
       { label: 'Plumbing',           path: '/register?role=Customer' },
-      { label: 'Carpentry',          path: '/register?role=Customer' },
-      { label: 'Cleaning',           path: '/register?role=Customer' },
       { label: 'Other services',     path: '/register?role=Customer' },
     ],
   },
   {
     heading: 'Support',
     items: [
-      { label: 'Contact us',       href: 'mailto:efundiz01@gmail.com' },
-      { label: 'Help Centre',      href: 'mailto:efundiz01@gmail.com' },
+      { label: 'Contact us',       href: 'mailto:myfundihub@gmail.com' },
+      { label: 'Help Centre',      href: 'mailto:myfundihub@gmail.com' },
       { label: 'Privacy Policy',   href: '#' },
       { label: 'Terms of Service', href: '#' },
     ],
@@ -36,9 +34,9 @@ const COLS = [
 ]
 
 const CONTACT = [
-  { icon: '✉', text: 'efundiz01@gmail.com', href: 'mailto:efundiz01@gmail.com' },
+  { icon: '✉', text: 'myfundihub@gmail.com', href: 'mailto:myfundihub@gmail.com' },
   { icon: '📞', text: '+254 799 160 014',    href: 'tel:+254799160014'          },
-  { icon: '📞', text: '0700 917 222',        href: 'tel:0700917222'             },
+  { icon: '📞', text: '+254 700 917 222',        href: 'tel:+254700917222'             },
   { icon: '📍', text: 'Nairobi, Kenya',      href: null                         },
 ]
 
@@ -76,7 +74,7 @@ export default function AppFooter() {
             </span>
           </div>
           <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.42)', lineHeight: '1.7', marginBottom: '16px' }}>
-            Kenya's home services platform — connecting homeowners with verified, GPS-matched local technicians.
+            At myFundi Hub, we connect homes and businesses with vetted technicians for electrical work, plumbing, appliance repairs, CCTV Installation, and general Maintence.
           </p>
 
           {/* Contact — 2-column grid */}
@@ -152,7 +150,7 @@ export default function AppFooter() {
             </span>
           </div>
           <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.45)', lineHeight: '1.75', marginBottom: '20px', maxWidth: '260px' }}>
-            Kenya's home services platform — connecting homeowners with verified, GPS-matched local technicians.
+            Kenya's home services platform — connecting homeowners and businesses with verified technicians.
           </p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '9px', marginBottom: '20px' }}>
             {CONTACT.map(({ icon, text, href }) => {
